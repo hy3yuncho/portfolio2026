@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Figma__get_design_context",
+      "mcp__claude_ai_Figma__get_metadata",
+      "mcp__claude_ai_Figma__get_screenshot",
+      "Read(//pixel/**)",
+      "Bash(done)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/hyeyun/Desktop/portfolio_site/public/dnd.png /Users/hyeyun/Desktop/portfolio_site/public/folder.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/hyeyun/Desktop/portfolio_site/public/postit.png)",
+      "Bash(ls /Users/hyeyun/Desktop/portfolio_site/public/*.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/hyeyun/Desktop/portfolio_site/public/detectify.png /Users/hyeyun/Desktop/portfolio_site/public/nurtura.png /Users/hyeyun/Desktop/portfolio_site/public/appstract.png /Users/hyeyun/Desktop/portfolio_site/public/meview.png)"
+    ]
+  }
+}

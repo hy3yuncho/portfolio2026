@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appstract — Hailey Yun Cho</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Serif+Display:ital@1&family=Montserrat:ital,wght@0,300;0,500;0,900;1,900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fefefc; --surface: #f7fafc; --border: #e5e5e5;
+      --text: #141412; --text-warm: #2c2524; --text-mid: #666666;
+      --text-light: #969696; --muted: #57423f; --yellow: #fadb68; --gray-img: #d9d9d9;
+    }
+
+    body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--text); }
+
+    /* Nav */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      height: 41px; padding: 0 24px; display: flex; align-items: center;
+      justify-content: space-between; font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 14px; letter-spacing: 0.28px;
+      color: var(--yellow); white-space: nowrap;
+    }
+    .topnav a { color: var(--yellow); text-decoration: none; }
+    .topnav-links { display: flex; gap: 21px; list-style: none; }
+
+    /* Hero */
+    .cs-hero { display: flex; min-height: 968px; border-bottom: 1px solid var(--border); }
+
+    .cs-hero-left {
+      width: 515px; flex-shrink: 0;
+      padding: 56px 10px 56px 80px;
+      display: flex; flex-direction: column; gap: 34px;
+    }
+
+    .cs-title-block { display: flex; flex-direction: column; gap: 4px; }
+
+    .cs-title {
+      font-family: 'DM Serif Display', serif; font-style: italic; font-weight: 400;
+      font-size: 24px; color: var(--text-warm); line-height: 1;
+    }
+
+    .cs-tagline { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; color: var(--text-warm); }
+
+    .cs-about { display: flex; flex-direction: column; gap: 8px; }
+
+    .meta-label {
+      font-family: 'Montserrat', sans-serif; font-weight: 500;
+      font-size: 12px; color: var(--text-warm);
+    }
+
+    .body-light {
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      font-size: 14px; line-height: 20px; color: var(--text-warm);
+    }
+
+    .cs-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 25px; }
+    .cs-meta-item { display: flex; flex-direction: column; gap: 8px; }
+
+    .cs-hero-right { flex: 1; display: flex; flex-direction: column; gap: 12px; padding-top: 56px; }
+    .cs-preview { height: 462px; flex-shrink: 0; background: var(--gray-img); width: 100%; }
+
+    /* Body layout */
+    .cs-body { display: flex; align-items: flex-start; }
+
+    /* Sticky sidebar */
+    .cs-sidenav {
+      width: 165px; flex-shrink: 0;
+      position: sticky; top: 41px;
+      height: calc(100vh - 41px); overflow-y: auto;
+      background: var(--surface); border-right: 1px solid var(--border);
+      padding: 60px 0; display: flex; flex-direction: column; align-items: stretch;
+    }
+
+    .sidenav-items { display: flex; flex-direction: column; gap: 3px; padding: 0 12px; flex: 1; }
+
+    .sidenav-home {
+      background: var(--border); border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 10px; height: 16px;
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+      color: var(--text); text-decoration: none; margin-bottom: 8px;
+    }
+
+    .sidenav-phase {
+      background: var(--border); border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 10px; height: 16px; margin-top: 6px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+      color: var(--text);
+    }
+
+    .sidenav-sub {
+      padding: 0 10px 0 18px; height: 16px;
+      display: flex; align-items: center; gap: 4px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 11px;
+      color: #0a0a0a; text-decoration: none;
+    }
+    .sidenav-sub:hover { opacity: 0.5; }
+    .sidenav-sub::before { content: '↳'; font-size: 9px; color: #bbb; flex-shrink: 0; }
+
+    .sidenav-backtop {
+      background: var(--border); border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 10px; height: 16px; margin: 12px 12px 0;
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+      color: var(--text); text-decoration: none;
+    }
+
+    /* Content area */
+    .cs-content { flex: 1; padding: 60px 80px 100px 132px; max-width: 1260px; }
+
+    /* Sections */
+    .cs-section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .cs-section:last-child { border-bottom: none; }
+
+    .h4-label {
+      font-family: 'DM Mono', monospace; font-weight: 500;
+      font-size: 12px; color: #000000; margin-bottom: 8px;
+    }
+
+    .h3-header {
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 20px; color: var(--text-mid); margin-bottom: 14px;
+    }
+
+    .cs-body-text {
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      font-size: 14px; line-height: 20px; color: var(--text-light);
+    }
+    .cs-body-text + .cs-body-text { margin-top: 10px; }
+
+    /* Stats row */
+    .stats-row { display: flex; gap: 48px; margin: 24px 0; flex-wrap: wrap; }
+    .stat { display: flex; flex-direction: column; gap: 4px; }
+    .stat-number { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px; color: var(--text); }
+    .stat-desc { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 18px; color: var(--text-light); max-width: 140px; }
+
+    /* Research table */
+    .cs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .cs-table th {
+      font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 11px;
+      color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0 0 10px; text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .cs-table td {
+      font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px;
+      line-height: 20px; color: var(--text-light); padding: 14px 0;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .cs-table td:first-child { padding-right: 32px; width: 42%; color: var(--text-warm); font-weight: 400; }
+
+    /* Persona cards */
+    .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+    .persona-card { background: var(--surface); border: 1px solid var(--border); padding: 20px; }
+    .persona-name { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 13px; color: var(--text-warm); margin-bottom: 3px; }
+    .persona-role { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+    .persona-desc { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 18px; color: var(--text-light); }
+
+    /* Spotlight */
+    .spotlight { background: var(--surface); border: 1px solid var(--border); padding: 32px; margin: 20px 0; }
+    .spotlight-label { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 11px; color: var(--text-light); margin-bottom: 10px; }
+    .spotlight-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px; color: var(--text-warm); margin-bottom: 14px; }
+
+    /* Decision blocks */
+    .decision-list { margin-top: 20px; display: flex; flex-direction: column; gap: 28px; }
+    .decision-block { border-left: 2px solid var(--yellow); padding-left: 20px; }
+    .decision-title { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; color: var(--text-warm); margin-bottom: 12px; }
+    .decision-row { display: grid; grid-template-columns: 110px 1fr; margin-bottom: 6px; }
+    .decision-row-key { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+    .decision-row-val { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 20px; color: var(--text-light); }
+
+    /* Img placeholder */
+    .cs-img { background: var(--gray-img); width: 100%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; margin: 20px 0; }
+    .screen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+
+    /* Principle list */
+    .principle-list { margin-top: 16px; display: flex; flex-direction: column; gap: 16px; }
+    .principle { display: flex; gap: 16px; }
+    .principle-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: var(--border); flex-shrink: 0; width: 24px; }
+    .principle-body { display: flex; flex-direction: column; gap: 4px; }
+    .principle-title { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--text-warm); }
+    .principle-desc { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 20px; color: var(--text-light); }
+
+    /* Open question list */
+    .open-list { margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .open-item { padding-left: 16px; border-left: 2px solid var(--border); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 20px; color: var(--text-light); }
+
+    /* Next project */
+    .cs-next { padding: 60px 80px 60px 132px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; margin-left: 165px; }
+    .cs-next-label { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .cs-next-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; color: var(--text-warm); text-decoration: none; display: block; }
+    .cs-next-title:hover { opacity: 0.7; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer div { display: flex; gap: 24px; }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav">
+    <a href="index.html">Hailey Yun Cho</a>
+    <ul class="topnav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html">Work</a></li>
+      <li><a href="about.html#contact">Contact</a></li>
+    </ul>
+    <span>Europe/Stockholm &nbsp;&nbsp; 16:16</span>
+  </nav>
+
+  <section class="cs-hero">
+    <div class="cs-hero-left">
+      <div class="cs-title-block">
+        <h1 class="cs-title">Appstract</h1>
+        <p class="cs-tagline">making a live product visible to the people it was built for</p>
+      </div>
+      <div class="cs-about">
+        <span class="meta-label">ABOUT</span>
+        <p class="body-light">Appstract is a social shopping layer embedded as a widget into partner e-commerce sites. The widget was live across multiple sites — but shoppers weren't engaging with it. I redesigned the widget's default state and first-interaction flow around a single insight: the social activity itself is the best advertisement for the product.</p>
+      </div>
+      <div class="cs-meta-grid">
+        <div class="cs-meta-item">
+          <span class="meta-label">MY ROLE</span>
+          <p class="body-light">Solo Designer — strategy, research, end-to-end UI</p>
+        </div>
+        <div class="cs-meta-item">
+          <span class="meta-label">TEAM</span>
+          <p class="body-light">Solo. Worked directly with founders.</p>
+        </div>
+        <div class="cs-meta-item">
+          <span class="meta-label">TIMELINE</span>
+          <p class="body-light">2–4 months</p>
+        </div>
+        <div class="cs-meta-item">
+          <span class="meta-label">TOOLS</span>
+          <p class="body-light">Figma</p>
+        </div>
+      </div>
+    </div>
+    <div class="cs-hero-right">
+      <div class="cs-preview"></div>
+      <div class="cs-preview"></div>
+    </div>
+  </section>
+
+  <div class="cs-body">
+    <nav class="cs-sidenav">
+      <div class="sidenav-items">
+        <a href="index.html" class="sidenav-home">← HOME</a>
+        <div class="sidenav-phase">Discover <span>→</span></div>
+        <a href="#overview" class="sidenav-sub">OVERVIEW</a>
+        <a href="#context" class="sidenav-sub">CONTEXT</a>
+        <a href="#problem" class="sidenav-sub">THE PROBLEM</a>
+        <div class="sidenav-phase">Define <span>→</span></div>
+        <a href="#goals" class="sidenav-sub">GOALS</a>
+        <div class="sidenav-phase">Develop <span>→</span></div>
+        <a href="#approach" class="sidenav-sub">APPROACH</a>
+        <div class="sidenav-phase">Deliver <span>→</span></div>
+        <a href="#solution" class="sidenav-sub">SOLUTION</a>
+        <a href="#more" class="sidenav-sub">MORE</a>
+      </div>
+      <a href="#" class="sidenav-backtop">↑ Back to Top</a>
+    </nav>
+
+    <main class="cs-content">
+
+      <section id="overview" class="cs-section">
+        <p class="h4-label">THE BRIEF</p>
+        <h3 class="h3-header">Redesign the widget default state and first-interaction flow</h3>
+        <p class="cs-body-text">Appstract's social shopping widget was embedded across partner e-commerce sites — but shoppers weren't engaging with it. The product existed; awareness of it didn't. The brief was to close the gap between the widget being present and the widget being noticed and used.</p>
+      </section>
+
+      <section id="context" class="cs-section">
+        <p class="h4-label">CONTEXT</p>
+        <h3 class="h3-header">An early-stage startup with a live product and a discoverability problem</h3>
+        <p class="cs-body-text">Solo designer on an early-stage startup, end-to-end: from product strategy and research synthesis through to high-fidelity UI. No other designers. Worked directly with founders on both strategic direction and design decisions. Remote.</p>
+      </section>
+
+      <section id="problem" class="cs-section">
+        <p class="h4-label">THE PROBLEM</p>
+        <h3 class="h3-header">Two awareness problems running in parallel</h3>
+        <p class="cs-body-text">B2C: Shoppers on partner sites don't notice or understand the widget. The value proposition — shopping is better when shared — isn't landing at the moment of use.</p>
+        <p class="cs-body-text">B2B: Partner e-commerce sites aren't actively surfacing or promoting the feature. Even if the widget is present, it competes with everything else on the page for attention it isn't getting.</p>
+        <p class="cs-body-text">The hardest challenge: designing for awareness without owning the environment. The widget lives inside someone else's product. Every solution had to work within that constraint — earning attention and communicating value in a matter of seconds, with no guaranteed context around it.</p>
+      </section>
+
+      <section id="goals" class="cs-section">
+        <p class="h4-label">GOALS</p>
+        <h3 class="h3-header">Increase widget interaction rate from near-zero to measurable first engagement</h3>
+        <p class="cs-body-text">User goal: A shopper on a partner site should notice the widget, immediately understand what it offers, and feel compelled to try it — ideally within a single product page visit.</p>
+        <p class="cs-body-text">Business goal: Partner e-commerce sites should understand how to surface and promote the widget effectively. The definition of activation: a user interacts with the widget at least once during a session.</p>
+      </section>
+
+      <section id="approach" class="cs-section">
+        <p class="h4-label">APPROACH</p>
+        <h3 class="h3-header">Earn attention before asking for action</h3>
+        <p class="cs-body-text">User testing sessions identified where attention drops and what framing resonates. Desk research into widget discovery patterns and social proof mechanics in embedded third-party products. Survey-driven synthesis to capture how users already involve others in shopping decisions.</p>
+        <div class="principle-list">
+          <div class="principle">
+            <span class="principle-num">1</span>
+            <div class="principle-body">
+              <span class="principle-title">Earn attention before asking for action</span>
+              <span class="principle-desc">The widget must justify its presence before prompting a click.</span>
+            </div>
+          </div>
+          <div class="principle">
+            <span class="principle-num">2</span>
+            <div class="principle-body">
+              <span class="principle-title">Make the social value concrete, not abstract</span>
+              <span class="principle-desc">'Shopping is better when shared' needs to show, not tell.</span>
+            </div>
+          </div>
+          <div class="principle">
+            <span class="principle-num">3</span>
+            <div class="principle-body">
+              <span class="principle-title">Design for the three-second window</span>
+              <span class="principle-desc">On a product page, that's the realistic time available to communicate value.</span>
+            </div>
+          </div>
+          <div class="principle">
+            <span class="principle-num">4</span>
+            <div class="principle-body">
+              <span class="principle-title">Respect the host environment</span>
+              <span class="principle-desc">The widget is a guest on someone else's site — it should integrate without disrupting.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solution" class="cs-section">
+        <p class="h4-label">SOLUTION</p>
+        <h3 class="h3-header">The social activity itself is the best advertisement for the product</h3>
+        <p class="cs-body-text">A redesigned embedded widget and first-interaction flow built around one insight: surfacing live social signals creates curiosity and communicates value before any click.</p>
+        <div class="open-list">
+          <p class="open-item">Widget default state — ambient social signals (peer activity, reactions, shared browsing indicators) visible without any interaction required.</p>
+          <p class="open-item">First-interaction moment — frictionless entry into the shared shopping experience from the product page context.</p>
+          <p class="open-item">Zero-state handling — widget behaviour when social data is sparse, so early-stage low density doesn't undermine credibility.</p>
+          <p class="open-item">B2B placement guide — recommended integration patterns for partner sites to maximise widget discoverability without disrupting the host page.</p>
+        </div>
+        <div class="cs-img" style="height: 380px;">Widget states — screens coming soon</div>
+      </section>
+
+      <section id="more" class="cs-section">
+        <p class="h4-label">MORE</p>
+        <h3 class="h3-header">Awareness is a design problem, not a copy problem</h3>
+        <p class="cs-body-text">The existing prompts failed not because the words were wrong, but because the interaction model assumed users would stop, read, and decide — on a product page, that's not how attention works. Social signals create curiosity without requiring a conscious decision to engage.</p>
+        <p class="cs-body-text">What I'd do differently: audit the partner integration earlier. Understanding how different partner sites were actually placing the widget — and where it was getting lost — would have shaped the design constraints more precisely from the start.</p>
+        <p class="cs-body-text">What I'd explore with more time: run longitudinal testing to measure whether first-interaction users return and bring others. The real measure of the redesign isn't a single session click — it's whether the social loop activates.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="cs-next">
+    <div>
+      <p class="cs-next-label">Next project</p>
+      <a href="meview.html" class="cs-next-title">MeView</a>
+    </div>
+    <a href="meview.html" class="cs-next-title">→</a>
+  </div>
+
+  <footer>
+    <span>Hailey Yun Cho · 2026</span>
+    <div>
+      <a href="mailto:hello@haileycho.com">hello@haileycho.com</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+</html>

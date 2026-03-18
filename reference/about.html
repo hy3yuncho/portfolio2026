@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Hailey Yun Cho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=IBM+Plex+Serif:ital,wght@1,500&family=Montserrat:ital,wght@0,300;0,400;0,900;1,900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fefefc;
+      --surface: #f7fafc;
+      --border: #e5e5e5;
+      --text: #141412;
+      --text-mid: #666;
+      --text-muted: #989898;
+      --yellow: #fadb68;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      min-width: 1100px;
+    }
+
+    /* ── Nav ── */
+    nav.topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      height: 41px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.28px;
+      color: var(--yellow);
+      white-space: nowrap;
+    }
+    nav.topnav a { color: var(--yellow); text-decoration: none; }
+    .nav-links { display: flex; gap: 21px; list-style: none; }
+
+    /* ── Intro section ── */
+    .about-top {
+      display: grid;
+      grid-template-columns: 653px 1fr;
+      gap: 0 107px;
+      padding: 48px 80px 80px;
+    }
+
+    /* Left: bio */
+    .bio-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      color: #000;
+      margin-bottom: 16px;
+    }
+
+    .bio-body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #000;
+    }
+
+    .bio-body p + p { margin-top: 1em; }
+
+    .bio-body ul {
+      margin-top: 0;
+      padding-left: 21px;
+    }
+
+    .bio-body li { margin-bottom: 0; }
+
+    /* Right: experience + education */
+    .cv-section {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      padding-top: 4px;
+    }
+
+    .cv-block { display: flex; flex-direction: column; gap: 16px; }
+
+    .cv-heading {
+      font-family: 'IBM Plex Serif', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 16px;
+      color: #000;
+    }
+
+    .cv-entries { display: flex; flex-direction: column; }
+
+    .cv-entry {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--text-mid);
+      white-space: nowrap;
+      gap: 16px;
+    }
+
+    .cv-entry:first-child { padding-top: 0; }
+    .cv-entry:last-child { border-bottom: none; }
+
+    .cv-company { color: var(--text-mid); }
+    .cv-role { color: var(--text-muted); }
+
+    .cv-date {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      color: var(--text-mid);
+      flex-shrink: 0;
+    }
+
+    /* ── Photo grid ── */
+    .photo-grid {
+      display: flex;
+      gap: 24px;
+      padding: 0 80px;
+    }
+
+    .photo-placeholder {
+      flex: 1;
+      height: 462px;
+      background: #eee;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 0 80px;
+      height: 349px;
+      display: flex;
+      align-items: center;
+      margin-top: 120px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      flex: 1;
+    }
+
+    .footer-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 64px;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .footer-tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: #1a1a1a;
+      line-height: 1.5;
+      max-width: 700px;
+    }
+
+    .footer-actions {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-btn {
+      background: var(--border);
+      border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 16px;
+      height: 36px;
+      width: 89px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .footer-btn:hover { opacity: 0.7; }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .footer-nav a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: #0a0a0a;
+      text-decoration: none;
+    }
+
+    .footer-nav a:hover { opacity: 0.5; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="topnav">
+    <a href="index.html">Hailey Yun Cho</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html">Work</a></li>
+      <li><a href="#">Resume</a></li>
+    </ul>
+    <span>Europe/Stockholm &nbsp;&nbsp; 16:16</span>
+  </nav>
+
+  <!-- Intro: bio left, CV right -->
+  <div class="about-top">
+
+    <div>
+      <p class="bio-heading">Hej, I'm Hailey!</p>
+      <div class="bio-body">
+        <p>I'm a product designer working at the intersection of business logic and human behaviour.</p>
+        <p>In Korean, there's a concept called "연 (yeon 緣)" — the invisible connections that shape meaning between people and contexts.</p>
+        <p>That idea guides my work. I design by identifying the underlying threads that connect user decisions, business goals, and brand clarity.</p>
+        <p>Born in South Korea, shaped in Australia, and now based in Sweden, I bring a cross-cultural perspective grounded in psychology to build products that feel coherent, intentional, and trustworthy.</p>
+        <p>Outside of design I'm :</p>
+        <ul>
+          <li>strolling Stockholm city</li>
+          <li>blah blah blah</li>
+          <li>blah blah blah</li>
+          <li>something interesting</li>
+          <li>another interest things</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-section">
+
+      <div class="cv-block">
+        <p class="cv-heading">Experience</p>
+        <div class="cv-entries">
+          <div class="cv-entry">
+            <p><span class="cv-company">Detectify /</span><span class="cv-role"> Product Design Intern</span></p>
+            <span class="cv-date">SPRING 2026</span>
+          </div>
+          <div class="cv-entry">
+            <p><span class="cv-company">Appstract /</span><span class="cv-role"> Product Designer</span></p>
+            <span class="cv-date">SPRING 2026</span>
+          </div>
+          <div class="cv-entry">
+            <p><span class="cv-company">Amiqa /</span><span class="cv-role"> Product Design Intern</span></p>
+            <span class="cv-date">SUMMER 2025</span>
+          </div>
+          <div class="cv-entry">
+            <p><span class="cv-company">Valtech Radon /</span><span class="cv-role"> Creative Strategy Intern</span></p>
+            <span class="cv-date">SPRING 2025</span>
+          </div>
+          <div class="cv-entry">
+            <p><span class="cv-company">Deloitte Consulting /</span><span class="cv-role"> FS strategy associate</span></p>
+            <span class="cv-date">June 2023 - Mar 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-block">
+        <p class="cv-heading">Education</p>
+        <div class="cv-entries">
+          <div class="cv-entry">
+            <p><span class="cv-company">Hyper Island /</span><span class="cv-role"> Digital Creative</span></p>
+            <span class="cv-date">2024-2026</span>
+          </div>
+          <div class="cv-entry">
+            <p><span class="cv-company">Australian National University /</span><span class="cv-role"> B.S Psychology, B.C Finance</span></p>
+            <span class="cv-date">2019-2023</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4-photo grid -->
+  <div class="photo-grid">
+    <div class="photo-placeholder"></div>
+    <div class="photo-placeholder"></div>
+    <div class="photo-placeholder"></div>
+    <div class="photo-placeholder"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-name">Hailey Yun Cho</p>
+        <div class="footer-divider"></div>
+        <p class="footer-tagline">blah blah blah blah blah dfjaksdfjksdjfksdjfks fdjksjdkfjksdjfkjsdfjkldjfkjkjsdkfjskdajfkjsdfkjskdjfklsjdfkjsdkfjkldjskfjsakdjfkjdskfjkjdskfjksdfjkljasdkfjk sdjfkjdsfjkdsj</p>
+        <div class="footer-actions">
+          <a href="#" class="footer-btn">LINKEDIN</a>
+          <a href="mailto:hello@haileycho.com" class="footer-btn">EMAIL</a>
+          <a href="#" class="footer-btn">RESUME</a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
