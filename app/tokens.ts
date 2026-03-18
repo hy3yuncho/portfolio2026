@@ -63,7 +63,7 @@ export const colors = {
   borderStrong:  '#D9D9D9',   // dividers        → border-border-strong
 
   // Brand
-  brand:  '#6558FE',          // shorthand brand/500
+  brand500:  '#6558FE',       // shorthand brand/500
   accent: '#FADB68',          // brand yellow (name, logomark)
 } as const
 
