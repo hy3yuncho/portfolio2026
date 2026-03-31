@@ -223,7 +223,7 @@ export default function Home() {
               <Link href="/work/meview" className="block group" data-cursor="view">
                 <div className="overflow-hidden" style={{ height: 488 }}>
                   <Image
-                    src="/meview.png"
+                    src="/meview/meview.png"
                     alt="MeView"
                     width={519}
                     height={731}

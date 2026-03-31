@@ -185,27 +185,18 @@ export default function MeViewPage() {
 
         {/* Right: cover image stack */}
         <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 4 }}>
-          <Image
-            src="/meview/meview case1.png"
-            alt="MeView case screen 1"
-            width={1200}
-            height={900}
-            style={{ width: "100%", height: "auto", display: "block" }}
-          />
-          <Image
-            src="/meview/meview case2.png"
-            alt="MeView case screen 2"
-            width={1200}
-            height={900}
-            style={{ width: "100%", height: "auto", display: "block" }}
-          />
-          <Image
-            src="/meview/meview case3.png"
-            alt="MeView case screen 3"
-            width={1200}
-            height={900}
-            style={{ width: "100%", height: "auto", display: "block" }}
-          />
+          {[1, 2, 3, 4, 5].map((n) => (
+            <Image
+              key={n}
+              src={`/meview/case${n}.png`}
+              alt={`MeView case screen ${n}`}
+              width={1200}
+              height={900}
+              quality={100}
+              sizes="(max-width: 768px) 100vw, 1060px"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          ))}
         </div>
       </div>
 

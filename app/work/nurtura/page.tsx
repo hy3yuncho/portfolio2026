@@ -189,22 +189,25 @@ export default function NurturaPage() {
         </div>
 
         {/* Right: cover image stack */}
-        <div style={{ flex: 1, minHeight: "180vh", display: "flex", flexDirection: "column", gap: 4 }}>
-          <div style={{ position: "relative", height: "100vh" }}>
-            <Image src="/nurtura/nurtura case 1.png" alt="Nurtura app cover" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
-          <div style={{ position: "relative", height: "100vh" }}>
-            <Image src="/nurtura/case2.png" alt="Nurtura onboarding flow" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
-          <div style={{ position: "relative", height: "100vh" }}>
-            <Image src="/nurtura/case3.png" alt="Nurtura community feed" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
-          <div style={{ position: "relative", height: "100vh" }}>
-            <Image src="/nurtura/case4.png" alt="Nurtura peer connect flow" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
-          <div style={{ position: "relative", height: "100vh" }}>
-            <Image src="/nurtura/case5.png" alt="Nurtura emotional check-in and IVF guide flows" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 4 }}>
+          {[
+            { src: "/nurtura/nurtura case 1.png", alt: "Nurtura app cover" },
+            { src: "/nurtura/case2.png", alt: "Nurtura onboarding flow" },
+            { src: "/nurtura/case3.png", alt: "Nurtura community feed" },
+            { src: "/nurtura/case4.png", alt: "Nurtura peer connect flow" },
+            { src: "/nurtura/case5.png", alt: "Nurtura emotional check-in and IVF guide flows" },
+          ].map(({ src, alt }) => (
+            <Image
+              key={src}
+              src={src}
+              alt={alt}
+              width={1200}
+              height={900}
+              quality={100}
+              sizes="(max-width: 768px) 100vw, 1060px"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          ))}
         </div>
       </div>
 
