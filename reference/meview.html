@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeView — Hailey Yun Cho</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Serif+Display:ital@1&family=Montserrat:ital,wght@0,300;0,500;0,900;1,900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fefefc; --surface: #f7fafc; --border: #e5e5e5;
+      --text: #141412; --text-warm: #2c2524; --text-mid: #666666;
+      --text-light: #969696; --muted: #57423f; --yellow: #fadb68; --gray-img: #d9d9d9;
+    }
+
+    body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--text); }
+
+    /* Nav */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      height: 41px; padding: 0 24px; display: flex; align-items: center;
+      justify-content: space-between; font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 14px; letter-spacing: 0.28px;
+      color: var(--yellow); white-space: nowrap;
+    }
+    .topnav a { color: var(--yellow); text-decoration: none; }
+    .topnav-links { display: flex; gap: 21px; list-style: none; }
+
+    /* Hero */
+    .cs-hero { display: flex; min-height: 968px; border-bottom: 1px solid var(--border); }
+
+    .cs-hero-left {
+      width: 515px; flex-shrink: 0;
+      padding: 56px 10px 56px 80px;
+      display: flex; flex-direction: column; gap: 34px;
+    }
+
+    .cs-title-block { display: flex; flex-direction: column; gap: 4px; }
+
+    .cs-title {
+      font-family: 'DM Serif Display', serif; font-style: italic; font-weight: 400;
+      font-size: 24px; color: var(--text-warm); line-height: 1;
+    }
+
+    .cs-tagline { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; color: var(--text-warm); }
+
+    .cs-about { display: flex; flex-direction: column; gap: 8px; }
+
+    .meta-label {
+      font-family: 'Montserrat', sans-serif; font-weight: 500;
+      font-size: 12px; color: var(--text-warm);
+    }
+
+    .body-light {
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      font-size: 14px; line-height: 20px; color: var(--text-warm);
+    }
+
+    .cs-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 25px; }
+    .cs-meta-item { display: flex; flex-direction: column; gap: 8px; }
+
+    .cs-hero-right { flex: 1; display: flex; flex-direction: column; gap: 12px; padding-top: 56px; }
+    .cs-preview { height: 462px; flex-shrink: 0; background: var(--gray-img); width: 100%; }
+
+    /* Body layout */
+    .cs-body { display: flex; align-items: flex-start; }
+
+    /* Sticky sidebar */
+    .cs-sidenav {
+      width: 165px; flex-shrink: 0;
+      position: sticky; top: 41px;
+      height: calc(100vh - 41px); overflow-y: auto;
+      background: var(--surface); border-right: 1px solid var(--border);
+      padding: 60px 0; display: flex; flex-direction: column; align-items: stretch;
+    }
+
+    .sidenav-items { display: flex; flex-direction: column; gap: 3px; padding: 0 12px; flex: 1; }
+
+    .sidenav-home {
+      background: var(--border); border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 10px; height: 16px;
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+      color: var(--text); text-decoration: none; margin-bottom: 8px;
+    }
+
+    .sidenav-phase {
+      background: var(--border); border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 10px; height: 16px; margin-top: 6px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+      color: var(--text);
+    }
+
+    .sidenav-sub {
+      padding: 0 10px 0 18px; height: 16px;
+      display: flex; align-items: center; gap: 4px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 11px;
+      color: #0a0a0a; text-decoration: none;
+    }
+    .sidenav-sub:hover { opacity: 0.5; }
+    .sidenav-sub::before { content: '↳'; font-size: 9px; color: #bbb; flex-shrink: 0; }
+
+    .sidenav-backtop {
+      background: var(--border); border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 10px; height: 16px; margin: 12px 12px 0;
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+      color: var(--text); text-decoration: none;
+    }
+
+    /* Content area */
+    .cs-content { flex: 1; padding: 60px 80px 100px 132px; max-width: 1260px; }
+
+    /* Sections */
+    .cs-section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .cs-section:last-child { border-bottom: none; }
+
+    .h4-label {
+      font-family: 'DM Mono', monospace; font-weight: 500;
+      font-size: 12px; color: #000000; margin-bottom: 8px;
+    }
+
+    .h3-header {
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 20px; color: var(--text-mid); margin-bottom: 14px;
+    }
+
+    .cs-body-text {
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      font-size: 14px; line-height: 20px; color: var(--text-light);
+    }
+    .cs-body-text + .cs-body-text { margin-top: 10px; }
+
+    /* Stats row */
+    .stats-row { display: flex; gap: 48px; margin: 24px 0; flex-wrap: wrap; }
+    .stat { display: flex; flex-direction: column; gap: 4px; }
+    .stat-number { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px; color: var(--text); }
+    .stat-desc { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 18px; color: var(--text-light); max-width: 140px; }
+
+    /* Research table */
+    .cs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .cs-table th {
+      font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 11px;
+      color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0 0 10px; text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .cs-table td {
+      font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px;
+      line-height: 20px; color: var(--text-light); padding: 14px 0;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .cs-table td:first-child { padding-right: 32px; width: 42%; color: var(--text-warm); font-weight: 400; }
+
+    /* Persona cards */
+    .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+    .persona-card { background: var(--surface); border: 1px solid var(--border); padding: 20px; }
+    .persona-name { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 13px; color: var(--text-warm); margin-bottom: 3px; }
+    .persona-role { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+    .persona-desc { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 18px; color: var(--text-light); }
+
+    /* Spotlight */
+    .spotlight { background: var(--surface); border: 1px solid var(--border); padding: 32px; margin: 20px 0; }
+    .spotlight-label { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 11px; color: var(--text-light); margin-bottom: 10px; }
+    .spotlight-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px; color: var(--text-warm); margin-bottom: 14px; }
+
+    /* Decision blocks */
+    .decision-list { margin-top: 20px; display: flex; flex-direction: column; gap: 28px; }
+    .decision-block { border-left: 2px solid var(--yellow); padding-left: 20px; }
+    .decision-title { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; color: var(--text-warm); margin-bottom: 12px; }
+    .decision-row { display: grid; grid-template-columns: 110px 1fr; margin-bottom: 6px; }
+    .decision-row-key { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+    .decision-row-val { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 20px; color: var(--text-light); }
+
+    /* Img placeholder */
+    .cs-img { background: var(--gray-img); width: 100%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; margin: 20px 0; }
+    .screen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+
+    /* Principle list */
+    .principle-list { margin-top: 16px; display: flex; flex-direction: column; gap: 16px; }
+    .principle { display: flex; gap: 16px; }
+    .principle-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: var(--border); flex-shrink: 0; width: 24px; }
+    .principle-body { display: flex; flex-direction: column; gap: 4px; }
+    .principle-title { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--text-warm); }
+    .principle-desc { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 20px; color: var(--text-light); }
+
+    /* Open question list */
+    .open-list { margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .open-item { padding-left: 16px; border-left: 2px solid var(--border); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 20px; color: var(--text-light); }
+
+    /* Next project */
+    .cs-next { padding: 60px 80px 60px 132px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; margin-left: 165px; }
+    .cs-next-label { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .cs-next-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; color: var(--text-warm); text-decoration: none; display: block; }
+    .cs-next-title:hover { opacity: 0.7; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer div { display: flex; gap: 24px; }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav">
+    <a href="index.html">Hailey Yun Cho</a>
+    <ul class="topnav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html">Work</a></li>
+      <li><a href="about.html#contact">Contact</a></li>
+    </ul>
+    <span>Europe/Stockholm &nbsp;&nbsp; 16:16</span>
+  </nav>
+
+  <section class="cs-hero">
+    <div class="cs-hero-left">
+      <div class="cs-title-block">
+        <h1 class="cs-title">MeView</h1>
+        <p class="cs-tagline">turning how others see you into something you can actually use</p>
+      </div>
+      <div class="cs-about">
+        <span class="meta-label">ABOUT</span>
+        <p class="body-light">MeView is a mobile peer feedback service that lets Gen Z collect, organise, and visualise anonymous reviews from co-workers and friends — structured by project and competency. The hardest design challenge wasn't the requester flow. It was making it frictionless enough for responders that they'd actually follow through.</p>
+      </div>
+      <div class="cs-meta-grid">
+        <div class="cs-meta-item">
+          <span class="meta-label">MY ROLE</span>
+          <p class="body-light">Product Designer, UI Designer</p>
+        </div>
+        <div class="cs-meta-item">
+          <span class="meta-label">TEAM</span>
+          <p class="body-light">PM, Graphic Designer, 2 Developers</p>
+        </div>
+        <div class="cs-meta-item">
+          <span class="meta-label">TIMELINE</span>
+          <p class="body-light">3 months</p>
+        </div>
+        <div class="cs-meta-item">
+          <span class="meta-label">TOOLS</span>
+          <p class="body-light">Figma</p>
+        </div>
+      </div>
+    </div>
+    <div class="cs-hero-right">
+      <div class="cs-preview"></div>
+      <div class="cs-preview"></div>
+    </div>
+  </section>
+
+  <div class="cs-body">
+    <nav class="cs-sidenav">
+      <div class="sidenav-items">
+        <a href="index.html" class="sidenav-home">← HOME</a>
+        <div class="sidenav-phase">Discover <span>→</span></div>
+        <a href="#overview" class="sidenav-sub">OVERVIEW</a>
+        <a href="#context" class="sidenav-sub">CONTEXT</a>
+        <a href="#problem" class="sidenav-sub">THE PROBLEM</a>
+        <div class="sidenav-phase">Define <span>→</span></div>
+        <a href="#research" class="sidenav-sub">RESEARCH</a>
+        <div class="sidenav-phase">Develop <span>→</span></div>
+        <a href="#decisions" class="sidenav-sub">DESIGN DECISIONS</a>
+        <div class="sidenav-phase">Deliver <span>→</span></div>
+        <a href="#solution" class="sidenav-sub">SOLUTION</a>
+        <a href="#more" class="sidenav-sub">MORE</a>
+      </div>
+      <a href="#" class="sidenav-backtop">↑ Back to Top</a>
+    </nav>
+
+    <main class="cs-content">
+
+      <section id="overview" class="cs-section">
+        <p class="h4-label">THE BRIEF</p>
+        <h3 class="h3-header">Design a peer feedback app for Gen Z that responders will actually use</h3>
+        <p class="cs-body-text">MeView lets users request structured peer feedback by project, receive it anonymously via a shareable link (no login required for responders), and view results as a visual skill map — organised by competency or project.</p>
+      </section>
+
+      <section id="context" class="cs-section">
+        <p class="h4-label">CONTEXT</p>
+        <h3 class="h3-header">A 3-month cross-functional project</h3>
+        <p class="cs-body-text">Product and UI design was my full scope — research, IA, UI, and design system — working alongside a PM, graphic designer, and two developers. Hi-fi interactive prototype delivered in Figma, handed off to developers with component specs.</p>
+      </section>
+
+      <section id="problem" class="cs-section">
+        <p class="h4-label">THE PROBLEM</p>
+        <h3 class="h3-header">Peer feedback has no structured home</h3>
+        <p class="cs-body-text">Gen Z wants to understand how others perceive them, but peer feedback in practice is scattered, subjective, and hard to act on. Existing tools sit at two extremes — LinkedIn recommendations (too formal) or DMs and verbal comments (too informal). Nothing in between was designed for self-exploration.</p>
+        <p class="cs-body-text">Why it mattered: 80% of people are curious about how others see them, with Gen Z most engaged. The gap isn't lack of desire — it's structure.</p>
+        <p class="cs-body-text">The hardest constraint: getting people to actually respond. Asking for feedback is emotionally vulnerable — and on the responder side, following through is easy to deprioritise. The responder experience needed to be frictionless enough that people would actually complete it.</p>
+      </section>
+
+      <section id="research" class="cs-section">
+        <p class="h4-label">RESEARCH</p>
+        <h3 class="h3-header">The biggest barrier to feedback isn't giving it — it's asking for it</h3>
+        <p class="cs-body-text">Methods: desk research + 10 semi-structured interviews (4 students, 6 job seekers). Interviews not surveys — we needed to understand the emotional context, not just the behaviour. Survey data wouldn't have surfaced why asking feels so vulnerable.</p>
+        <p class="cs-body-text">Key finding from desk research: post-pandemic rise in identity-focused behaviour. 80% of people curious about who they are — Gen Z most engaged.</p>
+        <p class="cs-body-text">Key finding from interviews: the biggest barrier to feedback isn't giving it. It's asking for it. Emotional vulnerability around requesting feedback was the core friction point.</p>
+      </section>
+
+      <section id="decisions" class="cs-section">
+        <p class="h4-label">DESIGN DECISIONS</p>
+        <h3 class="h3-header">Four decisions, each with a named trade-off</h3>
+        <p class="cs-body-text">Every decision below had a real alternative. The trade-offs are included because they're part of the argument — not weaknesses, but honest constraints accepted in exchange for something more important.</p>
+        <div class="decision-list">
+          <div class="decision-block">
+            <p class="decision-title">1 — No-login responder flow</p>
+            <div class="decision-row">
+              <span class="decision-row-key">Situation</span>
+              <span class="decision-row-val">Responders needed to leave feedback without friction. Requiring sign-up would cause significant drop-off — the request would arrive, feel like work, and get ignored.</span>
+            </div>
+            <div class="decision-row">
+              <span class="decision-row-key">Chosen</span>
+              <span class="decision-row-val">No-login responder flow via shared link — open link, respond, done.</span>
+            </div>
+            <div class="decision-row">
+              <span class="decision-row-key">Trade-off</span>
+              <span class="decision-row-val">Less accountability on the responder side. Potential for low-quality or insincere responses. Worth it: the volume increase from frictionless access outweighs the quality risk.</span>
+            </div>
+          </div>
+          <div class="decision-block">
+            <p class="decision-title">2 — Dual view: Skills and Projects</p>
+            <div class="decision-row">
+              <span class="decision-row-key">Situation</span>
+              <span class="decision-row-val">Feedback could be organised by person, project, or skill. Needed to pick a primary structure without locking users into one goal.</span>
+            </div>
+            <div class="decision-row">
+              <span class="decision-row-key">Chosen</span>
+              <span class="decision-row-val">Dual view — 'View by Skills' and 'View by Projects' — letting users switch based on their current goal.</span>
+            </div>
+            <div class="decision-row">
+              <span class="decision-row-key">Trade-off</span>
+              <span class="decision-row-val">More complex IA. Required careful labelling to avoid confusion between the two modes.</span>
+            </div>
+          </div>
+          <div class="decision-block">
+            <p class="decision-title">3 — Anonymous by default</p>
+            <div class="decision-row">
+              <span class="decision-row-key">Situation</span>
+              <span class="decision-row-val">Feedback on weaknesses is emotionally risky. Users might avoid requesting it, and responders might soften their answers to protect feelings.</span>
+            </div>
+            <div class="decision-row">
+              <span class="decision-row-key">Chosen</span>
+              <span class="decision-row-val">Anonymous-by-default responses with optional written elaboration.</span>
+            </div>
+            <div class="decision-row">
+              <span class="decision-row-key">Trade-off</span>
+              <span class="decision-row-val">Anonymity can reduce response accountability. The net effect is more honest, more frequent feedback — but outlier responses have no recourse.</span>
+            </div>
+          </div>
+          <div class="decision-block">
+            <p class="decision-title">4 — Bold, character-driven visual identity</p>
+            <div class="decision-row">
+              <span class="decision-row-key">Situation</span>
+              <span class="decision-row-val">The brand needed to balance credibility with Gen Z appeal without feeling like a corporate HR tool.</span>
+            </div>
+            <div class="decision-row">
+              <span class="decision-row-key">Chosen</span>
+              <span class="decision-row-val">Bold, kitsch visual identity with original mascot characters.</span>
+            </div>
+            <div class="decision-row">
+              <span class="decision-row-key">Trade-off</span>
+              <span class="decision-row-val">Strong personality may not translate across cultures and could feel less 'professional' in some hiring contexts. A deliberate bet on the primary audience.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solution" class="cs-section">
+        <p class="h4-label">SOLUTION</p>
+        <h3 class="h3-header">Three flows: request, respond, review</h3>
+        <p class="cs-body-text">Request flow — create a feedback form, choose project, select competency areas, share link via social or messenger. Responder flow — open link, select perceived strengths, optionally write elaboration. No login required. Results dashboard — view aggregated skill tags, switch between Skills and Projects views.</p>
+        <div class="cs-img" style="height: 380px;">Key screens — coming soon</div>
+      </section>
+
+      <section id="more" class="cs-section">
+        <p class="h4-label">MORE</p>
+        <h3 class="h3-header">Reducing responder friction is the single biggest lever</h3>
+        <p class="cs-body-text">The no-login flow wasn't just a nice-to-have — it was the core product decision. Everything else depended on people actually responding. This is the version of the insight that should have been the brief.</p>
+        <p class="cs-body-text">What I'd explore with more time: test the social sharing feature with real users to see whether output actually drives organic growth, or whether it's aspirational positioning. Consider a web version for accessibility across devices.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="cs-next">
+    <div>
+      <p class="cs-next-label">Back to work</p>
+      <a href="index.html" class="cs-next-title">All projects</a>
+    </div>
+    <a href="index.html" class="cs-next-title">→</a>
+  </div>
+
+  <footer>
+    <span>Hailey Yun Cho · 2026</span>
+    <div>
+      <a href="mailto:hello@haileycho.com">hello@haileycho.com</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -22,19 +22,19 @@ Hej, I'm Hailey!
 
 **Body copy:**
 
-I'm a product designer working at the intersection of business logic and human behaviour.
+I’m a product designer working at the intersection of business logic and human behaviour.
 
-In Korean, there's a concept called '연 (yeon 緣)' – the invisible connections that shape meaning between people and contexts.
+In Korean, there’s a concept called “연 (yeon 緣)”: the invisible connections that shape meaning between people and contexts.
 
 That idea guides my work. I design by identifying the underlying threads that connect user decisions, business goals, and brand clarity.
 
 Born in South Korea, shaped in Australia, and now based in Sweden, I bring a cross-cultural perspective grounded in psychology to build products that feel coherent, intentional, and trustworthy.
 
-**Outside of design I'm:**
-- Strolling Stockholm city
-- ⚠️ [두 번째 관심사 — 직접 작성]
-- ⚠️ [세 번째 관심사]
-- ⚠️ [네 번째 관심사]
+**Outside of design, I’m:**
+- hunting down the best pour-over in every city I visit (there is a mental ranking)
+- somewhere between planning the next trip and still processing the last one
+- treating every sunny day in Stockholm like a genuine emergency
+- photographing whatever catches my eye and never look back
 
 ---
 
@@ -62,9 +62,7 @@ Born in South Korea, shaped in Australia, and now based in Sweden, I bring a cro
 ## Photos Section
 
 4개의 이미지 슬롯 (가로 배열).
-
-> ⚠️ 어떤 사진을 넣을지 결정 필요. 예: 스톡홀름 일상 사진, 작업 중인 사진, 여행 사진 등.
-> 이미지 파일은 `public/images/about/` 폴더에 저장.
+> 이미지 파일은 `public/about1.png, about2.png, about3.png, about4.png
 
 ---
 
@@ -78,9 +76,9 @@ Hailey Yun Cho
 > 예: "Open to product design roles in Europe. Currently based in Stockholm."
 
 **CTA Buttons:**
-- LINKEDIN → ⚠️ [LinkedIn URL]
-- EMAIL → ⚠️ [이메일 주소]
-- RESUME → ⚠️ [Resume PDF 링크 또는 파일]
+- LINKEDIN → https://www.linkedin.com/in/hyeyun-cho-/
+- EMAIL → hy3yun.cho@gmail.com 
+- RESUME → https://drive.google.com/file/d/1PnVvayMbg_9OW4PXSUKJ-dsOqcVXI3eB/view?usp=sharing
 
 **Footer nav links:**
 - Projects

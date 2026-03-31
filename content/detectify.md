@@ -1,7 +1,20 @@
-# Detectify — Content for Portfolio Website
+# Detectify: Content for Portfolio Website
 
-> ⚠️ **이 파일은 아직 채워지지 않았습니다.**
-> 아래 각 섹션을 채워주세요. Claude Code는 이 파일의 내용을 그대로 사용합니다 — 내용이 없는 섹션은 웹사이트에 넣지 않습니다.
+> Source: 대화 기반 케이스 스터디 정리본
+> ⚠️ NDA 적용. 실제 UI 스크린샷 공개 불가. 페이지는 텍스트 중심으로 구성.
+> 스크린샷 필요 시 "available on request" 처리.
+> Claude Code: 이미지 플레이스홀더 없이 텍스트만으로 페이지를 구성할 것.
+
+---
+
+## Landing Page Card
+
+| | |
+|---|---|
+| **Label** | Work · Spring 2026 |
+| **Title** | Detectify |
+| **Tagline** | A design system for a B2B security product where accessibility is the standard. |
+| **href** | `/detectify` |
 
 ---
 
@@ -9,131 +22,133 @@
 
 | | |
 |---|---|
-| **Project** | Detectify — [한 줄 설명] |
-| **Role** | [e.g. Lead UX Designer / Solo Designer] |
-| **Platform** | [Web / Mobile / Both] |
-| **Timeline** | [e.g. Sep – Dec 2024, 3 months] |
-| **Team** | [e.g. Solo / 2 designers, 1 PM] |
-| **Tools** | [e.g. Figma, Miro] |
+| **Project** | Detectify: Design System Overhaul (Table UX Redesign) |
+| **Role** | Product Design Intern (sole designer on this workstream) |
+| **Platform** | Web app (B2B SaaS) |
+| **Timeline** | 6 months total · Table redesign: Mar – Apr 2026 |
+| **Team** | 1 Product Design Lead, 2 Front-end Developers |
+| **Tools** | Figma, Figma MCP, Design Tokens |
+| **NDA** | Specific UI not shown publicly, available on request |
 
 ---
 
-## Hero / Intro
+## Hero
 
-**Headline (10 words max):**
-[What did you design, in one punchy line?]
+**Title:** Detectify
 
-**Subhead / summary (2–3 sentences):**
-[The problem in one sentence. What you did. Why it mattered. Be specific — name a real constraint or number if possible.]
-
----
-
-## Context
-
-[What is Detectify? What does it do? (1–2 sentences max — readers may not know the product)]
-
-[What was the project? What was your role? Were you leading, collaborating, or solo?]
-
-[What kind of environment? Startup / enterprise / agency? Real users, live product?]
+**Hook:**
+Detectify's web app surfaces complex security data, almost entirely through tables. When tables are the product, table UX isn't a component problem. It's a product problem.
 
 ---
 
-## Problem
+## Section 1: Overview
 
-**Who had the problem and what was it?**
-[Describe a concrete scene. "Users were doing X, and it was failing because Y." Not: "The UX was complex."]
+**Role:** Product Design Intern (sole designer on this workstream)
+**Timeline:** 6 months (Design System overhaul) · Table redesign: Mar – Apr 2026
+**Platform:** Web app (B2B SaaS)
+**Users:** Security teams and external customers managing vulnerability data
+**Tools:** Figma, Figma MCP, Design Tokens
 
-**Why it mattered from a business perspective:**
-[What broke if this wasn't solved? Revenue? Retention? Conversion?]
-
-**The hardest constraint:**
-[One specific thing that made this genuinely hard — time, legacy system, stakeholder conflict, data gap, etc.]
-
----
-
-## Goals
-
-**User goal:**
-[What should users be able to do after this project that they couldn't before?]
-
-**Business goal:**
-[Which metric or outcome were you trying to move? Numbers if possible.]
-
-**Definition of done:**
-[How did you know when it was finished?]
+**Context:**
+Over 6 months at Detectify, I worked on a broader design system overhaul, establishing foundations, consolidating components, and aligning the product's visual language. The table redesign was one focused workstream within that larger project: the most used, most complex, and most broken component in the product.
 
 ---
 
-## Approach
+## Section 2: The Problem
 
-[What was the overall process? (e.g. 2 weeks discovery → 1 week ideation → 3 weeks prototyping → 1 week testing)]
+Security professionals using Detectify need to scan, prioritise, and act on large volumes of vulnerability data quickly. The existing table design created three compounding friction points:
 
-[What research methods did you use, and why those specific methods?]
+**High information density with no visual hierarchy** made scanning slow. Users couldn't identify what to act on without reading every row.
 
-[What fidelity did you work at? When did you move from low to high fidelity?]
+**Inconsistent filter and sort interactions** required users to learn the UI rather than use it. Behaviour varied across table instances throughout the product.
 
-[How did you collaborate — design reviews, stakeholder sign-offs, engineer pairing?]
+**The component failed WCAG accessibility standards,** creating a critical gap for a security product used by enterprise teams with compliance requirements.
 
 ---
 
-## Key Decisions
+## Section 3: Constraints
 
-*Use this format: Situation → Options considered → Direction chosen → What you gave up*
+- No user research access. Decisions had to be grounded in heuristic analysis, WCAG audit results, and engineering feedback.
+- Component needed to work across every page in the product (high blast radius)
+- Had to ship incrementally. Full redesign couldn't break existing implementations.
+- **NDA: specific UI not shown publicly, available on request**
 
-### Decision 1
-**Situation:** [What were you deciding?]
-**Options considered:** [What were the real alternatives?]
-**What you chose:** [The decision]
-**Trade-off:** [What did you sacrifice to make that call?]
+---
 
-### Decision 2
-**Situation:**
+## Section 4: Process
+
+**Audit → Define → Design**
+
+**Audit:**
+Mapped every table instance across the product to identify inconsistencies. Ran a WCAG audit to document contrast failures, missing focus states, and keyboard navigation gaps. Used heuristic analysis (Fitts's Law, Miller's Law for information chunking) to identify where scan patterns broke down.
+
+**Define:**
+Established design principles for the new component: scanability first, progressive disclosure for density, accessibility as a baseline not an afterthought. Documented constraints with engineering early to prevent solutions that couldn't ship.
+
+**Design:**
+Built a component system covering default, hover, selected, loading, empty, and error states. Established token-based spacing and typography scale to ensure consistency across implementations. Used Figma MCP to generate component code specs directly, reducing handoff ambiguity and back-and-forth annotation.
+
+---
+
+## Section 5: Key Decisions
+
+### Decision 1: Information density vs. scanability
+
+**Situation:** Security data is inherently dense. Users need many data points per row, but too much density breaks scan patterns.
+
 **Options considered:**
-**What you chose:**
-**Trade-off:**
+- (A) Show all columns by default
+- (B) Progressive disclosure with full column customisation
+- (C) Opinionated default view with fewer columns
+
+**What was chosen:** Opinionated default showing the most critical columns, with a column toggle available for power users.
+
+**Trade-off:** Some power users preferred seeing everything. Chose scanability for the majority use case over flexibility for edge cases.
+
+---
+
+### Decision 2: WCAG compliance scope
+
+**Situation:** Full WCAG AA compliance required changes to colour tokens used across the entire product, not just the table component.
+
+**Options considered:**
+- (A) Fix only the table component
+- (B) Propose a token-level fix that affects the whole design system
+
+**What was chosen:** Flagged the systemic issue and worked with engineering to update tokens at the source.
+
+**Trade-off:** Slower to implement. But patching only the table would have created two conflicting standards in the codebase.
+
+---
 
 ### Decision 3
+
+> ⚠️ 실제로 엔지니어링과 논의하면서 포기하거나 방향을 바꾼 결정이 있다면 여기에 채워주세요.
+> 없다면 filter/sort UX 관련 결정으로 대체 가능합니다.
+
 **Situation:**
 **Options considered:**
-**What you chose:**
+**What was chosen:**
 **Trade-off:**
 
 ---
 
-## Solution
+## Section 6: Impact
 
-**Summary (1–2 sentences):**
-[What did you ship / present?]
+The redesigned table component is now the design system standard across all data views in the product. WCAG AA compliance achieved for the component. Engineering handoff time reduced through Figma MCP-generated specs. Component implementation no longer required back-and-forth annotation clarification.
 
-**Key screens or flows (for annotations):**
-[Describe 3–5 key screens or flows and what makes each one worth showing. These will become the annotated image captions on the website.]
-
-Screen 1 — [Name]: [Why this screen matters. What decision it reflects.]
-Screen 2 — [Name]: [...]
-Screen 3 — [Name]: [...]
+*Specific metrics available on request.*
 
 ---
 
-## Impact
+## Section 7: Reflection
 
-**Quantitative results:**
-[Numbers. Even interview counts count: "3 out of 5 users completed the task without help."]
-
-**Qualitative results:**
-[Team reaction, user quotes, stakeholder feedback.]
-
-**Unexpected outcomes:**
-[Did anything surprise you after shipping / presenting?]
+The hardest constraint wasn't technical. It was designing a component with a high blast radius without the safety net of user testing. Every decision had to be grounded in established heuristics and WCAG standards rather than observed behaviour. If I were to do this again, I'd push earlier for even a lightweight usability session with one or two internal users before finalising the column hierarchy.
 
 ---
 
-## Learnings
+## CTA
 
-**Most important thing I learned:**
-[One sentence, honest.]
+**Text:** Want to see the full component spec or talk through the process? Get in touch →
 
-**What I'd do differently:**
-[One or two specific things — not generic.]
-
-**What I'd explore with more time:**
-[What was left on the table?]
+**Link:** mailto:hy3yun.cho@gmail.com

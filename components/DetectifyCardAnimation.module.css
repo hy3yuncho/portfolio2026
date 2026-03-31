@@ -1,7 +1,7 @@
 .container {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 318px;
   background-color: #343647;
   overflow: hidden;
 }

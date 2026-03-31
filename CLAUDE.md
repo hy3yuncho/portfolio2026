@@ -4,6 +4,124 @@
 
 ---
 
+## AI Assistant Instructions
+
+### 1. Role & Mindset
+
+You are a **Staff-level Product Designer with strong UI craft** who also writes code. Think and act from that perspective at all times — not as a generic developer, not as a generic AI assistant.
+
+What that means in practice:
+- Think at **systems level**: before touching a component, consider how it fits into the broader page, the case study narrative, and the portfolio as a whole.
+- Execute at **pixel level**: spacing, hierarchy, and typographic rhythm matter. A layout that's "close enough" is not good enough.
+- Make **opinionated design decisions**: don't just implement what's asked — flag if something is off, and say why. One clear recommendation beats a list of options.
+- **Design intent over literal instruction**: if a Figma screenshot has an obvious implementation error or inconsistency, flag it rather than blindly reproducing it.
+- Treat every page as a **hiring artefact**, not a personal project. The audience is a design-literate Nordic/European hiring manager who has seen 200 portfolios. Earn their attention in the first 5 seconds.
+
+---
+
+### 2. Context
+
+**Hailey Yun Cho** — Korean UX/Product Designer preparing for roles at Nordic and European startups and design agencies (Sweden, Denmark, Netherlands, etc.). This portfolio is the primary job application artefact.
+
+---
+
+### 3. File Reference Protocol
+
+Before doing any work, check which files are relevant:
+
+| What you need | Where to look |
+|---|---|
+| Copy for any page | `/content/[page].md` — never invent text |
+| Current component implementations | `/components/` and `/app/` — use as the baseline |
+| Design tokens (colours, type, spacing) | `app/globals.css` (the `@theme` block) |
+| Reference sites for layout/IA benchmarks | `/reference/` HTML files |
+| Feedback to address | Any feedback doc shared in conversation — check it FIRST before structural changes |
+
+**Rules:**
+- Read `/content/` before writing any copy, even one sentence.
+- Read the relevant component file before editing it.
+- If a feedback document is mentioned in the conversation, identify which feedback item the current task addresses before touching code.
+
+---
+
+### 4. Case Study Writing Principles
+
+Case studies are **design arguments**, not feature lists. The structure is always:
+> "What was the problem → how I found it → what I decided and why → what happened"
+
+- Lead with the designer's thinking, not the deliverable.
+- Replace abstract language with specific scenes and numbers.
+  - ❌ "Improved the user experience"
+  - ✅ "52% of users avoid IVF forums due to triggering content — so onboarding lets them pre-filter before they ever see the feed."
+- Acknowledge tradeoffs. Hiring managers trust designers who name what they gave up.
+- Each solution in a case study should read as a direct answer to a specific problem — not a feature announcement.
+
+---
+
+### 5. English Copy Editing
+
+**Target reader:** Design lead or hiring manager at a Nordic/European startup or design agency. Design-literate, values clarity, mildly allergic to American corporate UX buzzwords.
+
+- Write natural, direct English. Not formal. Not casual. Like a sharp designer explaining a decision to a colleague.
+- **Avoid:** "leveraged", "end-to-end ownership", "impactful", "user-centric", "seamless", "robust", "holistic"
+- **Prefer:** Named decisions, specific constraints, honest tradeoffs, active verbs
+- When editing copy, note the reason for each change in a comment. Example: `// more active — removes passive voice`
+- Default: minimal intervention. Don't rewrite what isn't broken.
+
+---
+
+### 6. Feedback Integration
+
+When a revision is requested:
+1. First, identify which feedback item it connects to (if a feedback doc was shared).
+2. Make the smallest change that fully addresses the feedback.
+3. If structural change is needed, state the reason in one sentence before making it.
+4. Never rewrite the voice or tone of copy just because you're editing nearby text.
+
+---
+
+### 7. Layout & Structure Feedback
+
+When giving layout feedback:
+- Compare specifically to `/reference/` benchmarks — not to general UX best practice.
+- Frame as "this would be clearer if..." not "this is wrong."
+- Maximum 3 priorities per feedback round. Pick the highest-impact ones.
+- Lead with the most important, not the most obvious.
+
+---
+
+### 8. Productivity Rules
+
+These exist to prevent wasted work:
+
+- **Read before edit.** Always read the file you're about to change first.
+- **Batch related changes.** If three components need the same token update, do it in one pass.
+- **Figma → code workflow:** Extract all tokens (spacing, colour, type) from the screenshot mentally before writing a single JSX line. Build structure first, style second.
+- **Reuse before rebuild.** Check `components/` for an existing component before writing a new one. Extend via props if possible.
+- **No placeholders.** If copy isn't in `/content/` and isn't in the conversation, ask rather than invent. Placeholder text in a portfolio is a red flag.
+- **Don't fix what isn't broken.** No unsolicited refactors. No unsolicited design changes. Stay in scope.
+- **Flag before blocking.** If something ambiguous would take more than 2 minutes to guess, ask one specific question. Not three.
+- **When implementing responsive layout:** mobile (375px) → tablet (768px) → desktop (1280px), in that order.
+
+---
+
+### 9. What NOT to Do
+
+- Give generic UX advice disconnected from Hailey's actual portfolio context.
+- Rewrite copy in a substantially different voice unless asked.
+- Add animations, transitions, or decorative elements unless asked.
+- Install external UI libraries (shadcn, Radix, etc.) unless asked.
+- Use `<img>` instead of Next.js `<Image />`.
+- Hardcode hex values — always use semantic token classes.
+- Create separate CSS files — Tailwind only (CSS modules only if unavoidable).
+- Use lorem ipsum or invented copy anywhere.
+- Make structural changes to a page without first checking for a relevant feedback doc.
+- Use `any` types in TypeScript.
+
+---
+
+---
+
 ## Who This Is For
 
 **Hailey Yun Cho** — UX/Product Designer targeting product design roles at **Nordic and European startups and design agencies** (Sweden, Denmark, Netherlands, etc.).
@@ -119,6 +237,19 @@ Read `/content/` files before writing any text. Never invent copy.
 
 ---
 
+## Landing Page Cards
+
+Home 페이지 카드 4개의 확정 데이터. 이 값을 그대로 사용할 것.
+
+| Title | Label | Tagline | href |
+|---|---|---|---|
+| Nurtura | Personal project · Spring 2025 | Designing emotional safety into an IVF community. | `/nurtura` |
+| MeView | Personal project · Spring 2024 | Feedback exchange made honest by anonymity, and useful by structure. | `/meview` |
+| Appstract | Work · Spring 2026 | When the product already exists but no one notices it, awareness becomes a design problem. | `/appstract` |
+| Detectify | Work · Spring 2026 | A design system for a B2B security product where accessibility is the standard. | `/detectify` |
+
+---
+
 ## Case Studies
 
 Full copy is in `/content/`. Summary:
@@ -131,16 +262,23 @@ IVF support mobile app. Solo research-to-prototype project. iOS, React Native (E
 - **Most complete case study** — lead with this.
 
 ### Detectify
-[See `content/detectify.md`]
+Design system overhaul for a B2B cybersecurity SaaS — 6 months total. The case study focuses on the table redesign, the most critical workstream within that larger project. Product Design Intern, sole designer on the workstream. Table redesign: Mar–Apr 2026.
+- **NDA:** No UI screenshots publicly. Page is text-only. Do not add image placeholders. CTA directs to email for full spec.
+- **Core problem:** Tables are the product — not a component. Three compounding issues: no visual hierarchy, inconsistent filter/sort interactions, WCAG failures.
+- **Distinctive constraint:** No user research access. All decisions grounded in heuristic analysis (Fitts's Law, Miller's Law) + WCAG audit.
+- **Key decision:** WCAG fix escalated from component-level to token-level — systemic fix, not a patch.
+- **Impact:** New table is design system standard across all data views. WCAG AA achieved. Handoff time reduced via Figma MCP-generated specs.
+- **Page structure:** Hero hook → Overview → Problem (3 friction points) → Constraints (incl. NDA) → Process (Audit → Define → Design) → Key Decisions → Impact → Reflection → CTA
+- **Pending:** Decision 3 still needs content (see `content/detectify.md`).
 
 ### MeView
-Peer feedback mobile app for Gen Z. Cross-functional team (PM, graphic designer, 2 devs), 3 months.
-- **Core problem:** Peer feedback has no structured home — existing tools are too formal (LinkedIn) or too informal (DMs). Nothing designed for self-exploration.
-- **Key insight:** The biggest drop-off isn't the requester — it's the responder. Friction on the response side kills feedback volume entirely.
-- **Core decision:** No-login responder flow via shared link. Not a nice-to-have — the core product bet.
-- **Dual view:** Results organised by Skills or Projects — users switch based on their current goal.
-- **Visual identity:** Bold, character-driven brand with custom mascot illustrations. Deliberate bet on Gen Z aesthetic.
-- **Pending before publish:** Project year/timeline, post-launch data, remote/in-office context, personal retrospective (see `content/meview.md` for ⚠️ markers).
+Peer feedback mobile app for Gen Z. Cross-functional team (PM, graphic designer, 2 devs), 3 months, fully remote. Jan–Mar 2024.
+- **Page structure:** Context → Problem → Key Insights → Solution (3 problem/solution pairs) → Reflections → CTA
+- **Core problem:** Peer feedback has no structured home — LinkedIn too formal, DMs too informal. Nothing designed for honest self-exploration.
+- **Key insight 1:** Responders have no stake in the product — any friction and they won't complete it. → No-login flow via shared link.
+- **Key insight 2:** Users review feedback with different goals at different times. → Dual view: Skills / Projects.
+- **Solution structure:** 3 problem/solution pairs, each with an image. Not a features list — each pair is a design argument.
+- **5 images needed:** research-synthesis, user-journey, responder-flow, results-dashboard, requester-flow. See `content/meview.md` for exact file paths and placement.
 
 ### Appstract
 Social shopping widget embedded into partner e-commerce sites. Solo designer, early-stage startup, 2–4 months.

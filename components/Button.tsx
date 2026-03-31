@@ -7,17 +7,19 @@ interface ButtonProps {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   href?: string; // renders <Link> when set
+  target?: string;
+  rel?: string;
   onClick?: () => void;
   className?: string;
 }
 
 // Variant → visual styles
 const VARIANT: Record<NonNullable<ButtonProps["variant"]>, string> = {
-  default: "bg-[#E5E5E5] text-[#141412] hover:bg-[#D5D5D5]",
-  secondary: "bg-[#F5F5F5] text-[#141412] hover:bg-[#EBEBEB]",
+  default: "bg-[#E5E5E5] text-[#141412] hover:bg-[rgba(0,136,255,0.25)]",
+  secondary: "bg-[#F5F5F5] text-[#141412] hover:bg-[rgba(0,136,255,0.25)]",
   outline:
-    "bg-[#FEFEFC] text-[#0A0A0A] border border-[#E5E5E5] hover:bg-[#F5F5F5]",
-  ghost: "bg-transparent text-[#0A0A0A] shadow-none hover:bg-[rgba(0,136,255,0.20)]",
+    "bg-[#FEFEFC] text-[#0A0A0A] border border-[#E5E5E5] hover:bg-[rgba(0,136,255,0.25)]",
+  ghost: "bg-transparent text-[#0A0A0A] shadow-none hover:bg-[rgba(0,136,255,0.25)]",
 };
 
 // Size → layout + typography
@@ -45,6 +47,8 @@ export default function Button({
   leftIcon,
   rightIcon,
   href,
+  target,
+  rel,
   onClick,
   className = "",
 }: ButtonProps) {
@@ -80,7 +84,7 @@ export default function Button({
 
   if (href) {
     return (
-      <Link href={href} className={cls}>
+      <Link href={href} target={target} rel={rel} className={cls}>
         {children}
       </Link>
     );

@@ -129,8 +129,8 @@ export default function Home() {
           <div className="flex gap-5">
             {/* Left column */}
             <div className="flex flex-1 flex-col gap-5 mt-[170px]">
-              {/* Detectify – animated card */}
-              <Link href="/work/detectify" className="block group">
+              {/* Detectify – coming soon */}
+              <div className="block group" data-cursor="coming-soon">
                 <div className="overflow-hidden">
                   <DetectifyCardAnimation />
                 </div>
@@ -139,28 +139,28 @@ export default function Home() {
                     className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#57423f]"
                     style={{ fontFamily: "var(--font-montserrat)" }}
                   >
-                    Personal Project · Spring 2025
+                    On going · Spring 2026
                   </p>
                   <h3
                     className="mt-1 text-[22px] italic font-medium text-[#141412]"
                     style={{ fontFamily: "var(--font-ibm-plex-serif)" }}
                   >
-                    Detectify&apos;s new Design System
+                    Detectify
                   </h3>
                   <p
                     className="mt-1 text-[16px] text-[#57423f]"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
-                    A smarter way blah balh blah
+                    A design system for a B2B security product where accessibility is the standard.
                   </p>
                 </div>
-              </Link>
+              </div>
 
-              {/* Nurtura – shorter */}
-              <Link href="/work/nurtura" className="block group">
-                <div className="overflow-hidden" style={{ height: 423 }}>
+              {/* Nurtura */}
+              <Link href="/work/nurtura" className="block group" data-cursor="view">
+                <div className="overflow-hidden" style={{ height: 731 }}>
                   <Image
-                    src="/nurtura.png"
+                    src="/nurtura/nurtura.png"
                     alt="Nurtura"
                     width={519}
                     height={731}
@@ -172,7 +172,7 @@ export default function Home() {
                     className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#57423f]"
                     style={{ fontFamily: "var(--font-montserrat)" }}
                   >
-                    Personal Project · Spring 2025
+                    Personal project · Spring 2025
                   </p>
                   <h3
                     className="mt-1 text-[22px] italic font-medium text-[#141412]"
@@ -184,7 +184,7 @@ export default function Home() {
                     className="mt-1 text-[16px] text-[#57423f]"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
-                    A smarter way blah balh blah
+                    Designing emotional safety into an IVF community
                   </p>
                 </div>
               </Link>
@@ -192,8 +192,8 @@ export default function Home() {
 
             {/* Right column – offset down to create stagger */}
             <div className="flex flex-1 flex-col gap-5 mt-[170px]">
-              {/* Appstract */}
-              <Link href="/work/appstract" className="block group">
+              {/* Appstract – coming soon */}
+              <div className="block group" data-cursor="coming-soon">
                 <div className="overflow-hidden">
                   <AppstractCardAnimation />
                 </div>
@@ -202,7 +202,7 @@ export default function Home() {
                     className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#57423f]"
                     style={{ fontFamily: "var(--font-montserrat)" }}
                   >
-                    Personal Project · Spring 2025
+                    On going · Spring 2026
                   </p>
                   <h3
                     className="mt-1 text-[22px] italic font-medium text-[#141412]"
@@ -214,14 +214,14 @@ export default function Home() {
                     className="mt-1 text-[16px] text-[#57423f]"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
-                    A smarter way blah balh blah
+                    When the product already exists but no one notices it, awareness becomes a design problem.
                   </p>
                 </div>
-              </Link>
+              </div>
 
               {/* MeView */}
-              <Link href="/work/meview" className="block group">
-                <div className="overflow-hidden" style={{ height: 561 }}>
+              <Link href="/work/meview" className="block group" data-cursor="view">
+                <div className="overflow-hidden" style={{ height: 488 }}>
                   <Image
                     src="/meview.png"
                     alt="MeView"
@@ -235,7 +235,7 @@ export default function Home() {
                     className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#57423f]"
                     style={{ fontFamily: "var(--font-montserrat)" }}
                   >
-                    Personal Project · Spring 2025
+                    Side project · Spring 2024
                   </p>
                   <h3
                     className="mt-1 text-[22px] italic font-medium text-[#141412]"
@@ -247,7 +247,7 @@ export default function Home() {
                     className="mt-1 text-[16px] text-[#57423f]"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
-                    A smarter way blah balh blah
+                    Feedback exchange made honest by anonymity, and useful by structure.
                   </p>
                 </div>
               </Link>

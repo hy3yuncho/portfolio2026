@@ -39,6 +39,7 @@
 .bio-body ul {
   margin-top: 0;
   padding-left: 21px;
+  list-style-type: disc;
 }
 
 .bio-body li { margin-bottom: 0; }
@@ -94,14 +95,17 @@
 /* ── Photo grid ── */
 .photo-grid {
   display: flex;
+  justify-content: center;
   gap: 24px;
-  padding: 0 80px;
+  padding: 0 80px 96px;
 }
 
 .photo-placeholder {
-  flex: 1;
-  height: 462px;
-  background: #eee;
+  flex: none;
+  width: 260px;
+  height: 380px;
+  position: relative;
+  overflow: hidden;
 }
 
 /* ── Footer ── */

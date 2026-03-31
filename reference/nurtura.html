@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nurtura — Hailey Yun Cho</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Serif+Display:ital@1&family=Montserrat:ital,wght@0,300;0,500;0,900;1,900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fefefc; --surface: #f7fafc; --border: #e5e5e5;
+      --text: #141412; --text-warm: #2c2524; --text-mid: #666666;
+      --text-light: #969696; --muted: #57423f; --yellow: #fadb68; --gray-img: #d9d9d9;
+    }
+
+    body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--text); }
+
+    /* Nav */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      height: 41px; padding: 0 24px; display: flex; align-items: center;
+      justify-content: space-between; font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 14px; letter-spacing: 0.28px;
+      color: var(--yellow); white-space: nowrap;
+    }
+    .topnav a { color: var(--yellow); text-decoration: none; }
+    .topnav-links { display: flex; gap: 21px; list-style: none; }
+
+    /* Hero */
+    .cs-hero { display: flex; min-height: 968px; border-bottom: 1px solid var(--border); }
+
+    .cs-hero-left {
+      width: 515px; flex-shrink: 0;
+      padding: 56px 10px 56px 80px;
+      display: flex; flex-direction: column; gap: 34px;
+    }
+
+    .cs-title-block { display: flex; flex-direction: column; gap: 4px; }
+
+    .cs-title {
+      font-family: 'DM Serif Display', serif; font-style: italic; font-weight: 400;
+      font-size: 24px; color: var(--text-warm); line-height: 1;
+    }
+
+    .cs-tagline { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; color: var(--text-warm); }
+
+    .cs-about { display: flex; flex-direction: column; gap: 8px; }
+
+    .meta-label {
+      font-family: 'Montserrat', sans-serif; font-weight: 500;
+      font-size: 12px; color: var(--text-warm);
+    }
+
+    .body-light {
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      font-size: 14px; line-height: 20px; color: var(--text-warm);
+    }
+
+    .cs-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 25px; }
+    .cs-meta-item { display: flex; flex-direction: column; gap: 8px; }
+
+    .cs-hero-right { flex: 1; display: flex; flex-direction: column; gap: 12px; padding-top: 56px; }
+    .cs-preview { height: 462px; flex-shrink: 0; background: var(--gray-img); width: 100%; }
+
+    /* Body layout */
+    .cs-body { display: flex; align-items: flex-start; }
+
+    /* Sticky sidebar */
+    .cs-sidenav {
+      width: 165px; flex-shrink: 0;
+      position: sticky; top: 41px;
+      height: calc(100vh - 41px); overflow-y: auto;
+      background: var(--surface); border-right: 1px solid var(--border);
+      padding: 60px 0; display: flex; flex-direction: column; align-items: stretch;
+    }
+
+    .sidenav-items { display: flex; flex-direction: column; gap: 3px; padding: 0 12px; flex: 1; }
+
+    .sidenav-home {
+      background: var(--border); border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 10px; height: 16px;
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+      color: var(--text); text-decoration: none; margin-bottom: 8px;
+    }
+
+    .sidenav-phase {
+      background: var(--border); border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 10px; height: 16px; margin-top: 6px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+      color: var(--text);
+    }
+
+    .sidenav-sub {
+      padding: 0 10px 0 18px; height: 16px;
+      display: flex; align-items: center; gap: 4px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 11px;
+      color: #0a0a0a; text-decoration: none;
+    }
+    .sidenav-sub:hover { opacity: 0.5; }
+    .sidenav-sub::before { content: '↳'; font-size: 9px; color: #bbb; flex-shrink: 0; }
+
+    .sidenav-backtop {
+      background: var(--border); border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 0 10px; height: 16px; margin: 12px 12px 0;
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+      color: var(--text); text-decoration: none;
+    }
+
+    /* Content area */
+    .cs-content { flex: 1; padding: 60px 80px 100px 132px; max-width: 1260px; }
+
+    /* Sections */
+    .cs-section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .cs-section:last-child { border-bottom: none; }
+
+    .h4-label {
+      font-family: 'DM Mono', monospace; font-weight: 500;
+      font-size: 12px; color: #000000; margin-bottom: 8px;
+    }
+
+    .h3-header {
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 20px; color: var(--text-mid); margin-bottom: 14px;
+    }
+
+    .cs-body-text {
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      font-size: 14px; line-height: 20px; color: var(--text-light);
+    }
+    .cs-body-text + .cs-body-text { margin-top: 10px; }
+
+    /* Stats row */
+    .stats-row { display: flex; gap: 48px; margin: 24px 0; flex-wrap: wrap; }
+    .stat { display: flex; flex-direction: column; gap: 4px; }
+    .stat-number { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px; color: var(--text); }
+    .stat-desc { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 18px; color: var(--text-light); max-width: 140px; }
+
+    /* Research table */
+    .cs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .cs-table th {
+      font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 11px;
+      color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0 0 10px; text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .cs-table td {
+      font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px;
+      line-height: 20px; color: var(--text-light); padding: 14px 0;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .cs-table td:first-child { padding-right: 32px; width: 42%; color: var(--text-warm); font-weight: 400; }
+
+    /* Persona cards */
+    .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+    .persona-card { background: var(--surface); border: 1px solid var(--border); padding: 20px; }
+    .persona-name { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 13px; color: var(--text-warm); margin-bottom: 3px; }
+    .persona-role { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+    .persona-desc { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; line-height: 18px; color: var(--text-light); }
+
+    /* Spotlight */
+    .spotlight { background: var(--surface); border: 1px solid var(--border); padding: 32px; margin: 20px 0; }
+    .spotlight-label { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 11px; color: var(--text-light); margin-bottom: 10px; }
+    .spotlight-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px; color: var(--text-warm); margin-bottom: 14px; }
+
+    /* Decision blocks */
+    .decision-list { margin-top: 20px; display: flex; flex-direction: column; gap: 28px; }
+    .decision-block { border-left: 2px solid var(--yellow); padding-left: 20px; }
+    .decision-title { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; color: var(--text-warm); margin-bottom: 12px; }
+    .decision-row { display: grid; grid-template-columns: 110px 1fr; margin-bottom: 6px; }
+    .decision-row-key { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+    .decision-row-val { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 20px; color: var(--text-light); }
+
+    /* Img placeholder */
+    .cs-img { background: var(--gray-img); width: 100%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; margin: 20px 0; }
+    .screen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+
+    /* Principle list */
+    .principle-list { margin-top: 16px; display: flex; flex-direction: column; gap: 16px; }
+    .principle { display: flex; gap: 16px; }
+    .principle-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: var(--border); flex-shrink: 0; width: 24px; }
+    .principle-body { display: flex; flex-direction: column; gap: 4px; }
+    .principle-title { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--text-warm); }
+    .principle-desc { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 20px; color: var(--text-light); }
+
+    /* Open question list */
+    .open-list { margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .open-item { padding-left: 16px; border-left: 2px solid var(--border); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; line-height: 20px; color: var(--text-light); }
+
+    /* Next project */
+    .cs-next { padding: 60px 80px 60px 132px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; margin-left: 165px; }
+    .cs-next-label { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .cs-next-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; color: var(--text-warm); text-decoration: none; display: block; }
+    .cs-next-title:hover { opacity: 0.7; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer div { display: flex; gap: 24px; }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav">
+    <a href="index.html">Hailey Yun Cho</a>
+    <ul class="topnav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html">Work</a></li>
+      <li><a href="about.html#contact">Contact</a></li>
+    </ul>
+    <span>Europe/Stockholm &nbsp;&nbsp; 16:16</span>
+  </nav>
+
+  <section class="cs-hero">
+    <div class="cs-hero-left">
+      <div class="cs-title-block">
+        <h1 class="cs-title">Nurtura</h1>
+        <p class="cs-tagline">designing a safe space for people navigating IVF</p>
+      </div>
+      <div class="cs-about">
+        <span class="meta-label">ABOUT</span>
+        <p class="body-light">Nurtura is a community platform for people navigating IVF — built around the insight that the existing landscape wasn't failing because it lacked features, but because it failed to protect users emotionally. Rather than adding more, it adds guardrails: letting users define what they're ready to see before they see anything.</p>
+      </div>
+      <div class="cs-meta-grid">
+        <div class="cs-meta-item">
+          <span class="meta-label">MY ROLE</span>
+          <p class="body-light">Solo UX/Product Designer (research → prototype)</p>
+        </div>
+        <div class="cs-meta-item">
+          <span class="meta-label">TEAM</span>
+          <p class="body-light">Solo</p>
+        </div>
+        <div class="cs-meta-item">
+          <span class="meta-label">TIMELINE</span>
+          <p class="body-light">Individual project</p>
+        </div>
+        <div class="cs-meta-item">
+          <span class="meta-label">TOOLS</span>
+          <p class="body-light">Figma, React Native (Expo)</p>
+        </div>
+      </div>
+    </div>
+    <div class="cs-hero-right">
+      <div class="cs-preview"></div>
+      <div class="cs-preview"></div>
+    </div>
+  </section>
+
+  <div class="cs-body">
+    <nav class="cs-sidenav">
+      <div class="sidenav-items">
+        <a href="index.html" class="sidenav-home">← HOME</a>
+        <div class="sidenav-phase">Discover <span>→</span></div>
+        <a href="#overview" class="sidenav-sub">OVERVIEW</a>
+        <a href="#context" class="sidenav-sub">CONTEXT</a>
+        <a href="#problem" class="sidenav-sub">THE PROBLEM</a>
+        <div class="sidenav-phase">Define <span>→</span></div>
+        <a href="#insights" class="sidenav-sub">INSIGHTS</a>
+        <a href="#users" class="sidenav-sub">USERS</a>
+        <div class="sidenav-phase">Develop <span>→</span></div>
+        <a href="#decisions" class="sidenav-sub">DESIGN DECISIONS</a>
+        <div class="sidenav-phase">Deliver <span>→</span></div>
+        <a href="#prototype" class="sidenav-sub">PROTOTYPE</a>
+        <a href="#more" class="sidenav-sub">MORE</a>
+      </div>
+      <a href="#" class="sidenav-backtop">↑ Back to Top</a>
+    </nav>
+
+    <main class="cs-content">
+
+      <section id="overview" class="cs-section">
+        <p class="h4-label">THE BRIEF</p>
+        <h3 class="h3-header">Create a safe community platform for people navigating IVF</h3>
+        <p class="cs-body-text">52% of IVF patients avoid online forums because the content is too triggering. Instead of adding more features to an already overwhelming landscape, I designed a community platform with emotional guardrails built in from onboarding.</p>
+      </section>
+
+      <section id="context" class="cs-section">
+        <p class="h4-label">CONTEXT</p>
+        <h3 class="h3-header">IVF is one of the most emotionally demanding medical experiences a person can go through</h3>
+        <p class="cs-body-text">Existing platforms — Facebook groups, Reddit, generic forums — amplify negativity, lack content filtering, and offer no personalisation. The result: users leave more overwhelmed than when they arrived.</p>
+        <p class="cs-body-text">75% felt lonely during the process. 77% preferred a dedicated mobile app over web-based platforms. The market gap wasn't information — it was safe, filtered, community-based emotional support.</p>
+      </section>
+
+      <section id="problem" class="cs-section">
+        <p class="h4-label">THE PROBLEM</p>
+        <h3 class="h3-header">People navigating IVF face significant emotional isolation</h3>
+        <p class="cs-body-text">The specific failure mode of existing platforms is their inability to filter emotionally harmful content. Users encounter pregnancy announcements, success stories, and graphic medical content with no control over exposure — often at the worst possible moments.</p>
+        <div class="stats-row">
+          <div class="stat">
+            <span class="stat-number">52%</span>
+            <span class="stat-desc">avoid online forums due to triggering content</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">75%</span>
+            <span class="stat-desc">felt lonely during the IVF process</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">77%</span>
+            <span class="stat-desc">preferred a dedicated mobile app</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="insights" class="cs-section">
+        <p class="h4-label">INSIGHTS</p>
+        <h3 class="h3-header">Every design decision traces back to a specific finding</h3>
+        <p class="cs-body-text">The research → design chain below maps each of the five key findings to a product decision. The goal was to make this chain explicit — not to show a process, but to justify each decision with evidence.</p>
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Finding</th>
+              <th>Design decision</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>75% felt lonely</td>
+              <td>Community feed as the primary surface — not information, not features</td>
+            </tr>
+            <tr>
+              <td>52% avoid forums</td>
+              <td>Content preferences in onboarding — before users see a single post</td>
+            </tr>
+            <tr>
+              <td>83% want filtering</td>
+              <td>Filter chips always visible at the top of the feed — not buried in settings</td>
+            </tr>
+            <tr>
+              <td>51% triggered by content</td>
+              <td>Onboarding guardrails + filter always accessible</td>
+            </tr>
+            <tr>
+              <td>40% prefer anonymity</td>
+              <td>Anonymous by default; identity revealed only by choice</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="users" class="cs-section">
+        <p class="h4-label">USERS</p>
+        <h3 class="h3-header">Three people shaped the design</h3>
+        <p class="cs-body-text">From 12 interviews and a 35-person survey, three personas drove primary decisions. Billie and Mintra defined the core product. Liam shaped the partner-facing onboarding path.</p>
+        <div class="persona-grid">
+          <div class="persona-card">
+            <p class="persona-name">Billie — Emotional Rollercoaster</p>
+            <p class="persona-role">39, CEO · Gothenburg</p>
+            <p class="persona-desc">Single mother, 3 years into IVF. Needs a safe space to express emotions without guilt when seeing others' successes.</p>
+          </div>
+          <div class="persona-card">
+            <p class="persona-name">Mintra — Overwhelmed</p>
+            <p class="persona-role">30, Teacher · Västerås</p>
+            <p class="persona-desc">Wants a positivity-filtered community she can actually stay in without being derailed by others' announcements.</p>
+          </div>
+          <div class="persona-card">
+            <p class="persona-name">Liam — The partner</p>
+            <p class="persona-role">35, Civil Engineer · Stockholm</p>
+            <p class="persona-desc">Supporting his wife through IVF. Struggles to find resources built for partners, not patients.</p>
+          </div>
+        </div>
+        <p class="cs-body-text" style="margin-top: 20px;">Billie and Mintra drove primary design decisions. Liam shaped the 'Supporting a partner' onboarding path and the For Partners section in the guide.</p>
+      </section>
+
+      <section id="decisions" class="cs-section">
+        <p class="h4-label">DESIGN DECISIONS</p>
+        <h3 class="h3-header">One screen that changes everything downstream</h3>
+        <p class="cs-body-text">The standard solution to triggering content would be a settings screen. I put it in onboarding — before users ever see the feed.</p>
+        <div class="spotlight">
+          <p class="spotlight-label">KEY DECISION · S03</p>
+          <p class="spotlight-title">Content Preferences — why this screen exists</p>
+          <p class="cs-body-text">The screen asks: 'What would you like to avoid seeing?' — checkboxes for pregnancy announcements, success stories, medical procedures, baby/child images. Below: 'You can change this anytime.' That last line matters: it reduces commitment anxiety. The framing is 'you're in control' rather than 'we're protecting you.'</p>
+        </div>
+        <div class="cs-img" style="height: 400px;">S03 — Content Preferences screen</div>
+      </section>
+
+      <section id="prototype" class="cs-section">
+        <p class="h4-label">PROTOTYPE</p>
+        <h3 class="h3-header">17 screens across 5 flows</h3>
+        <p class="cs-body-text">The full prototype covers onboarding (S01–S04), home hub (S05), community and filter (S06–S08), peer connect (S09–S11), emotional check-in (S12–S14), and IVF guide (S15–S17).</p>
+        <div class="screen-grid">
+          <div class="cs-img" style="height: 240px;">S03 Content Preferences</div>
+          <div class="cs-img" style="height: 240px;">S07 Post Detail</div>
+          <div class="cs-img" style="height: 240px;">S11 First Message</div>
+          <div class="cs-img" style="height: 240px;">S14 Reflection Result</div>
+        </div>
+        <p class="cs-body-text" style="margin-top: 20px;">A tappable prototype of the onboarding flow (S01–S04) was built in React Native (Expo). [Link coming soon]</p>
+      </section>
+
+      <section id="more" class="cs-section">
+        <p class="h4-label">MORE</p>
+        <h3 class="h3-header">What I'd do differently</h3>
+        <p class="cs-body-text">Three open questions left unresolved from v1:</p>
+        <div class="open-list">
+          <p class="open-item">How should the app handle a user who reports feeling unsafe or suicidal? A moderation and crisis resource flow is needed before this goes into production.</p>
+          <p class="open-item">Should peer matches be algorithmically generated or user-browsable? Trade-off: algorithmic matching is more effective but removes the sense of agency that matters to this user group.</p>
+          <p class="open-item">How should the app handle users who change journey stage mid-process? Stage-based personalisation breaks down when circumstances change unexpectedly.</p>
+        </div>
+        <p class="cs-body-text" style="margin-top: 20px;">Deliberately out of scope for v1: real-time chat, AI chatbot, clinic integration, Android. Each excluded to preserve focus on the core value proposition.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="cs-next">
+    <div>
+      <p class="cs-next-label">Next project</p>
+      <a href="appstract.html" class="cs-next-title">Appstract</a>
+    </div>
+    <a href="appstract.html" class="cs-next-title">→</a>
+  </div>
+
+  <footer>
+    <span>Hailey Yun Cho · 2026</span>
+    <div>
+      <a href="mailto:hello@haileycho.com">hello@haileycho.com</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+</html>

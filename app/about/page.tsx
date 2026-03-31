@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 import styles from "./about.module.css";
 
 export default function AboutPage() {
@@ -11,16 +11,15 @@ export default function AboutPage() {
           <p className={styles["bio-heading"]}>Hej, I&apos;m Hailey!</p>
           <div className={styles["bio-body"]}>
             <p>I&apos;m a product designer working at the intersection of business logic and human behaviour.</p>
-            <p>In Korean, there&apos;s a concept called &ldquo;연 (yeon 緣)&rdquo; — the invisible connections that shape meaning between people and contexts.</p>
+            <p>In Korean, there&apos;s a concept called &ldquo;연 (yeon 緣)&rdquo;: the invisible connections that shape meaning between people and contexts.</p>
             <p>That idea guides my work. I design by identifying the underlying threads that connect user decisions, business goals, and brand clarity.</p>
             <p>Born in South Korea, shaped in Australia, and now based in Sweden, I bring a cross-cultural perspective grounded in psychology to build products that feel coherent, intentional, and trustworthy.</p>
-            <p>Outside of design I&apos;m :</p>
+            <p>Outside of design, I&apos;m:</p>
             <ul>
-              <li>strolling Stockholm city</li>
-              <li>blah blah blah</li>
-              <li>blah blah blah</li>
-              <li>something interesting</li>
-              <li>another interest things</li>
+              <li>hunting down the best pour-over in every city I visit (there is a mental ranking)</li>
+              <li>somewhere between planning the next trip and still processing the last one</li>
+              <li>treating every sunny day in Stockholm like a genuine emergency</li>
+              <li>photographing whatever catches my eye and never look back</li>
             </ul>
           </div>
         </div>
@@ -72,32 +71,20 @@ export default function AboutPage() {
 
       {/* 4-photo grid */}
       <div className={styles["photo-grid"]}>
-        <div className={styles["photo-placeholder"]}></div>
-        <div className={styles["photo-placeholder"]}></div>
-        <div className={styles["photo-placeholder"]}></div>
-        <div className={styles["photo-placeholder"]}></div>
+        <div className={styles["photo-placeholder"]}>
+          <Image src="/about/about1.jpg" alt="Hailey — photo 1" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
+        </div>
+        <div className={styles["photo-placeholder"]}>
+          <Image src="/about/about2.JPG" alt="Hailey — photo 2" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
+        </div>
+        <div className={styles["photo-placeholder"]}>
+          <Image src="/about/about3.JPG" alt="Hailey — photo 3" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
+        </div>
+        <div className={styles["photo-placeholder"]}>
+          <Image src="/about/about4.jpg" alt="Hailey — photo 4" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
+        </div>
       </div>
 
-      {/* Footer */}
-      <footer id="contact" className={styles.footer}>
-        <div className={styles["footer-inner"]}>
-          <div className={styles["footer-left"]}>
-            <p className={styles["footer-name"]}>Hailey Yun Cho</p>
-            <div className={styles["footer-divider"]}></div>
-            <p className={styles["footer-tagline"]}>blah blah blah blah blah dfjaksdfjksdjfksdjfks fdjksjdkfjksdjfkjsdfjkldjfkjkjsdkfjskdajfkjsdfkjskdjfklsjdfkjsdkfjkldjskfjsakdjfkjdskfjkjdskfjksdfjkljasdkfjk sdjfkjdsfjkdsj</p>
-            <div className={styles["footer-actions"]}>
-              <a href="#" className={styles["footer-btn"]}>LINKEDIN</a>
-              <a href="mailto:hello@haileycho.com" className={styles["footer-btn"]}>EMAIL</a>
-              <a href="#" className={styles["footer-btn"]}>RESUME</a>
-            </div>
-          </div>
-          <nav className={styles["footer-nav"]}>
-            <Link href="/">Projects</Link>
-            <Link href="/about">About</Link>
-            <Link href="#contact">Contact</Link>
-          </nav>
-        </div>
-      </footer>
     </>
   );
 }

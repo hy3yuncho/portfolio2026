@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, Geist, Geist_Mono, IBM_Plex_Serif, Montserrat, Source_Serif_4 } from "next/font/google";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,8 +56,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${dmSans.variable} ${sourceSerif4.variable} ${ibmPlexSerif.variable} antialiased`}
       >
+        <CustomCursor />
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

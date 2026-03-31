@@ -11,6 +11,9 @@
 
 @import "tailwindcss";
 
+* { cursor: none !important; }
+a, button, [data-cursor], [role="button"] { cursor: none !important; }
+
 @theme {
   /* ── Font families ──────────────────────────────────────────────────── */
   --font-sans:    'DM Sans', sans-serif;
