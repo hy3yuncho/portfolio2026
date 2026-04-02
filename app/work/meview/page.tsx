@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import FadeIn from "@/components/FadeIn";
 import SideNav from "@/components/SideNav";
 import SectionHeader from "@/components/case/SectionHeader";
 import InsightCard from "@/components/case/InsightCard";
@@ -127,19 +127,6 @@ const NAV_SECTIONS = [
 // ─── Page ────────────────────────────────────────────────────────────────────
 
 export default function MeViewPage() {
-  const landingSentinelRef = useRef<HTMLDivElement>(null);
-  const [pastLanding, setPastLanding] = useState(false);
-
-  useEffect(() => {
-    const sentinel = landingSentinelRef.current;
-    if (!sentinel) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setPastLanding(!entry.isIntersecting),
-      { threshold: 0 }
-    );
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
@@ -200,17 +187,14 @@ export default function MeViewPage() {
         </div>
       </div>
 
-      {/* Sentinel — triggers SideNav + content to appear */}
-      <div ref={landingSentinelRef} style={{ height: 0 }} />
-
       {/* ── SIDE NAV + CASE CONTENT ───────────────────────────────────────── */}
-      <div style={{ display: "flex", alignItems: "flex-start", visibility: pastLanding ? "visible" : "hidden" }}>
+      <div style={{ display: "flex", alignItems: "flex-start" }}>
         <SideNav sections={NAV_SECTIONS} />
 
         <div style={{ flex: 1, padding: "64px 72px", display: "flex", flexDirection: "column", gap: 96 }}>
 
           {/* ── OVERVIEW ── */}
-          <div id="overview" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <FadeIn><div id="overview" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <SectionHeader
               label="OVERVIEW"
               title="Turning how others see you into something you can actually use"
@@ -221,10 +205,10 @@ export default function MeViewPage() {
             <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
               Product and UI design was my full scope: research, IA, UI, and design system, working alongside a PM, a graphic designer, and two developers. We chose interviews over surveys to understand the emotional context: not just what people do around feedback, but how it feels to ask for it and give it.
             </p>
-          </div>
+          </div></FadeIn>
 
           {/* ── CONTEXT ── */}
-          <div id="context" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <FadeIn><div id="context" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <SectionHeader
               label="CONTEXT"
               title="Where this came from."
@@ -232,10 +216,10 @@ export default function MeViewPage() {
             <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
               Reflecting on my own growth, I realised I had no structured way to understand how others perceived me. I&apos;d only ever heard my own answer. Peer feedback existed, but in scattered DMs, verbal comments, vague encouragement. Nothing you could actually act on. I found a few others who felt the same way, and we built MeView.
             </p>
-          </div>
+          </div></FadeIn>
 
           {/* ── THE PROBLEM ── */}
-          <div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <SectionHeader
               label="THE PROBLEM"
               title="People want peer feedback. They have no good way to get it."
@@ -275,10 +259,10 @@ export default function MeViewPage() {
                 />
               }
             />
-          </div>
+          </div></FadeIn>
 
           {/* ── KEY INSIGHTS ── */}
-          <div id="key-insights" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="key-insights" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <SectionHeader
               label="KEY INSIGHTS"
               title="Two findings. Two decisions."
@@ -300,10 +284,10 @@ export default function MeViewPage() {
               maxWidth="75%"
               minHeight={500}
             />
-          </div>
+          </div></FadeIn>
 
           {/* ── SOLUTION ── */}
-          <div id="solution" style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+          <FadeIn><div id="solution" style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             <SectionHeader
               label="SOLUTION"
               title="The hardest part wasn't the requester flow. It was the responder's."
@@ -329,10 +313,10 @@ export default function MeViewPage() {
                 imageAlt="Feedback request creation: requester flow"
               />
             </div>
-          </div>
+          </div></FadeIn>
 
           {/* ── REFLECTION + CTA ── */}
-          <div id="reflection" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="reflection" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <SectionHeader label="REFLECTION" title="What I learnt" />
             <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "start" }}>
               {/* Left: insight cards */}
@@ -360,55 +344,8 @@ export default function MeViewPage() {
                 body="Curious about the decisions behind it?"
               />
             </div>
-          </div>
+          </div></FadeIn>
 
-        </div>
-      </div>
-
-      {/* ── PREVIOUS / NEXT ───────────────────────────────────────────────── */}
-      <div style={{
-        display: "flex", justifyContent: "center", gap: 165,
-        padding: "40px 0", borderTop: "1px solid #E5E5E5", background: "#F7FAFC",
-      }}>
-        {/* Previous */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 12 }}>
-          <div style={{ position: "relative", width: 165, height: 100, borderRadius: 4, overflow: "hidden" }}>
-            <Image src="/nurtura.png" alt="Nurtura" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
-          <Link href="/work/nurtura" style={{
-            display: "inline-flex", alignItems: "center", gap: 6,
-            fontSize: 14, fontFamily: FONT_DISPLAY, fontWeight: 400,
-            background: "#E5E5E5", borderRadius: 2, padding: "6px 12px",
-            textDecoration: "none", color: "#141412",
-          }}>
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-              <path d="M10 12L6 8L10 4" stroke="#141412" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Previous Project
-          </Link>
-        </div>
-
-        {/* Current */}
-        <div style={{ position: "relative", width: 165, height: 100, borderRadius: 4, overflow: "hidden" }}>
-          <Image src="/meview.png" alt="MeView" fill style={{ objectFit: "cover" }} sizes="100vw" />
-        </div>
-
-        {/* Next */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12 }}>
-          <div style={{ position: "relative", width: 165, height: 100, borderRadius: 4, overflow: "hidden" }}>
-            <Image src="/nurtura.png" alt="Nurtura" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
-          <Link href="/work/nurtura" style={{
-            display: "inline-flex", alignItems: "center", gap: 6,
-            fontSize: 14, fontFamily: FONT_DISPLAY, fontWeight: 400,
-            background: "#E5E5E5", borderRadius: 2, padding: "6px 12px",
-            textDecoration: "none", color: "#141412",
-          }}>
-            Next Project
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-              <path d="M6 12L10 8L6 4" stroke="#141412" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
         </div>
       </div>
     </>

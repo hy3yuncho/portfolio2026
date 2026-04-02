@@ -1,5 +1,6 @@
 import DetectifyCardAnimation from "@/components/DetectifyCardAnimation";
 import AppstractCardAnimation from "@/components/AppstractCardAnimation";
+import FadeIn from "@/components/FadeIn";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,120 +9,164 @@ export default function Home() {
     <>
       <main className="min-h-screen bg-[#fefefc]">
         {/* Hero Section */}
-        <section className="relative h-[680px] w-full overflow-hidden bg-[#fefefc] pt-[41px]">
-          {/* Moleskin notebook – left edge, 72px below nav */}
+        <section className="relative h-[300px] md:h-[680px] w-full overflow-hidden bg-[#fefefc] pt-[41px]">
+          {/* Moleskin notebook – bottom of mobile hero; y:609 on desktop (partially overflows into work section) */}
           <Image
-            src="/moleskin.png"
+            src="/landing_page/moleskin.png"
             alt="Open notebook"
-            width={370}
-            height={494}
-            className="pointer-events-none select-none absolute left-0"
-            style={{ top: 72, height: "auto" }}
+            width={430}
+            height={449}
+            quality={100}
+            className="pointer-events-none select-none absolute left-0 md:-left-[58px] w-[130px] md:w-[430px]"
+            style={{ top: 0, height: "auto" }}
             priority
           />
 
-          {/* Do Not Disturb pill */}
-          {/* Natural: 302×136 → at width 151, proportional height = 68 */}
+          {/* Cinnamon roll – desktop only */}
           <Image
-            src="/dnd.png"
-            alt="Do Not Disturb"
-            width={151}
-            height={68}
-            className="pointer-events-none select-none absolute"
-            style={{ left: 415, top: 155, height: "auto" }}
+            src="/landing_page/kanelbulle.png"
+            alt="Cinnamon roll"
+            width={250}
+            height={364}
+            quality={100}
+            className="pointer-events-none select-none hidden md:block md:absolute"
+            style={{ left: 193, top: 10, height: "auto" }}
+            priority
           />
 
-          {/* Polaroid photo – center-right, rotated 15 deg */}
-          {/* Natural: 2612×3918 → at width 185, proportional height = 278 */}
+          {/* Coffee – desktop only */}
           <Image
-            src="/polaroid.png"
+            src="/landing_page/dripcoffee.png"
+            alt="Pour-over coffee"
+            width={380}
+            height={576}
+            quality={100}
+            className="pointer-events-none select-none hidden md:block md:absolute rotate-[6deg]"
+            style={{ left: 1060, top: 66, height: "auto" }}
+            priority
+          />
+
+          {/* Polaroid photo – desktop only */}
+          <Image
+            src="/landing_page/polaroid.png"
             alt="Polaroid photo"
-            width={185}
-            height={278}
-            className="pointer-events-none select-none absolute rotate-[15deg]"
-            style={{ left: 800, top: 118, height: "auto" }}
+            width={156}
+            height={240}
+            quality={100}
+            className="pointer-events-none select-none hidden md:block md:absolute rotate-[15.62deg]"
+            style={{ left: 756, top: 120, height: "auto" }}
             priority
           />
 
-          {/* Folder icon with label */}
-          {/* Natural: 140×112 → display at width 65; clip bottom ~12px to hide baked-in filename text */}
+          {/* Folder icon – desktop only */}
           <div
-            className="absolute flex flex-col items-center"
-            style={{ left: 1044, top: 125 }}
+            className="hidden md:flex md:absolute flex-col items-center"
+            style={{ left: 1039, top: 147 }}
           >
-            <div style={{ width: 65, height: 40, overflow: "hidden" }}>
+            <div style={{ width: 82, height: 50, overflow: "hidden" }}>
               <Image
-                src="/folder.png"
+                src="/landing_page/folder.png"
                 alt="Folder"
-                width={65}
-                height={52}
+                width={82}
+                height={66}
+                quality={100}
                 className="pointer-events-none select-none"
                 style={{ height: "auto" }}
               />
             </div>
             <p
-              className="mt-1 text-center text-[9px] leading-tight text-[#474747] break-all"
-              style={{ width: 65 }}
+              className="mt-1 text-center text-[11px] leading-tight text-[#474747] break-all"
+              style={{ width: 82 }}
             >
               portfolio_final_final_final
             </p>
           </div>
 
-          {/* Coffee – top right, rotated 13 deg */}
-          {/* Natural: 550×932 → at width 280, proportional height = 475 */}
-          <Image
-            src="/coffee.png"
-            alt="Pour-over coffee"
-            width={280}
-            height={475}
-            className="pointer-events-none select-none absolute rotate-[13deg]"
-            style={{ left: 1205, top: 115, height: "auto" }}
-            priority
-          />
-
-          {/* Hero name – centered, 290px below nav bottom */}
+          {/* Hero name */}
           <h1
-            className="text-outlined-strong absolute text-[64px] font-black italic leading-none w-full text-center"
-            style={{
-              top: 331,
-              fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
-            }}
+            className="text-outlined-strong absolute top-[150px] md:top-[330px] text-[36px] md:text-[64px] font-black italic leading-none w-full text-center"
+            style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
           >
             Hailey Yun Cho
           </h1>
 
-          {/* Post-it note */}
-          {/* Natural: 1113×570 → at width 351, proportional height = 180 */}
+          {/* Post-it note with text – desktop only */}
+          <div
+            className="hidden md:block pointer-events-none select-none"
+            style={{ position: "absolute", left: 160, top: 418, width: 371 }}
+          >
+            <Image
+              src="/landing_page/postit.png"
+              alt="Post-it note"
+              width={371}
+              height={190}
+              quality={100}
+              style={{ display: "block", width: "100%", height: "auto" }}
+            />
+            <p
+              style={{
+                position: "absolute",
+                top: 28,
+                left: 32,
+                right: 32,
+                fontFamily: "var(--font-sans)",
+                fontSize: 16,
+                fontWeight: 400,
+                color: "#141412",
+                lineHeight: 1.6,
+                margin: 0,
+              }}
+            >
+              Hailey is a product designer who weaves the red thread between business, behaviour and branding.
+              <br /><br />
+              Currently based in Stockholm.
+            </p>
+          </div>
+
+          {/* Do Not Disturb pill – desktop only */}
           <Image
-            src="/postit.png"
-            alt="Post-it note"
-            width={351}
-            height={180}
-            className="pointer-events-none select-none absolute"
-            style={{ left: 177, top: 452, height: "auto" }}
+            src="/landing_page/dnd.png"
+            alt="Do Not Disturb"
+            width={151}
+            height={68}
+            quality={100}
+            className="pointer-events-none select-none hidden md:block md:absolute"
+            style={{ left: 600, top: 450, height: "auto" }}
           />
 
-          {/* Rock / pebble */}
-          {/* Natural: 177×140 → at width 150, proportional height = 119 */}
+          {/* Hand cream – desktop only */}
           <Image
-            src="/rock.png"
+            src="/landing_page/handcream.png"
+            alt="Hand cream"
+            width={360}
+            height={462}
+            quality={100}
+            className="pointer-events-none select-none hidden md:block md:absolute rotate-[18deg]"
+            style={{ left: 820, top: 290, height: "auto" }}
+          />
+
+          {/* Rock – desktop only */}
+          <Image
+            src="/landing_page/rock.png"
             alt="Rock"
-            width={150}
-            height={119}
-            className="pointer-events-none select-none absolute"
-            style={{ left: 556, top: 480, height: "auto" }}
+            width={155}
+            height={87}
+            quality={100}
+            className="pointer-events-none select-none hidden md:block md:absolute rotate-[-10.47deg]"
+            style={{ left: 553, top: 211, height: "auto" }}
           />
 
-          {/* Figma toolbar */}
-          {/* Natural: 852×112 → at width 355, proportional height = 47 */}
+          {/* Figma toolbar – desktop only */}
           <Image
-            src="/toolbar.png"
+            src="/landing_page/toolbar.png"
             alt="Figma toolbar"
-            width={355}
-            height={47}
-            className="pointer-events-none select-none absolute"
-            style={{ left: 716, top: 538, height: "auto" }}
+            width={418}
+            height={48}
+            quality={100}
+            className="pointer-events-none select-none hidden md:block md:absolute"
+            style={{ left: 530, top: 575, height: "auto" }}
           />
+
         </section>
 
         {/* Selected Work */}
@@ -130,7 +175,8 @@ export default function Home() {
             {/* Left column */}
             <div className="flex flex-1 flex-col gap-5 mt-[170px]">
               {/* Detectify – coming soon */}
-              <div className="block group" data-cursor="coming-soon">
+              <FadeIn delay={0}>
+              <div className="block group transition-opacity duration-200 ease-out hover:opacity-60" data-cursor="coming-soon">
                 <div className="overflow-hidden">
                   <DetectifyCardAnimation />
                 </div>
@@ -155,9 +201,11 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+              </FadeIn>
 
               {/* Nurtura */}
-              <Link href="/work/nurtura" className="block group" data-cursor="view">
+              <FadeIn delay={100}>
+              <Link href="/work/nurtura" className="block group transition-opacity duration-200 ease-out hover:opacity-60" data-cursor="view">
                 <div className="overflow-hidden" style={{ height: 731 }}>
                   <Image
                     src="/nurtura/nurtura.png"
@@ -188,12 +236,14 @@ export default function Home() {
                   </p>
                 </div>
               </Link>
+              </FadeIn>
             </div>
 
             {/* Right column – offset down to create stagger */}
             <div className="flex flex-1 flex-col gap-5 mt-[170px]">
               {/* Appstract – coming soon */}
-              <div className="block group" data-cursor="coming-soon">
+              <FadeIn delay={50}>
+              <div className="block group transition-opacity duration-200 ease-out hover:opacity-60" data-cursor="coming-soon">
                 <div className="overflow-hidden">
                   <AppstractCardAnimation />
                 </div>
@@ -218,9 +268,11 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+              </FadeIn>
 
               {/* MeView */}
-              <Link href="/work/meview" className="block group" data-cursor="view">
+              <FadeIn delay={150}>
+              <Link href="/work/meview" className="block group transition-opacity duration-200 ease-out hover:opacity-60" data-cursor="view">
                 <div className="overflow-hidden" style={{ height: 488 }}>
                   <Image
                     src="/meview/meview.png"
@@ -251,6 +303,7 @@ export default function Home() {
                   </p>
                 </div>
               </Link>
+              </FadeIn>
             </div>
           </div>
         </section>

@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import FadeIn from "@/components/FadeIn";
 import SideNav from "@/components/SideNav";
 import SectionHeader from "@/components/case/SectionHeader";
 import InsightCard from "@/components/case/InsightCard";
@@ -142,19 +141,6 @@ const NAV_SECTIONS = [
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function NurturaPage() {
-  const landingSentinelRef = useRef<HTMLDivElement>(null);
-  const [pastLanding, setPastLanding] = useState(false);
-
-  useEffect(() => {
-    const sentinel = landingSentinelRef.current;
-    if (!sentinel) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setPastLanding(!entry.isIntersecting),
-      { threshold: 0 }
-    );
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
@@ -211,17 +197,14 @@ export default function NurturaPage() {
         </div>
       </div>
 
-      {/* Sentinel — triggers SideNav + content to appear */}
-      <div ref={landingSentinelRef} style={{ height: 0 }} />
-
       {/* ── SIDE NAV + CASE CONTENT ───────────────────────────────────────── */}
-      <div style={{ display: "flex", alignItems: "flex-start", visibility: pastLanding ? "visible" : "hidden" }}>
+      <div style={{ display: "flex", alignItems: "flex-start" }}>
         <SideNav sections={NAV_SECTIONS} />
 
         <div style={{ flex: 1, padding: "64px 72px", display: "flex", flexDirection: "column", gap: 96 }}>
 
           {/* ── THE BRIEF ── */}
-          <div id="the-brief" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="the-brief" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <SectionHeader
               label="THE BRIEF"
               labelColor="#549D5B"
@@ -233,10 +216,10 @@ export default function NurturaPage() {
             <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
               I ran the full process solo: 12 interviews, a 35-person survey, affinity mapping, three concept directions, navigation testing, lo-fi and hi-fi iterations, and usability testing.
             </p>
-          </div>
+          </div></FadeIn>
 
           {/* ── THE PROBLEM ── */}
-          <div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <SectionHeader
               label="THE PROBLEM"
               labelColor="#549D5B"
@@ -271,10 +254,10 @@ export default function NurturaPage() {
               }
             />
 
-          </div>
+          </div></FadeIn>
 
           {/* ── KEY INSIGHTS ── */}
-          <div id="key-insights" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="key-insights" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <SectionHeader
               label="KEY INSIGHTS"
               labelColor="#549D5B"
@@ -298,10 +281,10 @@ export default function NurturaPage() {
             </div>
 
             <CaseImage src="/nurtura/ujm.png" alt="Journey map · Where confidence drops, where decisions happen, where users disengage" minHeight={320} />
-          </div>
+          </div></FadeIn>
 
           {/* ── CONCEPT EXPLORATION ── */}
-          <div id="concept-exploration" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="concept-exploration" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <SectionHeader
               label="CONCEPT EXPLORATION"
               labelColor="#549D5B"
@@ -371,10 +354,10 @@ export default function NurturaPage() {
               </p>
             </div>
 
-          </div>
+          </div></FadeIn>
 
           {/* ── SOLUTION ── */}
-          <div id="solution" style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+          <FadeIn><div id="solution" style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             <SectionHeader
               label="SOLUTION"
               labelColor="#549D5B"
@@ -414,10 +397,10 @@ export default function NurturaPage() {
               </p>
               <CaseImage src="/nurtura/case5.png" alt="S12–S17 · Emotional Check-in + IVF Guide flows" minHeight={580} bare />
             </div>
-          </div>
+          </div></FadeIn>
 
           {/* ── USER TESTING ── */}
-          <div id="user-testing" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="user-testing" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <SectionHeader
               label="USER TESTING"
               labelColor="#549D5B"
@@ -439,10 +422,10 @@ export default function NurturaPage() {
                 description="On the emotional tone and pacing of the full prototype."
               />
             </div>
-          </div>
+          </div></FadeIn>
 
           {/* ── REFLECTIONS + CTA ── */}
-          <div id="reflections" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="reflections" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <SectionHeader
               label="REFLECTIONS"
               labelColor="#549D5B"
@@ -472,57 +455,8 @@ export default function NurturaPage() {
               {/* Right: CTA */}
               <CaseCTA />
             </div>
-          </div>
+          </div></FadeIn>
 
-        </div>
-      </div>
-
-      {/* ── PREVIOUS / NEXT ────────────────────────────────────────────────── */}
-      <div style={{
-        display: "flex", justifyContent: "center", gap: 165,
-        padding: "40px 0", borderTop: "1px solid #E5E5E5", background: "#F7FAFC",
-      }}>
-        {/* Previous */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 12 }}>
-          <div style={{ position: "relative", width: 165, height: 100, borderRadius: 4, overflow: "hidden" }}>
-            <Image src="/meview.png" alt="MeView" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
-          <Link href="/work/meview" style={{
-            display: "inline-flex", alignItems: "center", gap: 6,
-            fontSize: 14, fontFamily: FONT_DISPLAY, fontWeight: 400,
-            background: "#E5E5E5", borderRadius: 2, padding: "6px 12px",
-            textDecoration: "none", color: "#141412",
-          }}>
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-              <path d="M10 12L6 8L10 4" stroke="#141412" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Previous Project
-          </Link>
-        </div>
-
-        {/* Current */}
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <div style={{ position: "relative", width: 165, height: 100, borderRadius: 4, overflow: "hidden" }}>
-            <Image src="/nurtura.png" alt="Nurtura" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
-        </div>
-
-        {/* Next */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12 }}>
-          <div style={{ position: "relative", width: 165, height: 100, borderRadius: 4, overflow: "hidden" }}>
-            <Image src="/meview.png" alt="MeView" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          </div>
-          <Link href="/work/meview" style={{
-            display: "inline-flex", alignItems: "center", gap: 6,
-            fontSize: 14, fontFamily: FONT_DISPLAY, fontWeight: 400,
-            background: "#E5E5E5", borderRadius: 2, padding: "6px 12px",
-            textDecoration: "none", color: "#141412",
-          }}>
-            Next Project
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-              <path d="M6 12L10 8L6 4" stroke="#141412" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
         </div>
       </div>
     </>

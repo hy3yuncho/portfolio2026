@@ -1,10 +1,12 @@
 import Image from "next/image";
 import styles from "./about.module.css";
+import FadeIn from "@/components/FadeIn";
 
 export default function AboutPage() {
   return (
     <>
       {/* Intro: bio left, CV right */}
+      <FadeIn>
       <div className={styles["about-top"]}>
 
         <div>
@@ -68,8 +70,10 @@ export default function AboutPage() {
 
         </div>
       </div>
+      </FadeIn>
 
       {/* 4-photo grid */}
+      <FadeIn delay={100}>
       <div className={styles["photo-grid"]}>
         <div className={styles["photo-placeholder"]}>
           <Image src="/about/about1.jpg" alt="Hailey — photo 1" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
@@ -84,6 +88,7 @@ export default function AboutPage() {
           <Image src="/about/about4.jpg" alt="Hailey — photo 4" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
         </div>
       </div>
+      </FadeIn>
 
     </>
   );

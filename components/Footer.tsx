@@ -21,7 +21,7 @@ export default function Footer({
   ctaLinks = [
     { label: "LINKEDIN", href: "https://www.linkedin.com/in/hyeyun-cho-/", target: "_blank", rel: "noopener noreferrer" },
     { label: "EMAIL", href: "mailto:hy3yun.cho@gmail.com" },
-    { label: "RESUME", href: "https://drive.google.com/file/d/1aJJfK6NGMdJuvQa2r4ZCr0tS_pXVf_G8/view?usp=sharing", target: "_blank", rel: "noopener noreferrer" },
+    { label: "RESUME", href: "https://drive.google.com/file/d/1vuQoy2M-Yfk-CJm5tKvmYIbsKxhgyIhC/view?usp=sharing", target: "_blank", rel: "noopener noreferrer" },
   ],
   navLinks = [
     { label: "HOME", href: "/#top" },

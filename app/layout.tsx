@@ -3,6 +3,7 @@ import { DM_Sans, Geist, Geist_Mono, IBM_Plex_Serif, Montserrat, Source_Serif_4 
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -58,7 +59,7 @@ export default function RootLayout({
       >
         <CustomCursor />
         <Nav />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Footer />
       </body>
     </html>
