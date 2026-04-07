@@ -43,7 +43,7 @@ const ibmPlexSerif = IBM_Plex_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Hailey Yun Cho — Product Designer",
+  title: "Hailey Yun Cho: Product Designer",
   description: "Portfolio of Hailey Yun Cho, product designer based in Stockholm.",
 };
 
