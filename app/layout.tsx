@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Geist, Geist_Mono, IBM_Plex_Serif, Montserrat, Source_Serif_4 } from "next/font/google";
+import Script from "next/script";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
@@ -54,6 +55,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-C66DSZQ91Z"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-C66DSZQ91Z');
+          `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${dmSans.variable} ${sourceSerif4.variable} ${ibmPlexSerif.variable} antialiased`}
       >

@@ -14,7 +14,8 @@
       "Bash(python3:*)",
       "Bash(node --input-type=module --eval \"import\\(''''./app/work/nurtura/page.tsx''''\\)\")",
       "Bash(npx tsc:*)",
-      "Bash(grep -n \"—\" /Users/hyeyun/Desktop/portfolio_site/app/work/[slug]/page.tsx)"
+      "Bash(grep -n \"—\" /Users/hyeyun/Desktop/portfolio_site/app/work/[slug]/page.tsx)",
+      "Bash(git add:*)"
     ]
   }
 }
