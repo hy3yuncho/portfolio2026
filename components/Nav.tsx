@@ -48,7 +48,7 @@ export default function Nav() {
           <Button variant="ghost" size="default" label="About" href="/about" className="pointer-events-auto text-outlined !font-black" />
           <Button variant="ghost" size="default" label="Work" href="/#work" className="pointer-events-auto text-outlined !font-black" />
           <a
-            href="https://drive.google.com/file/d/1vuQoy2M-Yfk-CJm5tKvmYIbsKxhgyIhC/view?usp=sharing"
+            href="https://drive.google.com/file/d/1_YIKgDu14n9s1XxqmHR_wZT6BhSv6OGm/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="pointer-events-auto text-outlined !font-black inline-flex items-center justify-center rounded-[2px] whitespace-nowrap transition-colors cursor-pointer font-[family-name:var(--font-montserrat)] bg-transparent hover:bg-[rgba(0,136,255,0.20)] h-[28px] px-[16px] text-[14px]"
@@ -90,7 +90,7 @@ export default function Nav() {
             Work
           </Link>
           <a
-            href="https://drive.google.com/file/d/1vuQoy2M-Yfk-CJm5tKvmYIbsKxhgyIhC/view?usp=sharing"
+            href="https://drive.google.com/file/d/1_YIKgDu14n9s1XxqmHR_wZT6BhSv6OGm/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
