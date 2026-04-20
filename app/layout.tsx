@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Geist, Geist_Mono, IBM_Plex_Serif, Montserrat, Source_Serif_4 } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
@@ -76,6 +77,7 @@ export default function RootLayout({
         <Nav />
         <PageTransition>{children}</PageTransition>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
