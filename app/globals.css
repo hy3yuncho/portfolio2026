@@ -18,8 +18,8 @@
   --section-padding-mobile: 0 20px;
 }
 
-* { cursor: none !important; }
-a, button, [data-cursor], [role="button"] { cursor: none !important; }
+.js-cursor * { cursor: none !important; }
+.js-cursor a, .js-cursor button, .js-cursor [data-cursor], .js-cursor [role="button"] { cursor: none !important; }
 
 @keyframes page-fade-in {
   from { opacity: 0; }

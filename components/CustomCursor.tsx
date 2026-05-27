@@ -15,11 +15,10 @@ export default function CustomCursor() {
     if (isProjectPage) setState("default");
   }, [isProjectPage]);
 
-  // Fix 1: Hide default cursor immediately on mount
   useEffect(() => {
-    document.body.style.cursor = "none";
+    document.documentElement.classList.add("js-cursor");
     return () => {
-      document.body.style.cursor = "auto";
+      document.documentElement.classList.remove("js-cursor");
     };
   }, []);
 
