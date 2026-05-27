@@ -17,7 +17,8 @@
       "Bash(grep -n \"—\" /Users/hyeyun/Desktop/portfolio_site/app/work/[slug]/page.tsx)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(npx next *)"
     ]
   }
 }

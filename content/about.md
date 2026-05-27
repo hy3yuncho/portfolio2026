@@ -44,11 +44,56 @@ Born in South Korea, shaped in Australia, and now based in Sweden, I bring a cro
 |---|---|---|
 | Detectify | Product Design Intern | Spring 2026 |
 | Appstract | Product Designer | Spring 2026 |
-| Arniqa | Product Design Intern | Summer 2025 |
+| Amiqa | Product Design Intern | Summer 2025 |
 | Valtech Radon | Creative Strategy Intern | Spring 2025 |
 | Deloitte Consulting | FS Strategy Associate | June 2023 – Mar 2024 |
 
+다시 썼어. 대시 없애고, 문장 구조도 더 자연스럽게.
+
 ---
+
+**Appstract / Freelance Product Designer**
+Spring 2026 · Copenhagen (Remote)
+
+*Sole designer. Full lifecycle.*
+
+I came in to solve what looked like an engagement problem. Research said otherwise. The real constraint was structural friction upstream, not the feature the team had been focused on, and that finding reframed the whole project. I rebuilt the interaction model and onboarding flow from scratch around it, and designed an ambient social signal system that surfaces social proof without interrupting the core flow. No design team to hand off to. Discovery through delivery.
+
+---
+
+**Detectify / Product Design Intern**
+Spring 2026 · Stockholm
+
+*From inconsistency to system.*
+
+I joined mid-sprint and stayed in sprint. My focus was building out the core design system to WCAG AA compliance, which meant going deep on interaction patterns that had accumulated inconsistencies over time. Alongside that, I restructured the main navigation, remapping it from a feature-release logic to how security professionals actually move through their work. Shipped in weekly cycles, directly with PM and engineering. I also prototyped interaction concepts in working HTML/CSS using Claude Code and Cursor, so ideas could be validated at design speed without pulling engineering in early.
+
+---
+
+**Amiqa / Product Design Intern**
+Summer 2025 · Stockholm
+
+*Designing for people who never think about design.*
+
+Amiqa was building a calendar-based availability tool for small hotel owners, people running a property on their own without a tech team behind them. The challenge wasn't what to build, it was how much to strip back without losing utility. I started with user research, built out personas and journey maps, and used those to draw the line between helpful simplicity and patronising oversimplification. The output was a responsive MVP that had to work for someone who'd never thought about UX in their life.
+
+---
+
+**Valtech Radon / Creative Strategy Intern**
+Spring 2025 · Stockholm
+
+*Strategy work, global clients, a lot of post-its.*
+
+Valtech Radon sits at the intersection of creative and consulting, which suited me well. I worked across user and market research for campaigns spanning 5+ regions, the kind of research that ends up shaping media strategy and content frameworks, not just design. Clients included Husqvarna and Ericsson. The work was fast, cross-functional, and taught me how to translate behavioural findings into briefs that creative teams can actually use.
+
+---
+
+**Deloitte Consulting / Strategy Associate**
+June 2023 – March 2024 · Seoul
+
+*Where I learned to read a product like a system.*
+
+I came into Deloitte from a psychology and finance degree, and it showed in the work. I mapped 30+ digital finance and insurance products to surface UX friction, translating regulatory complexity and B2B product logic into something a human could actually navigate. That included defining interaction flows for a mobile app built for financial consultants. Every design decision had to hold up under compliance constraints and professional user scrutiny. It was a good place to learn precision.
 
 ## Education
 

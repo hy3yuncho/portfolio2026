@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import SideNav from "@/components/SideNav";
+import PasswordGate from "@/components/PasswordGate";
 import { getCaseBySlug } from "@/data/cases";
 
 const LABEL_STYLE = {
@@ -26,7 +27,12 @@ export default function ProjectPage() {
     notFound();
   }
 
-  const { name, tagline, about, role, timeline, team, tools, coverImages, sections, prevProject, nextProject } = project;
+  const { name, tagline, about, role, timeline, team, tools, coverImages, sections, prevProject, nextProject, isProtected, gateAfterSectionIndex } = project;
+
+  // Split sections into public and gated
+  const gateIdx = isProtected ? (gateAfterSectionIndex ?? 1) : sections.length;
+  const publicSections = sections.slice(0, gateIdx);
+  const protectedSections = sections.slice(gateIdx);
 
   return (
     <>
@@ -104,7 +110,8 @@ export default function ProjectPage() {
         <SideNav />
 
         <div style={{ flex: 1, padding: "48px 64px", display: "flex", flexDirection: "column", gap: 80 }}>
-          {sections.map((section) => (
+          {/* Public sections — always visible */}
+          {publicSections.map((section) => (
             <div key={section.id} id={section.id} style={{ minHeight: 400, padding: 32 }}>
               <p style={{ ...LABEL_STYLE, color: "#999" }}>{section.phase}</p>
               <h2 style={{ fontSize: 22, fontWeight: 500, fontStyle: "italic", marginTop: 8, marginBottom: 16, fontFamily: "var(--font-ibm-plex-serif)" }}>
@@ -115,6 +122,37 @@ export default function ProjectPage() {
               </p>
             </div>
           ))}
+
+          {/* Gated sections — wrapped in PasswordGate if project is protected */}
+          {isProtected && protectedSections.length > 0 ? (
+            <PasswordGate project={project.slug}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 80 }}>
+                {protectedSections.map((section) => (
+                  <div key={section.id} id={section.id} style={{ minHeight: 400, padding: 32 }}>
+                    <p style={{ ...LABEL_STYLE, color: "#999" }}>{section.phase}</p>
+                    <h2 style={{ fontSize: 22, fontWeight: 500, fontStyle: "italic", marginTop: 8, marginBottom: 16, fontFamily: "var(--font-ibm-plex-serif)" }}>
+                      {section.title}
+                    </h2>
+                    <p style={{ fontSize: 16, fontWeight: 300, lineHeight: 1.7, fontFamily: "var(--font-dm-sans)", whiteSpace: "pre-line" }}>
+                      {section.content}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </PasswordGate>
+          ) : (
+            protectedSections.map((section) => (
+              <div key={section.id} id={section.id} style={{ minHeight: 400, padding: 32 }}>
+                <p style={{ ...LABEL_STYLE, color: "#999" }}>{section.phase}</p>
+                <h2 style={{ fontSize: 22, fontWeight: 500, fontStyle: "italic", marginTop: 8, marginBottom: 16, fontFamily: "var(--font-ibm-plex-serif)" }}>
+                  {section.title}
+                </h2>
+                <p style={{ fontSize: 16, fontWeight: 300, lineHeight: 1.7, fontFamily: "var(--font-dm-sans)", whiteSpace: "pre-line" }}>
+                  {section.content}
+                </p>
+              </div>
+            ))
+          )}
         </div>
       </div>
 

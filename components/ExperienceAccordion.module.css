@@ -1,0 +1,108 @@
+.entries {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-bottom: 1px solid var(--border);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-mid);
+  text-align: left;
+}
+
+.item:first-child .row {
+  padding-top: 0;
+}
+
+.chevron {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(90deg);
+}
+
+.rowMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.company {
+  color: var(--text-mid);
+}
+
+.role {
+  color: var(--text-muted);
+}
+
+.row:hover .company {
+  color: #333;
+}
+
+.row:hover .role {
+  color: #555;
+}
+
+.date {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--text-mid);
+  flex-shrink: 0;
+}
+
+/* Expand/collapse via CSS grid row height */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+
+.panelOpen {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+}
+
+.panelContent {
+  /* left-pad to align with rowMain text (chevron 14px + gap 8px) */
+  padding: 2px 0 14px 22px;
+}
+
+.panelTitle {
+  font-family: 'IBM Plex Serif', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-mid);
+  margin-bottom: 6px;
+}
+
+.panelBody {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}

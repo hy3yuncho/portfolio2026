@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Button from "@/components/Button";
-import { Menu, X } from "lucide-react";
 
 function useStockholmTime() {
   const [time, setTime] = useState<string>("");
@@ -29,63 +27,38 @@ function useStockholmTime() {
 
 export default function Nav() {
   const stockholmTime = useStockholmTime();
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 border-b border-[#E5E5E5] bg-[#F7FAFC]"
+      className="fixed inset-x-0 top-0 z-50 border-b border-[#E5E5E5] bg-[#F7FAFC] w-full"
       style={{
         fontFamily: "Montserrat, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
         letterSpacing: "0.28px",
       }}
     >
-      {/* Main bar */}
-      <nav className="flex h-[41px] items-center justify-between px-6 md:px-12 text-[14px] font-black">
-        <Link href="/" data-cursor="link" className="whitespace-nowrap text-outlined hover:opacity-80 transition-opacity">Hailey Yun Cho</Link>
-
-        {/* Desktop centre links */}
-        <div data-cursor="link" className="pointer-events-none absolute left-1/2 top-[20.5px] hidden md:flex -translate-x-1/2 -translate-y-1/2 items-center gap-[21px]">
-          <Button variant="ghost" size="default" label="About" href="/about" className="pointer-events-auto text-outlined !font-black" />
-          <Button variant="ghost" size="default" label="Work" href="/#work" className="pointer-events-auto text-outlined !font-black" />
-          <a
-            href="https://drive.google.com/file/d/1_YIKgDu14n9s1XxqmHR_wZT6BhSv6OGm/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pointer-events-auto text-outlined !font-black inline-flex items-center justify-center rounded-[2px] whitespace-nowrap transition-colors cursor-pointer font-[family-name:var(--font-montserrat)] bg-transparent hover:bg-[rgba(0,136,255,0.20)] h-[28px] px-[16px] text-[14px]"
-          >
-            Resume
-          </a>
-        </div>
-
-        {/* Desktop timezone */}
-        <span className="hidden md:block whitespace-nowrap text-outlined" aria-live="polite">
-          Europe/Stockholm&nbsp;&nbsp;{stockholmTime}
-        </span>
-
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMenuOpen((v) => !v)}
-          className="md:hidden text-outlined p-1 -mr-1"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+      <nav className="flex h-[41px] items-center justify-between px-4 md:px-12 w-full">
+        {/* Name — always left */}
+        <Link
+          href="/"
+          data-cursor="link"
+          className="shrink-0 text-outlined hover:opacity-80 transition-opacity font-black text-[14px]"
         >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </nav>
+          Hailey Yun Cho
+        </Link>
 
-      {/* Mobile dropdown */}
-      {menuOpen && (
-        <div className="md:hidden border-t border-[#E5E5E5] bg-[#F7FAFC] px-6 py-4 flex flex-col gap-1">
+        {/* Links — mobile: inline right | desktop: absolute centre */}
+        <div className="flex items-center gap-3 md:absolute md:left-1/2 md:top-[20.5px] md:-translate-x-1/2 md:-translate-y-1/2 md:gap-[21px]">
           <Link
             href="/about"
-            onClick={() => setMenuOpen(false)}
-            className="text-outlined block py-2 hover:bg-[rgba(0,136,255,0.10)] rounded px-2 transition-colors"
+            data-cursor="link"
+            className="text-outlined font-black text-[13px] md:text-[14px] hover:opacity-70 transition-opacity uppercase"
           >
             About
           </Link>
           <Link
             href="/#work"
-            onClick={() => setMenuOpen(false)}
-            className="text-outlined block py-2 hover:bg-[rgba(0,136,255,0.10)] rounded px-2 transition-colors"
+            data-cursor="link"
+            className="text-outlined font-black text-[13px] md:text-[14px] hover:opacity-70 transition-opacity uppercase"
           >
             Work
           </Link>
@@ -93,13 +66,21 @@ export default function Nav() {
             href="https://drive.google.com/file/d/1_YIKgDu14n9s1XxqmHR_wZT6BhSv6OGm/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setMenuOpen(false)}
-            className="text-outlined block py-2 hover:bg-[rgba(0,136,255,0.10)] rounded px-2 transition-colors"
+            data-cursor="link"
+            className="text-outlined font-black text-[13px] md:text-[14px] hover:opacity-70 transition-opacity uppercase"
           >
             Resume
           </a>
         </div>
-      )}
+
+        {/* Timezone — desktop only, right */}
+        <span
+          className="hidden md:block whitespace-nowrap text-outlined font-black text-[14px]"
+          aria-live="polite"
+        >
+          Europe/Stockholm&nbsp;&nbsp;{stockholmTime}
+        </span>
+      </nav>
     </header>
   );
 }

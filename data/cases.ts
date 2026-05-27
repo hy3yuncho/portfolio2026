@@ -24,6 +24,10 @@ export interface Case {
   sections: CaseSection[];
   prevProject: CaseNav | null;
   nextProject: CaseNav | null;
+  /** If true, sections from gateAfterSectionIndex onward are hidden behind a password gate. */
+  isProtected?: boolean;
+  /** Number of sections to show publicly before the gate kicks in. Defaults to 1. */
+  gateAfterSectionIndex?: number;
 }
 
 export const cases: Case[] = [

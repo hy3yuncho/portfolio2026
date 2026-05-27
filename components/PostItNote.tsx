@@ -1,33 +1,36 @@
-// Post-it note rebuilt from exact Figma values.
-// Body: 351×190px, #FFF6BB fill, 1px #E5E5E5 border, no radius.
-// Triangle tail: child at (303.57, 138.92), 52.92×31.44px, rotated 37.25deg, #FADB68 fill.
+'use client'
+
+import { useTypewriter } from '@/hooks/useTypewriter'
+
+// Post-it note. Body: 351×190px, #FFF6BB fill, 1px #E5E5E5 border, no radius.
+// Corner fold: right=0 bottom=0, 55×55px right-angle triangle, #FADB68 fill.
 export default function PostItNote() {
+  const { text, isPausing } = useTypewriter()
+
   return (
-    <div className="relative" style={{ width: 351, height: 190, overflow: "visible" }}>
+    <div className="relative" style={{ width: 351, height: 190, overflow: 'visible' }}>
       {/* Body */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundColor: "#FFF6BB",
-          border: "1px solid #E5E5E5",
-          boxSizing: "border-box",
+          backgroundColor: '#FFF6BB',
+          border: '1px solid #E5E5E5',
+          boxSizing: 'border-box',
         }}
       />
 
-      {/* Triangle tail */}
+      {/* Corner fold — bottom-right triangle, no rotation needed */}
       <div
         className="absolute"
         style={{
-          left: 303.57,
-          top: 138.92,
-          width: 52.92,
-          height: 31.44,
-          backgroundColor: "#FADB68",
-          clipPath: "polygon(0% 0%, 100% 100%, 100% 0%)",
-          transform: "rotate(37.25deg)",
-          // drop-shadow simulates the 1px border since clip-path clips CSS borders
+          right: 0,
+          bottom: 0,
+          width: 55,
+          height: 55,
+          backgroundColor: '#FADB68',
+          clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%)',
           filter:
-            "drop-shadow(1px 0 0 #E5E5E5) drop-shadow(-1px 0 0 #E5E5E5) drop-shadow(0 1px 0 #E5E5E5) drop-shadow(0 -1px 0 #E5E5E5)",
+            'drop-shadow(1px 0 0 #E5E5E5) drop-shadow(-1px 0 0 #E5E5E5) drop-shadow(0 1px 0 #E5E5E5) drop-shadow(0 -1px 0 #E5E5E5)',
         }}
       />
 
@@ -43,12 +46,16 @@ export default function PostItNote() {
         }}
       >
         <p className="m-0">
-          Hailey is a product designer who weaves the red thread between
-          business, behaviour and branding.
+          Hailey is a{' '}
+          <span>{text}</span>
+          {!isPausing && (
+            <span style={{ animation: 'cursor-blink 0.8s step-end infinite' }}>|</span>
+          )}{' '}
+          who weaves the red thread between business, behaviour and branding.
         </p>
         <br />
         <p className="m-0">Currently based in Stockholm.</p>
       </div>
     </div>
-  );
+  )
 }

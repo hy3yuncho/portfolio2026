@@ -64,6 +64,7 @@ Case studies are **design arguments**, not feature lists. The structure is alway
 
 - Write natural, direct English. Not formal. Not casual. Like a sharp designer explaining a decision to a colleague.
 - **Avoid:** "leveraged", "end-to-end ownership", "impactful", "user-centric", "seamless", "robust", "holistic"
+- **Never:** use em-dash.
 - **Prefer:** Named decisions, specific constraints, honest tradeoffs, active verbs
 - When editing copy, note the reason for each change in a comment. Example: `// more active — removes passive voice`
 - Default: minimal intervention. Don't rewrite what isn't broken.
