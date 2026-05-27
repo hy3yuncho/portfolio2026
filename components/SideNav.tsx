@@ -75,7 +75,7 @@ export default function SideNav({
 
   return (
     <aside
-      className={`bg-[#f7fafc] border-r border-[#e5e5e5] flex flex-col justify-between w-[165px] min-h-screen py-[60px] px-3 ${className ?? ""}`}
+      className={`hidden md:flex bg-[#f7fafc] border-r border-[#e5e5e5] flex-col justify-between w-[165px] min-h-screen py-[60px] px-3 ${className ?? ""}`}
       style={{ position: "sticky", top: 41, alignSelf: "flex-start", height: "calc(100vh - 41px)" }}
     >
       <nav className="flex flex-col gap-6 items-start w-full">

@@ -188,10 +188,10 @@ export default function MeViewPage() {
       </div>
 
       {/* ── SIDE NAV + CASE CONTENT ───────────────────────────────────────── */}
-      <div style={{ display: "flex", alignItems: "flex-start" }}>
+      <div className="flex items-start">
         <SideNav sections={NAV_SECTIONS} />
 
-        <div style={{ flex: 1, padding: "64px 72px", display: "flex", flexDirection: "column", gap: 96 }}>
+        <div className="flex-1 px-5 py-12 md:px-[72px] md:py-16" style={{ display: "flex", flexDirection: "column", gap: 96 }}>
 
           {/* ── OVERVIEW ── */}
           <FadeIn><div id="overview" style={{ display: "flex", flexDirection: "column", gap: 20 }}>

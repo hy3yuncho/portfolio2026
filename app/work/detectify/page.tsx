@@ -130,10 +130,10 @@ export default function DetectifyPage() {
       <hr style={{ border: "none", borderTop: "1px solid #E8E8E8", margin: 0 }} />
 
       {/* ── SIDE NAV + CASE CONTENT ───────────────────────────────────────── */}
-      <div style={{ display: "flex", alignItems: "flex-start", paddingTop: 80 }}>
+      <div className="flex items-start pt-0 md:pt-20">
         <SideNav sections={NAV_SECTIONS} />
 
-        <div style={{ flex: 1, padding: "64px 72px", display: "flex", flexDirection: "column", gap: 96 }}>
+        <div className="flex-1 px-5 py-12 md:px-[72px] md:py-16" style={{ display: "flex", flexDirection: "column", gap: 96 }}>
 
           {/* ── OVERVIEW ── */}
           <FadeIn><div id="overview" style={{ display: "flex", flexDirection: "column", gap: 20 }}>

@@ -30,8 +30,8 @@ export default function Footer({
   ],
 }: FooterProps) {
   return (
-    <footer className="w-full min-h-[349px] bg-[#F7FAFC] border-t border-[#E5E5E5] px-20 flex items-center">
-      <div className="w-full flex items-start justify-between gap-10">
+    <footer className="w-full min-h-[349px] bg-[#F7FAFC] border-t border-[#E5E5E5] px-6 md:px-20 py-12 md:py-0 flex items-center">
+      <div className="w-full flex flex-col md:flex-row items-start justify-between gap-8 md:gap-10">
         {/* Left: content area */}
         <div className="max-w-[965px] flex flex-col gap-6">
           {/* Name */}

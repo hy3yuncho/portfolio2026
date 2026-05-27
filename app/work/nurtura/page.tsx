@@ -145,14 +145,13 @@ export default function NurturaPage() {
   return (
     <>
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <div style={{ display: "flex", alignItems: "flex-start" }}>
+      <div className="flex flex-col md:flex-row items-start">
 
         {/* Left: sticky project meta */}
-        <div style={{
-          position: "sticky", top: 41, width: 340, flexShrink: 0,
-          alignSelf: "flex-start", padding: "40px 32px", display: "flex",
-          flexDirection: "column", gap: 24,
-        }}>
+        <div
+          className="w-full md:w-[340px] md:flex-shrink-0 self-start md:sticky md:top-[41px]"
+          style={{ padding: "40px 32px", display: "flex", flexDirection: "column", gap: 24 }}
+        >
           <div>
             <h1 style={{ fontFamily: FONT_SERIF, fontSize: 24, fontWeight: 500, fontStyle: "italic", margin: "0 0 6px" }}>
               Nurtura
@@ -198,10 +197,10 @@ export default function NurturaPage() {
       </div>
 
       {/* ── SIDE NAV + CASE CONTENT ───────────────────────────────────────── */}
-      <div style={{ display: "flex", alignItems: "flex-start" }}>
+      <div className="flex items-start">
         <SideNav sections={NAV_SECTIONS} />
 
-        <div style={{ flex: 1, padding: "64px 72px", display: "flex", flexDirection: "column", gap: 96 }}>
+        <div className="flex-1 px-5 py-12 md:px-[72px] md:py-16" style={{ display: "flex", flexDirection: "column", gap: 96 }}>
 
           {/* ── THE BRIEF ── */}
           <FadeIn><div id="the-brief" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
