@@ -198,9 +198,18 @@
     box-sizing: border-box;
   }
 
-  html, body {
+  /* Only set overflow-x on html, NOT body.
+     Setting overflow-x on body forces overflow-y: auto (CSS spec), making body
+     a scroll container that traps position:sticky. html handles the horizontal clip. */
+  html {
     overflow-x: hidden;
     max-width: 100vw;
+  }
+
+  body {
+    max-width: 100vw;
+    /* overflow intentionally not set — body must remain visible so it's not
+       a scroll container, allowing position:sticky to work against the viewport */
   }
 
   html {

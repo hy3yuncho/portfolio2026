@@ -149,8 +149,8 @@ export default function NurturaPage() {
 
         {/* Left: sticky project meta */}
         <div
-          className="w-full md:w-[340px] md:flex-shrink-0 self-start md:sticky md:top-[41px]"
-          style={{ padding: "40px 32px", display: "flex", flexDirection: "column", gap: 24 }}
+          className="w-full md:w-[340px] md:flex-shrink-0"
+          style={{ position: "sticky", top: 41, alignSelf: "flex-start", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 24 }}
         >
           <div>
             <h1 style={{ fontFamily: FONT_SERIF, fontSize: 24, fontWeight: 500, fontStyle: "italic", margin: "0 0 6px" }}>
