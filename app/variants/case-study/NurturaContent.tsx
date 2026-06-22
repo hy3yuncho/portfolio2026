@@ -62,7 +62,7 @@ export default function NurturaContent({
         />
         <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
           The brief was from Hyper Island: 8 weeks, solo, end-to-end:{" "}
-          <em>"Create a user-centred vertical social network."</em> The scope
+          <em>&ldquo;Create a user-centred vertical social network.&rdquo;</em> The scope
           covered the full design process: research, define, ideate, prototype.
           Deliverable was a hi-fi prototype with a documented design rationale.
           No engineering handoff. The goal was design thinking depth, not

@@ -45,7 +45,7 @@ export default function PasswordGate({ project, children }: PasswordGateProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setUnlocked(isStoredUnlocked(project));
+    Promise.resolve(isStoredUnlocked(project)).then(setUnlocked);
   }, [project]);
 
   async function handleSubmit(e: React.FormEvent) {

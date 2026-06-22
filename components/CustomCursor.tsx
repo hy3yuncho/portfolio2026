@@ -12,7 +12,7 @@ export default function CustomCursor() {
   const isProjectPage = pathname.startsWith("/work/");
 
   useEffect(() => {
-    if (isProjectPage) setState("default");
+    if (isProjectPage) Promise.resolve().then(() => setState("default"));
   }, [isProjectPage]);
 
   useEffect(() => {
