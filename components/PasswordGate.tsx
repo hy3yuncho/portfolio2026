@@ -71,7 +71,7 @@ export default function PasswordGate({ project, children }: PasswordGateProps) {
         inputRef.current?.focus();
       }
     } catch {
-      setError("Something went wrong — please try again.");
+      setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }

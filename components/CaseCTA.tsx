@@ -20,22 +20,22 @@ export default function CaseCTA({
   return (
     <div
       className={cn(
-        "flex flex-col sm:flex-row items-start gap-6 sm:gap-[34px]",
-        "bg-surface-subtle rounded-[30px] p-5",
+        "flex flex-col items-start gap-5",
+        "bg-surface-subtle rounded-[20px] p-5",
         className
       )}
     >
       {/* Icon circle */}
-      <div className="w-[66px] h-[66px] rounded-full bg-accent flex items-center justify-center shrink-0">
-        <Coffee size={26} className="text-ink" />
+      <div className="w-[52px] h-[52px] rounded-full bg-accent flex items-center justify-center shrink-0">
+        <Coffee size={22} className="text-ink" />
       </div>
 
       {/* Text + button */}
-      <div className="flex flex-col gap-5 flex-1 min-w-0">
-        <p className="text-h3 text-ink m-0">
+      <div className="flex flex-col gap-4 w-full">
+        <p className="text-h4 text-ink m-0">
           {title}
         </p>
-        <p className="text-body-1 text-ink-muted m-0">
+        <p className="text-body-2 text-ink-muted m-0">
           {body}
         </p>
         <Button

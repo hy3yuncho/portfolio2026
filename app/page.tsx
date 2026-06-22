@@ -12,12 +12,7 @@ export default function Home() {
         {/* ── Hero ─────────────────────────────────────────────────────── */}
         <HeroSection />
 
-        {/* ── Selected Work ─────────────────────────────────────────────── */}
         <section id="work" className="mx-auto max-w-[1060px] px-4 md:px-6 pt-8 pb-16 md:py-16">
-          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#57423f] mb-5 md:mb-0"
-             style={{ fontFamily: "var(--font-montserrat)" }}>
-            Selected Work
-          </p>
           <div className="flex flex-col md:flex-row gap-5">
 
             {/* Left column */}
@@ -25,18 +20,14 @@ export default function Home() {
 
               {/* Detectify */}
               <FadeIn delay={0}>
-                <div className="block group transition-opacity duration-200 ease-out hover:opacity-60" data-cursor="coming-soon">
+                <Link href="/work/detectify" className="block group transition-opacity duration-200 ease-out hover:opacity-60" data-cursor="view">
                   <div className="relative overflow-hidden">
                     <DetectifyCardAnimation />
-                    <span className="md:hidden absolute top-3 right-3 bg-[#F4673A] text-white text-[9px] font-medium uppercase tracking-[0.1em] px-2 py-1 rounded-sm"
-                          style={{ fontFamily: "var(--font-montserrat)" }}>
-                      Coming soon
-                    </span>
                   </div>
                   <div className="mt-3">
                     <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#57423f]"
                        style={{ fontFamily: "var(--font-montserrat)" }}>
-                      Work · Spring 2026
+                      Work · Spring 2026 · Web
                     </p>
                     <h3 className="mt-1 text-[22px] italic font-medium text-[#141412]"
                         style={{ fontFamily: "var(--font-ibm-plex-serif)" }}>
@@ -47,7 +38,7 @@ export default function Home() {
                       A design system for a B2B security product where accessibility is the standard.
                     </p>
                   </div>
-                </div>
+                </Link>
               </FadeIn>
 
               {/* Nurtura */}
@@ -65,7 +56,7 @@ export default function Home() {
                   <div className="mt-3">
                     <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#57423f]"
                        style={{ fontFamily: "var(--font-montserrat)" }}>
-                      Personal project · Spring 2025
+                      Personal project · Spring 2025 · Mobile
                     </p>
                     <h3 className="mt-1 text-[22px] italic font-medium text-[#141412]"
                         style={{ fontFamily: "var(--font-ibm-plex-serif)" }}>
@@ -97,7 +88,7 @@ export default function Home() {
                   <div className="mt-3">
                     <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#57423f]"
                        style={{ fontFamily: "var(--font-montserrat)" }}>
-                      Work · Spring 2026
+                      Work · Spring 2026 · Web
                     </p>
                     <h3 className="mt-1 text-[22px] italic font-medium text-[#141412]"
                         style={{ fontFamily: "var(--font-ibm-plex-serif)" }}>
@@ -126,7 +117,7 @@ export default function Home() {
                   <div className="mt-3">
                     <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#57423f]"
                        style={{ fontFamily: "var(--font-montserrat)" }}>
-                      Personal project · Spring 2024
+                      Personal project · Spring 2024 · Mobile
                     </p>
                     <h3 className="mt-1 text-[22px] italic font-medium text-[#141412]"
                         style={{ fontFamily: "var(--font-ibm-plex-serif)" }}>

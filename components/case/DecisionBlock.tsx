@@ -5,79 +5,65 @@ interface DecisionBlockProps {
   options?: string[];
   chosen: string;
   tradeoff: string;
+  labelColor?: string;
 }
 
-const LABEL_STYLE: React.CSSProperties = {
-  fontFamily: "var(--font-montserrat)",
-  fontSize: 10,
-  fontWeight: 500,
-  textTransform: "uppercase",
-  letterSpacing: "0.08em",
-  color: "#1176C5",
-  paddingTop: 3,
-  flexShrink: 0,
-  width: 100,
-};
+export default function DecisionBlock({
+  number,
+  title,
+  situation,
+  options,
+  chosen,
+  tradeoff,
+  labelColor = "#1176C5",
+}: DecisionBlockProps) {
+  const rowCls = "grid grid-cols-[100px_1fr] gap-x-6 gap-y-1 items-baseline";
 
-const TEXT_STYLE: React.CSSProperties = {
-  fontFamily: "var(--font-dm-sans)",
-  fontSize: 14,
-  fontWeight: 400,
-  color: "#969696",
-  lineHeight: 1.7,
-  margin: 0,
-};
-
-const ROW_STYLE: React.CSSProperties = {
-  display: "grid",
-  gridTemplateColumns: "100px 1fr",
-  gap: "4px 24px",
-  alignItems: "baseline",
-};
-
-export default function DecisionBlock({ number, title, situation, options, chosen, tradeoff }: DecisionBlockProps) {
   return (
-    <div style={{
-      borderLeft: "3px solid #FADB68",
-      paddingLeft: 20,
-      display: "flex",
-      flexDirection: "column",
-      gap: 16,
-    }}>
-      <h3 style={{
-        fontFamily: "var(--font-dm-sans)",
-        fontSize: 20,
-        fontWeight: 600,
-        color: "#666666",
-        lineHeight: 1.3,
-        margin: 0,
-      }}>
-        {number} — {title}
+    <div className="bg-surface-subtle rounded-[5px] p-6 flex flex-col gap-5">
+      <h3 className="text-h3 text-ink m-0 flex items-center gap-3">
+        <span
+          className="inline-flex items-center justify-center rounded-full bg-surface text-ink-muted text-body-2 font-medium flex-shrink-0"
+          style={{ width: 26, height: 26, border: "1.5px solid var(--color-border-strong)" }}
+        >
+          {number}
+        </span>
+        {title}
       </h3>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        <div style={ROW_STYLE}>
-          <span style={LABEL_STYLE}>Situation</span>
-          <p style={TEXT_STYLE}>{situation}</p>
+      <div className="flex flex-col gap-3">
+        <div className={rowCls}>
+          <span className="text-label pt-[3px] flex-shrink-0" style={{ color: labelColor }}>
+            Situation
+          </span>
+          <p className="text-body-2 text-ink-muted leading-[1.7] m-0">{situation}</p>
         </div>
 
         {options && options.length > 0 && (
-          <div style={ROW_STYLE}>
-            <span style={LABEL_STYLE}>Options</span>
-            <ul style={{ ...TEXT_STYLE, paddingLeft: 16, margin: 0 }}>
-              {options.map((opt) => <li key={opt}>{opt}</li>)}
+          <div className={rowCls}>
+            <span className="text-label pt-[3px] flex-shrink-0" style={{ color: labelColor }}>
+              Options
+            </span>
+            <ul className="text-body-2 text-ink-muted leading-[1.7] m-0 pl-4">
+              {options.map((opt) => (
+                <li key={opt}>{opt}</li>
+              ))}
             </ul>
           </div>
         )}
 
-        <div style={ROW_STYLE}>
-          <span style={LABEL_STYLE}>Chosen</span>
-          <p style={TEXT_STYLE}>{chosen}</p>
+        <div className={rowCls}>
+          <span className="text-label pt-[3px] flex-shrink-0" style={{ color: labelColor }}>
+            Chosen
+          </span>
+          <p className="text-body-2 text-ink leading-[1.7] m-0 font-medium">{chosen}</p>
         </div>
 
-        <div style={ROW_STYLE}>
-          <span style={LABEL_STYLE}>Tradeoff</span>
-          <p style={TEXT_STYLE}>{tradeoff}</p>
+        <div className={rowCls}>
+          <span className="text-label pt-[3px] flex-shrink-0 text-ink-faint">
+            Tradeoff
+          </span>
+          <p className="text-body-2 text-ink-faint leading-[1.7] m-0">{tradeoff}</p>
         </div>
       </div>
     </div>

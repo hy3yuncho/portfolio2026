@@ -11,15 +11,15 @@ export default function TwoColumnSection({
   leftWidth = "1fr",
   rightWidth = "1fr",
 }: TwoColumnSectionProps) {
+  const isCustomWidths = leftWidth !== "1fr" || rightWidth !== "1fr";
+
   return (
-    <div style={{
-      display: "grid",
-      gridTemplateColumns: `${leftWidth} ${rightWidth}`,
-      gap: 40,
-      alignItems: "stretch",
-    }}>
-      <div style={{ alignSelf: "start" }}>{left}</div>
-      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>{right}</div>
+    <div
+      className={`grid grid-cols-1 gap-8 ${isCustomWidths ? "" : "md:grid-cols-2 md:gap-10"}`}
+      style={isCustomWidths ? { gridTemplateColumns: `${leftWidth} ${rightWidth}`, gap: 40 } : undefined}
+    >
+      <div className="self-start">{left}</div>
+      <div className="flex flex-col">{right}</div>
     </div>
   );
 }

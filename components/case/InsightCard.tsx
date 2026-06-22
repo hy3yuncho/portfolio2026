@@ -5,7 +5,17 @@ interface InsightCardProps {
 }
 
 const DefaultIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#969696" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }}>
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="flex-shrink-0 mt-0.5 text-ink-faint"
+  >
     <circle cx="12" cy="8" r="4" />
     <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
   </svg>
@@ -13,40 +23,16 @@ const DefaultIcon = () => (
 
 export default function InsightCard({ icon, title, description }: InsightCardProps) {
   return (
-    <div style={{
-      background: "#F1F2F3",
-      borderRadius: 5,
-      padding: "12px 12px",
-      display: "flex",
-      gap: 12,
-      alignItems: "flex-start",
-      width: 538,
-      maxWidth: "100%",
-      boxSizing: "border-box",
-    }}>
-      <div style={{ flexShrink: 0 }}>
+    <div className="bg-surface-subtle rounded-[5px] p-5 flex gap-4 items-start w-full">
+      <div className="flex-shrink-0 mt-0.5">
         {icon ?? <DefaultIcon />}
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-        <p style={{
-          fontFamily: "var(--font-dm-sans)",
-          fontSize: 14,
-          fontWeight: 500,
-          color: "#666666",
-          lineHeight: 1.3,
-          margin: 0,
-        }}>
+      <div className="flex flex-col gap-1.5">
+        <p className="text-body-2 text-ink font-medium leading-[1.4] m-0">
           {title}
         </p>
-        <p style={{
-          fontFamily: "var(--font-dm-sans)",
-          fontSize: 14,
-          fontWeight: 400,
-          color: "#969696",
-          lineHeight: 1.7,
-          margin: 0,
-        }}>
+        <p className="text-body-2 text-ink-muted leading-[1.7] m-0">
           {description}
         </p>
       </div>

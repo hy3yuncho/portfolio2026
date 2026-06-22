@@ -227,3 +227,13 @@
     border-radius: 2px;
   }
 }
+
+:root {
+  --bg: #fefefc;
+  --surface: #f7fafc;
+  --border: #e5e5e5;
+  --text: #141412;
+  --text-mid: #666;
+  --text-muted: #989898;
+  --yellow: #fadb68;
+}

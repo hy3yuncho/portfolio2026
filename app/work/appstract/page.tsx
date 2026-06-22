@@ -9,11 +9,9 @@ import DecisionBlock from "@/components/case/DecisionBlock";
 import CaseCTA from "@/components/CaseCTA";
 import { Eye, MousePointerClick, Layers, Wifi, MessageCircle, Users } from "lucide-react";
 
-// ─── Shared styles ────────────────────────────────────────────────────────────
+// ─── Constants ────────────────────────────────────────────────────────────────
 
 const FONT_SANS = "var(--font-dm-sans)";
-const FONT_DISPLAY = "var(--font-montserrat)";
-const FONT_SERIF = "var(--font-ibm-plex-serif)";
 const CHECKERBOARD = "repeating-conic-gradient(#e0e0e0 0% 25%, #f5f5f5 0% 50%) 0 0 / 20px 20px";
 const LABEL_COLOR = "#F4673A";
 
@@ -21,13 +19,9 @@ const LABEL_COLOR = "#F4673A";
 
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
-        {label}
-      </span>
-      <span style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#57423F" }}>
-        {value}
-      </span>
+    <div className="flex flex-col gap-1">
+      <span className="text-label text-ink-faint">{label}</span>
+      <span className="text-body-2-light text-ink-secondary">{value}</span>
     </div>
   );
 }
@@ -63,73 +57,69 @@ export default function AppstractPage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <div style={{ display: "flex", alignItems: "flex-start" }}>
+      <div className="flex flex-col md:flex-row items-start">
 
         {/* Left: sticky project meta */}
-        <div style={{
-          position: "sticky", top: 41, width: 340, flexShrink: 0,
-          alignSelf: "flex-start", padding: "40px 32px", display: "flex",
-          flexDirection: "column", gap: 24,
-        }}>
+        <div
+          className="w-full md:w-[340px] md:flex-shrink-0"
+          style={{ position: "sticky", top: 41, alignSelf: "flex-start", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 24 }}
+        >
           <div>
-            <h1 style={{ fontFamily: FONT_SERIF, fontSize: 24, fontWeight: 500, fontStyle: "italic", margin: "0 0 6px" }}>
+            <h1 className="text-h1 text-ink" style={{ margin: "0 0 8px" }}>
               Appstract
             </h1>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 16, fontWeight: 400, color: "#57423F", margin: "0 0 4px" }}>
-              Your group chat, inside the store.
+            <p className="text-body-1 text-ink-secondary" style={{ margin: "0 0 8px" }}>
+              Social shopping widget embedded in partner e-commerce sites. The product was live. Engagement was near-zero.
             </p>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#666666", lineHeight: 1.7, margin: 0 }}>
+            <p className="text-body-2-light text-ink-muted leading-[1.7] m-0">
               The widget was live. Shoppers weren&apos;t engaging. I redesigned the default state and first-interaction flow around one insight: the social activity itself is the best advertisement for the product.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px 20px" }}>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-4">
             <MetaItem label="Timeline" value="2–4 months" />
             <MetaItem label="Role" value="Solo Designer" />
             <MetaItem label="Platform" value="Web (embedded widget)" />
             <MetaItem label="Tools" value="Figma" />
           </div>
-          <div>
-            <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
-              Team
-            </span>
-            <div style={{ marginTop: 4, display: "flex", flexDirection: "column", gap: 2 }}>
-              {["Solo. Worked directly with founders."].map((m) => (
-                <span key={m} style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#57423F" }}>{m}</span>
-              ))}
+
+          <div className="flex flex-col gap-1">
+            <span className="text-label text-ink-faint">Team</span>
+            <div className="flex flex-col gap-1">
+              <span className="text-body-2-light text-ink-secondary">Solo. Worked directly with founders.</span>
             </div>
           </div>
         </div>
 
         {/* Right: cover images */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 4 }}>
+        <div className="flex-1 flex flex-col gap-1">
           <div style={{ height: "100vh", background: CHECKERBOARD }} />
           <div style={{ height: "60vh", background: CHECKERBOARD }} />
         </div>
       </div>
 
-      <hr style={{ border: "none", borderTop: "1px solid #E8E8E8", margin: 0 }} />
+      <hr className="border-0 border-t border-border m-0" />
 
       {/* ── SIDE NAV + CASE CONTENT ───────────────────────────────────────── */}
-      <div className="flex items-start pt-0 md:pt-20">
+      <div className="flex items-start">
         <SideNav sections={NAV_SECTIONS} />
 
-        <div className="flex-1 px-5 py-12 md:px-[72px] md:py-16" style={{ display: "flex", flexDirection: "column", gap: 96 }}>
+        <div className="flex-1 px-5 py-14 md:px-28 md:py-24 flex flex-col gap-20">
 
           {/* ── OVERVIEW ── */}
-          <FadeIn><div id="overview" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <FadeIn><div id="overview" className="flex flex-col gap-4">
             <SectionHeader
               label="OVERVIEW"
               labelColor={LABEL_COLOR}
               title="Making a live product visible to the people it was built for."
             />
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
-              Appstract embeds a social shopping layer as a widget into partner e-commerce sites. The widget was live and integrated across partner sites. Engagement was near-zero. I was the sole designer, working end-to-end from research through high-fidelity UI, directly with the founders.
+            <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
+              Appstract is a social shopping layer embedded into partner e-commerce sites. By the time I joined, the widget was live. Engagement was near-zero. I was the only designer on it, working end-to-end with the founders from research through final UI.
             </p>
           </div></FadeIn>
 
           {/* ── THE PROBLEM ── */}
-          <FadeIn><div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="the-problem" className="flex flex-col gap-4">
             <SectionHeader
               label="THE PROBLEM"
               labelColor="#E05A3A"
@@ -137,10 +127,8 @@ export default function AppstractPage() {
               body="The problem operated on two levels simultaneously. Fixing one without the other wouldn't move the needle."
             />
             <TwoColumnSection
-              leftWidth="1fr"
-              rightWidth="1fr"
               left={
-                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <div className="flex flex-col gap-4">
                   <InsightCard
                     icon={<Eye size={18} color="#969696" />}
                     title="B2C: shoppers don't notice the widget"
@@ -159,14 +147,7 @@ export default function AppstractPage() {
                 </div>
               }
               right={
-                <div style={{
-                  background: "#F1F2F3", borderRadius: 10,
-                  border: "1px solid #E5E5E5", display: "flex",
-                  alignItems: "center", justifyContent: "center",
-                  minHeight: 340, color: "#969696", fontSize: 12,
-                  fontFamily: FONT_SANS, letterSpacing: "0.04em",
-                  textAlign: "center", padding: "0 32px",
-                }}>
+                <div className="bg-surface-subtle rounded-[10px] border border-border flex items-center justify-center min-h-[340px] text-ink-faint text-body-3 tracking-[0.04em] text-center px-8">
                   IMAGE: Widget default state · Before / After
                 </div>
               }
@@ -174,24 +155,25 @@ export default function AppstractPage() {
           </div></FadeIn>
 
           {/* ── KEY DECISIONS ── */}
-          <FadeIn><div id="key-decisions" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="key-decisions" className="flex flex-col gap-4">
             <SectionHeader
               label="KEY DECISIONS"
               labelColor={LABEL_COLOR}
               title="Four calls. Each one traded something."
-              body="Research included user testing sessions, a qualitative survey on how people involve others in shopping decisions, and desk research into widget discovery patterns in embedded third-party products."
+              body="User testing, a short survey, and desk research into widget discovery patterns. The finding that drove everything: attention on a product page can&apos;t be commanded. It has to be earned."
             />
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div className="flex flex-col gap-4">
               <DecisionBlock
                 number={1}
                 title="Rethinking the entry point"
                 situation="Tooltips and in-product prompts had already been tried with limited effect."
                 options={[
-                  "Iterate on the same approach — better copy, better timing",
+                  "Iterate on the same approach: better copy, better timing",
                   "Rethink the entry point entirely",
                 ]}
-                chosen="Shifted from 'here is a tooltip explaining the feature' to designing a widget state that communicates value through its visual form — the social activity itself becomes the awareness mechanism."
+                chosen="Shifted from 'here is a tooltip explaining the feature' to designing a widget state that communicates value through its visual form. The social activity itself becomes the awareness mechanism."
                 tradeoff="Longer iteration cycle. A better tooltip would have shipped faster, but the root issue was conceptual legibility, not copy quality."
+                labelColor={LABEL_COLOR}
               />
               <DecisionBlock
                 number={2}
@@ -199,6 +181,7 @@ export default function AppstractPage() {
                 situation="Should the two problems be solved as one design challenge or two separate workstreams?"
                 chosen="Treated as one: a widget compelling enough for shoppers to use would naturally become an asset partners want to promote. Solved B2C first; B2B guidance followed from that foundation."
                 tradeoff="B2B-specific needs (placement logic, partner onboarding) got less dedicated design time early on."
+                labelColor={LABEL_COLOR}
               />
               <DecisionBlock
                 number={3}
@@ -210,6 +193,7 @@ export default function AppstractPage() {
                 ]}
                 chosen="Designed peer activity, reactions, and shared browsing indicators into the default state. The social proof is the awareness mechanic."
                 tradeoff="Requires real usage data to look credible. Low-signal states in early periods need careful handling."
+                labelColor={LABEL_COLOR}
               />
               <DecisionBlock
                 number={4}
@@ -219,20 +203,21 @@ export default function AppstractPage() {
                   "Improve the existing sharing flow",
                   "Introduce a dedicated lower-friction mechanic",
                 ]}
-                chosen="Designed a fast reaction flow (Micro Poll) as a separate path alongside standard share. Async emoji reactions — scoped to shopping gut reactions — reduce the response bar to near-zero on both sides."
+                chosen="Designed a fast reaction flow (Micro Poll) as a separate path alongside standard share. Async emoji reactions (scoped to shopping gut reactions) reduce the response bar to near-zero on both sides."
                 tradeoff="Two parallel flows add UI surface area. Worth it because the use cases are genuinely distinct: share for discovery vs. get a quick opinion before deciding."
+                labelColor={LABEL_COLOR}
               />
             </div>
           </div></FadeIn>
 
           {/* ── SOLUTION ── */}
-          <FadeIn><div id="solution" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="solution" className="flex flex-col gap-4">
             <SectionHeader
               label="SOLUTION"
               labelColor={LABEL_COLOR}
               title="Show the social activity. Don't describe it."
             />
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div className="flex flex-col gap-4">
               <InsightCard
                 icon={<Layers size={18} color="#969696" />}
                 title="Widget default state: ambient social signals"
@@ -241,12 +226,12 @@ export default function AppstractPage() {
               <InsightCard
                 icon={<MousePointerClick size={18} color="#969696" />}
                 title="First-interaction: frictionless entry"
-                description="The transition from widget to active shared shopping session is designed to feel effortless. No modal, no redirect — stays in the product page context."
+                description="The transition from widget to active shared shopping session is designed to feel effortless. No modal, no redirect. Stays in the product page context."
               />
               <InsightCard
                 icon={<MessageCircle size={18} color="#969696" />}
                 title="Micro Poll: async fast reactions"
-                description="User sends one or more products to friends. Friends respond with a curated emoji set — async, no account required. Once reactions come in, a conversation thread opens automatically. The quick signal becomes an entry point, not a dead end."
+                description="User sends one or more products to friends. Friends respond with a curated emoji set, async, no account required. Once reactions come in, a conversation thread opens automatically. The quick signal becomes an entry point, not a dead end."
               />
               <InsightCard
                 icon={<Users size={18} color="#969696" />}
@@ -262,18 +247,18 @@ export default function AppstractPage() {
           </div></FadeIn>
 
           {/* ── LEARNINGS + CTA ── */}
-          <FadeIn><div id="learnings" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="learnings" className="flex flex-col gap-4">
             <SectionHeader
               label="LEARNINGS"
               labelColor={LABEL_COLOR}
               title="What I'd do differently."
             />
-            <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "start" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8 md:gap-10 items-start">
+              <div className="flex flex-col gap-4">
                 <InsightCard
                   icon={<Eye size={18} color="#969696" />}
                   title="Audit the partner integration earlier"
-                  description="Understanding how different partner sites were actually placing the widget — and where it was getting lost — would have shaped the constraints more precisely. I worked from assumptions that could have been replaced with observations."
+                  description="Understanding how different partner sites were actually placing the widget (and where it was getting lost) would have shaped the constraints more precisely. I worked from assumptions that could have been replaced with observations."
                 />
                 <InsightCard
                   icon={<Layers size={18} color="#969696" />}

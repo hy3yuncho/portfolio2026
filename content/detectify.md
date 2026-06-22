@@ -1,7 +1,7 @@
-# Detectify: Content for Portfolio Website
+# Detectify — Content for Portfolio Website
 
-> ⚠️ NDA 적용. 실제 UI 스크린샷 공개 불가. 페이지는 텍스트 중심으로 구성.
-> Claude: 이미지 플레이스홀더 없이 텍스트만으로 페이지를 구성할 것.
+> ⚠️ NDA — no UI screenshots publicly. Text-only page.
+> Screenshots available on request.
 
 ---
 
@@ -20,125 +20,134 @@
 
 | | |
 |---|---|
-| **Timeline** | Spring 2024 (6 months) |
-| **Role** | Product Design Intern |
-| **Platform** | B2B web app |
-| **Tools** | Figma, Figma Make |
+| **Project** | Detectify — Design System Overhaul (Table UX Redesign) |
+| **Role** | Product Design Intern (sole designer on this workstream) |
+| **Platform** | Web app (B2B SaaS) |
+| **Timeline** | 6 months total · Table redesign: Mar – Apr 2026 |
+| **Team** | 1 Product Design Lead, 2 Front-end Developers |
+| **Tools** | Figma, Figma MCP, Design Tokens |
+| **NDA** | Specific UI not shown publicly — available on request |
 
 ---
 
-## Tagline
+## Hero
 
-When tables are the product, bad table UX is a product problem.
+**Title:** Detectify
 
-Detectify's web app surfaces security vulnerability data almost entirely through tables. During my 6-month internship, I worked across a broader design system project, and the table was the most-used, most-broken part of it.
-
----
-
-## THE BRIEF
-
-**One design system. Six months. Start from the ground up.**
-
-As a product design intern at Detectify, I worked on a comprehensive design system: establishing visual foundations, consolidating components, and closing the gap between design and engineering handoff. The table redesign was one focused workstream within that, but it wasn't a component task. It was a product problem hiding inside a component.
+**Hook:**
+Detectify's product surfaces complex security data — almost entirely through tables. When tables are the product, table UX isn't a component problem. It's a product problem.
 
 ---
 
-## THE PROBLEM
+## Section 1 — Overview
 
-**Security professionals were losing time inside a tool built to save it.**
+**Role:** Product Design Intern (sole designer on this workstream)
+**Timeline:** 6 months (Design System overhaul) · Table redesign: Mar – Apr 2026
+**Platform:** Web app (B2B SaaS)
+**Users:** Security teams and external customers managing vulnerability data
+**Tools:** Figma, Figma MCP, Design Tokens
 
-Detectify's users — security engineers and analysts — need to scan through hundreds of vulnerabilities, decide what's critical, and act fast. The table was supposed to make that possible. It wasn't.
-
-To understand where things were breaking down, I ran 5 interviews with people across product, sales, and customer success: the teams closest to how real users worked with the data.
-
-Three friction points kept coming up.
-
-**No visual hierarchy**
-Every row looked the same. Users couldn't tell at a glance what needed their attention and had to read every single row to find out. Scanning was slow. Mistakes happened.
-
-**Inconsistent interactions across the product**
-Filters and sorting worked differently depending on which table you were in. Users had to relearn the same UI in different parts of the product. No pattern ever stuck.
-
-**Accessibility failures in a product that sells to compliance teams**
-Two specific issues came up in every session: column headers disappeared when you scrolled down, so users lost track of what each column meant. And the horizontal scrollbar sat at the very bottom of the table — not the screen — so to scroll sideways, users first had to scroll through hundreds of rows just to reach it. Both were WCAG failures. In a product Detectify sells to security and compliance teams, that's not just a UX problem. It's a credibility problem.
+Over 6 months at Detectify, I worked across a broader design system overhaul — foundations, component consolidation, visual language alignment. The table redesign was one focused workstream within that: the most-used, most complex, and most broken component in the product.
 
 ---
 
-## KEY INSIGHTS
+## Section 2 — The Problem
 
-**Three things that had to change.**
+Security professionals need to scan, prioritise, and act on large volumes of vulnerability data — fast. The existing table was creating friction at every step.
 
-After mapping every table instance across the product and running a full WCAG audit, three principles defined the scope of the redesign.
+**No visual hierarchy.** High information density with nothing to guide the eye — users had to read every row to find what they needed to act on.
 
-**Scannability first**
-The most important thing a security professional can do is find what matters quickly. Every density decision had to serve that, not the other way around.
+**Inconsistent interactions.** Filter and sort behaviour varied across table instances throughout the product. Users were learning the UI instead of using it.
 
-**Customisation as a feature, not a setting**
-Users wanted to see their data their way. Not a layout option buried in preferences — but drag-and-drop column reordering, right there in the table.
-
-**Accessibility as a baseline, not a pass/fail audit**
-WCAG AA compliance wasn't a checkbox. It meant touching colour tokens used across the entire product, not just the table component. That had to be scoped and agreed with engineering from the start.
+**Accessibility failures.** The component didn't meet WCAG standards — a meaningful gap for a security product used by enterprise teams with compliance requirements.
 
 ---
 
-## PROCESS
+## Section 3 — Constraints
 
-**Audit · Define · Design · Iterate**
-
-**Audit**
-Mapped every table instance across the product. Ran a WCAG audit to log contrast failures, missing focus states, and keyboard navigation gaps. This gave the redesign a concrete list of failures to address — not just a general brief to make it better.
-
-**Define**
-Set design principles before touching Figma: scannability first, progressive disclosure for dense data, accessibility as a non-negotiable baseline. Aligned early with engineering on what could and couldn't ship, so the redesign was constrained by reality, not just ambition.
-
-**Design**
-Built a component system covering every state: default, hover, selected, loading, empty, error. Included interaction design for drag-and-drop column reordering. Used Figma Make to build an interactive prototype showing live state changes, not just static screens.
-
-**Iteration**
-Ran a design critique with engineers, product, and sales. Presented the interview insights, redesign scope, and first prototype together — so the decisions were legible, not just the visuals.
+- No user research access — decisions grounded in heuristic analysis, WCAG audit results, and engineering feedback
+- The component appears across every page in the product. Any change has a high blast radius.
+- Had to ship incrementally — the redesign couldn't break existing implementations mid-rollout
+- **NDA: specific UI not shown publicly — available on request**
 
 ---
 
-## SOLUTION
+## Section 4 — Process
 
-**Three problems. Three decisions.**
+**Audit → Define → Design**
 
-**Information density vs. scannability**
-Security data is dense by nature. The answer wasn't to simplify the data but to contain it properly. Sticky header so column labels never disappear. Internal scroll with a viewport-fixed horizontal scrollbar, so users don't have to scroll through 500 rows to reach it. Drag-and-drop columns so users put what they care about first.
+**Audit:**
+I mapped every table instance across the product to document inconsistencies. Then ran a WCAG audit — contrast ratios, focus states, keyboard navigation. Used scan pattern analysis to identify where visual hierarchy broke down under high information density.
 
-**WCAG compliance without breaking the design system**
-Full WCAG AA compliance required updating colour tokens used across the entire product, not just the table. Worked with the frontend team to update tokens at the source. New colours were designed to be accessible and coherent with the existing visual language.
+**Define:**
+Three design principles for the new component: scanability first, progressive disclosure for density, accessibility as a baseline not an afterthought. I documented engineering constraints early to make sure the solutions could actually ship.
 
-**Reducing handoff friction**
-The interactive Figma Make prototype reflected different states and the drag-and-drop interaction in real time. Engineers could see exactly how the component behaved before a single line was written. Annotation back-and-forth dropped significantly.
-
----
-
-## IMPACT
-
-**A new standard. Across the whole product.**
-
-The redesigned table became the design system standard for all data views in the product. WCAG AA compliance was achieved at the component level. Engineering handoff time reduced as interactive prototypes replaced static annotated screens as the handoff artefact.
+**Design:**
+Built a component covering all states — default, hover, selected, loading, empty, error. Established token-based spacing and type scale for consistency across implementations. Used Figma MCP to generate component specs directly, which cut handoff back-and-forth significantly.
 
 ---
 
-## REFLECTIONS
+## Section 5 — Key Decisions
 
-**What I'd do differently.**
+### Decision 1 — Scanability over flexibility
 
+**Situation:** Security data is dense by nature. Users need many data points per row — but too many columns in view breaks scan patterns.
 
-**Scope the token work earlier**
-The WCAG audit surfaced colour token changes late in the process. Flagging that dependency in week one would have saved significant back-and-forth with engineering.
+**Options:**
+- Show all columns by default
+- Full column customisation
+- Opinionated default with a column toggle for power users
 
-**Interactive prototypes changed how I think about handoff**
-Building the prototype in Figma Make wasn't just a handoff artefact. It forced me to design every state properly before handoff, not as an afterthought. I'd bring that into every project from the start now.
+**What I chose:** Opinionated default — the most critical columns visible, everything else togglable.
+
+**Trade-off:** Some power users wanted everything visible. I chose scanability for the majority over flexibility for the edge case.
+
+---
+
+### Decision 2 — Fix the tokens, not just the component
+
+**Situation:** Full WCAG AA compliance required changing colour tokens used across the entire product — not only the table.
+
+**Options:**
+- Patch only the table component
+- Propose a token-level fix that updates the whole design system
+
+**What I chose:** Token-level fix — flagged the systemic issue and worked with engineering to update at the source.
+
+**Trade-off:** Slower to implement. But patching only the table would have created two conflicting colour standards in the codebase. A patch isn't a fix.
+
+---
+
+### Decision 3
+
+> ⚠️ If there's a real decision from engineering discussions — a direction you considered and abandoned — fill it in here.
+> If not, this can cover the filter/sort interaction approach.
+
+**Situation:**
+**Options:**
+**What I chose:**
+**Trade-off:**
+
+---
+
+## Section 6 — Impact
+
+The redesigned table is now the design system standard across all data views in the product. WCAG AA compliance achieved. Engineering handoff time reduced — Figma MCP-generated specs meant no more back-and-forth annotation clarification.
+
+*Specific metrics available on request.*
+
+---
+
+## Section 7 — Reflection
+
+The hardest constraint wasn't technical — it was designing a high-blast-radius component without direct user testing. Every decision had to be grounded in established principles and audit results rather than observed behaviour.
+
+If I did this again, I'd push earlier for even one lightweight session with an internal user before locking the column hierarchy. You can get a long way on principles. You can get further with one person actually using the thing.
 
 ---
 
 ## CTA
 
-**Text:** Want to see the full component spec or walk through the process?
-
-**Link label:** Get in touch →
+**Text:** Want to see the full component spec or talk through the process? Get in touch →
 
 **Link:** mailto:hy3yun.cho@gmail.com

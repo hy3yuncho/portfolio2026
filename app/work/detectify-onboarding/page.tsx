@@ -53,7 +53,7 @@ function NdaNote() {
       padding: "14px 18px",
     }}>
       <p style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 400, color: "#969696", lineHeight: 1.6, margin: 0 }}>
-        NDA applies. UI screenshots available on request — get in touch to see the full prototype walkthrough.
+        NDA applies. UI screenshots available on request. Get in touch to see the full prototype walkthrough.
       </p>
     </div>
   );
@@ -145,37 +145,37 @@ export default function DetectifyOnboardingPage() {
       <div style={{ display: "flex", alignItems: "flex-start" }}>
         <SideNav sections={NAV_SECTIONS} />
 
-        <div style={{ flex: 1, padding: "64px 72px", display: "flex", flexDirection: "column", gap: 96 }}>
+        <div style={{ flex: 1, padding: "56px 64px", display: "flex", flexDirection: "column", gap: 80 }}>
 
           {/* ── CONTEXT ── */}
-          <FadeIn><div id="context" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <FadeIn><div id="context" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <SectionHeader
               label="CONTEXT"
               labelColor={LABEL_COLOR}
-              title="A B2B security product with an onboarding problem."
+              title="An internship brief. A real activation problem."
             />
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
-              Detectify is a B2B cybersecurity SaaS whose web app helps security teams scan, prioritise, and act on vulnerability data. This project focused on the onboarding experience for new users entering the product for the first time — specifically, guiding them through domain setup and their first scan.
+            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 640 }}>
+              Detectify is a B2B cybersecurity SaaS whose web app helps security teams scan, prioritise, and act on vulnerability data. This project focused on the onboarding experience for new users entering the product for the first time: guiding them through domain setup and their first scan.
             </p>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
+            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 640 }}>
               This workstream ran alongside and following the table redesign within the same 6-month internship. I led research synthesis and UI prototyping, working closely with a PM and two developers. Design decisions were made jointly with the lead product designer.
             </p>
             <NdaNote />
           </div></FadeIn>
 
           {/* ── THE PROBLEM ── */}
-          <FadeIn><div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <SectionHeader
               label="THE PROBLEM"
               labelColor={LABEL_COLOR}
               title="Users hit a wall before they understood what they were building toward."
               body="Three things were breaking at once."
             />
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <InsightCard
                 icon={<TrendingDown size={18} color="#969696" />}
                 title="Effort before value"
-                description="New users were immediately asked to manually enter a technical asset — a high-friction task with no context for why it mattered. 69% dropped off at this step alone. Formatting errors (typing https:// instead of example.com) caused a 14–51% failure rate on that single input field."
+                description="New users were immediately asked to manually enter a technical asset. A high-friction task with no context for why it mattered. 69% dropped off at this step alone. Formatting errors (typing https:// instead of example.com) caused a 14–51% failure rate on that single input field."
               />
               <InsightCard
                 icon={<Lock size={18} color="#969696" />}
@@ -191,13 +191,13 @@ export default function DetectifyOnboardingPage() {
           </div></FadeIn>
 
           {/* ── GOALS ── */}
-          <FadeIn><div id="goals" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="goals" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <SectionHeader
               label="GOALS"
               labelColor={LABEL_COLOR}
               title="Enable first scan in under 5 minutes. Set the right expectations."
             />
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <InsightCard
                 icon={<ListChecks size={18} color="#969696" />}
                 title="User goal"
@@ -227,7 +227,7 @@ export default function DetectifyOnboardingPage() {
                   Shelved for V1
                 </span>
                 <ul style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, paddingLeft: 16 }}>
-                  <li>Deferred domain verification — letting users explore before completing DNS setup. Deprioritised due to engineering complexity, not UX preference.</li>
+                  <li>Deferred domain verification: letting users explore before completing DNS setup. Deprioritised due to engineering complexity, not UX preference.</li>
                 </ul>
               </div>
             </div>
@@ -238,14 +238,14 @@ export default function DetectifyOnboardingPage() {
           </div></FadeIn>
 
           {/* ── APPROACH ── */}
-          <FadeIn><div id="approach" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="approach" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <SectionHeader
               label="KEY INSIGHTS"
               labelColor={LABEL_COLOR}
               title="The invisible problem: users didn't know how lost they were."
-              body="Research involved four moderated think-aloud sessions with internal stakeholders representing different user types: a security expert, a non-technical user, and others. Sessions made cognitive load visible — where hesitation appeared and where assumptions collapsed."
+              body="Four think-aloud sessions with internal stakeholders (security expert, non-technical user, and others). Made cognitive load visible: where people hesitated, where assumptions collapsed."
             />
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <InsightCard
                 icon={<Mic size={18} color="#969696" />}
                 title="Progress invisibility drove abandonment more than technical friction"
@@ -254,12 +254,12 @@ export default function DetectifyOnboardingPage() {
               <InsightCard
                 icon={<AlignLeft size={18} color="#969696" />}
                 title="63% of users chose to skip the guided tour"
-                description="Not because they didn't need help — because they wanted to explore first. The existing design treated skipping as failure. The redesign had to treat it as a valid path."
+                description="Not because they didn't need help. Because they wanted to explore first. The existing design treated skipping as failure. The redesign had to treat it as a valid path."
               />
               <InsightCard
                 icon={<ListChecks size={18} color="#969696" />}
                 title="Setup was being served to users who didn't need it"
-                description="The platform had no logic for distinguishing first-time users from returning ones. Routing the wrong users into setup wasn't just annoying — it was eroding trust in the product for people who were already activated."
+                description="The platform had no logic for distinguishing first-time users from returning ones. Routing the wrong users into setup wasn't just annoying. It was eroding trust in the product for people who were already activated."
               />
             </div>
 
@@ -277,13 +277,13 @@ export default function DetectifyOnboardingPage() {
                 Most surprising finding
               </span>
               <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.7, margin: 0 }}>
-                The dot-based navigation wasn&apos;t just aesthetically vague — users genuinely couldn&apos;t tell how far into the process they were. This uncertainty made them more likely to abandon than the technical friction itself. Progress visibility was the primary problem, not the verification step.
+                The dot-based navigation wasn&apos;t just aesthetically vague. Users genuinely couldn&apos;t tell how far into the process they were. This uncertainty made them more likely to abandon than the technical friction itself. Progress visibility was the primary problem, not the verification step.
               </p>
             </div>
           </div></FadeIn>
 
           {/* ── KEY DECISIONS ── */}
-          <FadeIn><div id="key-decisions" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="key-decisions" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <SectionHeader
               label="KEY DECISIONS"
               labelColor={LABEL_COLOR}
@@ -295,45 +295,45 @@ export default function DetectifyOnboardingPage() {
                 title="Dot navigation to numeric progress"
                 situation="The existing tour used dot indicators for navigation. They were visually minimal, but gave users no sense of where they were in the sequence or how much remained."
                 options={[
-                  "Keep dots — preserve visual simplicity",
+                  "Keep dots: preserve visual simplicity",
                   "Switch to numeric labels ('Step 2 of 4') with segmented progress bars",
                 ]}
                 chosen="Numeric labels and segmented progress bars."
-                tradeoff="Sacrificed visual cleanliness for functional clarity. 6/6 testers rated numeric progress as clearer in prototype testing. This wasn't a close call — the dot approach had been optimising for aesthetics at the cost of comprehension."
+                tradeoff="Sacrificed visual cleanliness for functional clarity. 6/6 testers rated numeric progress as clearer in prototype testing. This wasn't a close call. The dot approach had been optimising for aesthetics at the cost of comprehension."
               />
               <DecisionBlock
                 number={2}
                 title="Static screenshots to animated GIFs"
-                situation="The existing tour guided users through complex interactions using static UI screenshots. Testers noted these felt outdated and didn't communicate what to do — only what the UI looked like."
+                situation="The existing tour guided users through complex interactions using static UI screenshots. Testers noted these felt outdated and didn't communicate what to do. Only what the UI looked like."
                 options={[
-                  "Keep static screenshots — lower production effort, faster to maintain",
+                  "Keep static screenshots: lower production effort, faster to maintain",
                   "Replace with short animated GIFs showing actual mouse-driven workflows",
                 ]}
                 chosen="Animated GIFs."
-                tradeoff="Higher asset production time and increased load weight. Accepted because static images were actively misleading — showing a state rather than an action. The animated format shows what to do, not just where to look."
+                tradeoff="Higher asset production time and increased load weight. Accepted because static images were actively misleading: they showed a state, not an action. The animated format shows what to do, not just where to look."
               />
               <DecisionBlock
                 number={3}
                 title="Empty completion state to expectation management modal"
-                situation="When a user completed the tour, the product had nothing to show them — the first scan takes 8–24 hours. The previous flow ended on an empty dashboard with no explanation, which read as a product failure rather than a technical delay."
+                situation="When a user completed the tour, the product had nothing to show them. The first scan takes 8–24 hours. The previous flow ended on an empty dashboard with no explanation, which read as a product failure rather than a technical delay."
                 options={[
-                  "Silent completion — let users land on the empty dashboard",
+                  "Silent completion: let users land on the empty dashboard",
                   "Explicit success modal with a countdown, context about the delay, and links to Detectify University",
                 ]}
                 chosen="An expectation management success modal."
-                tradeoff="The dashboard would still be empty. But by naming the delay, providing a countdown, and linking to educational content, we separated 'the scan is running' from 'nothing is happening.' We accepted that we couldn't fix the delay — only the interpretation of it."
+                tradeoff="The dashboard would still be empty. But by naming the delay, providing a countdown, and linking to educational content, we separated 'the scan is running' from 'nothing is happening.' We accepted that we couldn't fix the delay. Only the interpretation of it."
               />
             </div>
           </div></FadeIn>
 
           {/* ── SOLUTION ── */}
-          <FadeIn><div id="solution" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="solution" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <SectionHeader
               label="SOLUTION"
               labelColor={LABEL_COLOR}
               title="A value-first onboarding system built around one principle: show the product before asking for the effort."
             />
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <InsightCard
                 icon={<GitMerge size={18} color="#969696" />}
                 title="The Floating Control Card"
@@ -342,7 +342,7 @@ export default function DetectifyOnboardingPage() {
               <InsightCard
                 icon={<Lightbulb size={18} color="#969696" />}
                 title="Numeric progress over dot navigation"
-                description="Dots look clean. They tell you nothing. 4/4 testers couldn't identify where they were in the sequence using dots. Numbers replaced them — not as a visual upgrade, but as a functional one. 6/6 testers rated numeric progress as clearer in prototype testing."
+                description="Dots look clean. They tell you nothing. 4/4 testers couldn't identify where they were in the sequence using dots. Numbers replaced them. Not as a visual upgrade, but a functional one. 6/6 testers rated numeric progress as clearer in prototype testing."
               />
               <InsightCard
                 icon={<LayoutDashboard size={18} color="#969696" />}
@@ -364,16 +364,16 @@ export default function DetectifyOnboardingPage() {
           </div></FadeIn>
 
           {/* ── IMPACT ── */}
-          <FadeIn><div id="impact" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <FadeIn><div id="impact" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <SectionHeader
               label="IMPACT"
               labelColor={LABEL_COLOR}
               title="100% clarity. Shipped in 3 milestones."
             />
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
+            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 640 }}>
               In prototype testing, 6/6 testers rated the new numeric progress system as clearer than the previous dot-based version. The V2 prototype cleared the definition of done threshold: 100% clarity rating on progress tracking.
             </p>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
+            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 640 }}>
               The project shipped in 3 milestones. The redesign also resolved the Monitoring vs. Scanning conceptual confusion, which 50% of testers had flagged as a source of early drop-off.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
@@ -400,14 +400,14 @@ export default function DetectifyOnboardingPage() {
           </div></FadeIn>
 
           {/* ── LEARNINGS + CTA ── */}
-          <FadeIn><div id="learnings" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="learnings" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <SectionHeader
               label="LEARNINGS"
               labelColor={LABEL_COLOR}
               title="What I'd do differently."
             />
             <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "start" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <InsightCard
                   icon={<Lightbulb size={18} color="#969696" />}
                   title="Start usability testing on progress navigation earlier"

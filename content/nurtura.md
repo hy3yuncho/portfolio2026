@@ -1,8 +1,7 @@
-# Nurtura: Content for Portfolio Website
+# Nurtura — Content for Portfolio Website
 
 > Web-ready copy for the Nurtura case study page.
 > Source: Nurtura PRD v1.0 + Nurtura_CaseStudy_Copy.docx.
-> Do not rewrite this copy. Use it as-is or make minimal edits for fit.
 
 ---
 
@@ -21,7 +20,7 @@
 
 | | |
 |---|---|
-| **Project** | Nurtura: IVF Support Mobile App |
+| **Project** | Nurtura — IVF Support Mobile App |
 | **Role** | Solo UX/Product Designer (research → prototype) |
 | **Platform** | iOS mobile app |
 | **Timeline** | Spring 2025 (8 weeks) |
@@ -36,78 +35,55 @@
 **The brief:**
 *"Create a user-centred vertical social network."*
 
-This was a school project brief from Hyper Island: 8 weeks, solo, end-to-end. The scope covered the full design process: research, define, ideate, prototype. Deliverable was a hi-fi prototype with a documented design rationale.
-
-**Scope:**
-8 weeks. Solo. Research through to hi-fi prototype and documented rationale. No engineering handoff. The goal was to demonstrate design thinking depth, not production readiness.
+8 weeks. Solo. Research through to hi-fi prototype — the goal was to show the full design thinking chain, not just the screens.
 
 **How I chose IVF:**
-> ⚠️ 이 부분은 본인만 쓸 수 있어요. 왜 수많은 vertical social network 주제 중에 IVF를 골랐는지. 개인적 연결고리가 있었는지, 리서치 과정에서 발견했는지, 아니면 다른 이유가 있는지. 2–3문장으로 작성해주세요.
->
-> 예시 방향 (참고용, 그대로 쓰지 마세요):
-> "I wanted to design for a community that was underserved rather than just underdesigned. The emotional stakes were high enough to make every design decision matter. IVF kept coming up as I mapped communities where existing platforms actively made things worse."
+> ⚠️ 이 부분은 본인만 쓸 수 있어요 — 왜 IVF를 골랐는지. 2–3문장으로 작성해주세요.
 
 ---
 
 ## Hero / Intro
 
 **Headline:**
-Nurtura: designing a safe space for people navigating IVF
+Nurtura — designing a safe space for people navigating IVF
 
 **Subhead / summary:**
-52% of IVF patients avoid online forums because the content is too triggering. Instead of adding more features to an already overwhelming landscape, I designed a community platform with emotional guardrails built in from onboarding.
+51% of IVF patients avoid online forums because the content is too triggering. I didn't add more features to an already overwhelming landscape — I built emotional guardrails in from the start.
 
 ---
 
 ## The Problem
 
-To understand what people going through IVF actually needed, not just what they said they needed, I conducted 11 semi-structured interviews with 12 participants (10 women currently going through or having gone through IVF, and 2 partners), alongside a 35-person survey. Interviews were held both in person and online, lasting around 45 minutes to an hour. I wanted to hear the real friction: what made them close the app, why they stayed away from forums, what they wished existed.
+I talked to 12 people going through IVF — 10 patients and 2 partners — and ran a survey with 35 more. One pattern came up everywhere: people were using existing platforms, but leaving worse than when they arrived.
 
-What I found wasn't a lack of platforms. It was that existing platforms like Facebook groups, Reddit, and generic forums were actively making things worse. Unfiltered feeds, no journey context, no emotional framing. The result: users left more overwhelmed than when they arrived.
+Facebook groups, Reddit threads, generic forums — none of them were designed with the emotional weight of IVF in mind. Unfiltered feeds, no journey context, no way to avoid content that could destabilise you mid-cycle.
 
-I transcribed all interviews and ran an affinity mapping session in FigJam to cluster statements into themes: community, emotional experience, information, social expectations, family, and coping strategies. The emotional experience cluster was the largest, and the most consequential for design.
+After mapping all the interviews, the emotional experience cluster was the largest. Not information gaps. Not missing features. Emotional safety.
 
-**Research findings:**
-- 9/12 (75%) felt lonely during the process
-- 7/12 (60%) felt misunderstood or unsupported by people close to them
-- 8/12 (70%) experienced stress and anxiety from inconsistent or insufficient information
-- 7/12 (60%) had strong negative emotional reactions to pregnancy and baby content online
+Key findings:
+- 75% felt lonely during the process
+- 60% felt misunderstood by the people around them
+- 60% had strong negative reactions to pregnancy and baby content online
+- 70% experienced anxiety from inconsistent information
 - 51% sometimes or always avoid IVF forums due to triggering content
-- 77% preferred a dedicated mobile app over a web-based platform
 
 **Image placeholder:** Affinity map · Themes clustered from interview transcripts
 
 ---
 
-## Research → Design Decisions
-
-This is the chain I wanted to make visible in the portfolio: every screen traces back to a specific finding.
-
-| Finding | What it meant for design |
-|---|---|
-| 75% felt lonely | Community feed as the primary surface, not information or features |
-| 51% avoid forums | Content preferences in onboarding (before they see a single post) |
-| Filtering by fertility treatment type preferred (83%) | Filter chips always visible at the top of the feed, not buried in settings |
-| 60% triggered by pregnancy/baby content | Onboarding guardrails + filter always accessible |
-| 40% prefer anonymity | Anonymous by default; identity revealed only by choice |
-
-**Image placeholder:** Research synthesis · Key insights mapped to design decisions
-
----
-
 ## Key Insights
 
-The avoidance behaviour is the signal. The people who need community most are the ones opting out. That told me the problem wasn't a lack of platforms. Existing platforms simply hadn't made safety a design priority.
+The people who need community most are the ones opting out. That told me the problem wasn't a lack of platforms — it was that none of them had made emotional safety a design priority.
 
-Three things became clear from research:
+Three things became clear:
 
-**Content control needs to happen before exposure.** Users who hit an unfiltered feed and feel triggered don't come back to adjust settings. They just leave.
+**Control has to come before exposure.** If someone gets triggered by an unfiltered feed, they don't go back to change their settings. They just leave.
 
-**Anonymity and personalisation aren't opposites.** Users want relevant content without revealing their identity. The design had to hold both at once.
+**Anonymity and personalisation aren't opposites.** People wanted relevant content without having to reveal their identity. The design had to hold both at once.
 
-**Peer connection lands best when matched by journey stage, not location or interests.** "Someone who gets where I am right now" was the consistent ask.
+**"Someone who gets where I am right now."** Matching by journey stage — not location, not interests — was what people actually asked for.
 
-**Image placeholder:** Journey map · Where confidence drops, where decisions happen, where users disengage
+**Image placeholder:** Journey map · Where confidence drops, where users disengage
 
 ---
 
@@ -115,36 +91,40 @@ Three things became clear from research:
 
 Three personas from research.
 
-**Billie: The Emotional Rollercoaster**
-39, CEO, Gothenburg. Single mother, 3 years into IVF. Needs a safe space to express emotions without guilt when seeing others' successes. Not knowing people who have gone through IVF, she feels isolated, and existing groups only amplify that.
+**Billie — The Emotional Rollercoaster**
+39, CEO, Gothenburg. Single mother, 3 years into IVF. Needs a space to process emotions without the guilt of seeing others' announcements. She doesn't know anyone who's been through IVF — and existing communities only amplify that isolation.
 
-**Mintra: The One Who Just Wants to Hear More Stories**
-30, Teacher, Stockholm. Engaged, trying for a second child. Her friends offer unsolicited advice and try to fix things, which adds to her stress. Pregnancies in her friend group trigger jealousy she keeps to herself. *"At first, I just talked to my one friend who did IVF. But that's just one person. I wanted to hear more stories."*
+**Mintra — The One Who Just Wants to Hear More Stories**
+30, Teacher, Stockholm. Engaged, trying for a second child. Her friends mean well but keep offering advice when she just wants to be heard. *"At first, I just talked to my one friend who did IVF. But that's just one person. I wanted to hear more stories."*
 
-**Liam: The Logical Companion**
-35, Civil Engineer, Stockholm. Supporting his wife through IVF. Prefers clear, scientifically backed information, but is starting to realise he also needs a safe place to feel his own emotions instead of suppressing them.
+**Liam — The Logical Companion**
+35, Civil Engineer, Stockholm. Supporting his wife through IVF. He defaults to wanting facts and data — but is slowly realising he also needs somewhere to process how he's feeling.
 
-*Mintra drove primary design decisions (revised as the main persona in final iteration). Liam shaped the "For Partners" section in the guide and the partner onboarding path.*
+*Mintra drove primary design decisions. Liam shaped the partner perspective throughout.*
+
+---
+
+## Research → Design Decisions
+
+Every screen traces back to a specific finding.
+
+| Finding | Design decision |
+|---|---|
+| 75% felt lonely | Community feed as the primary surface — not features, not information |
+| 51% avoid forums | Content preferences in onboarding — before they see a single post |
+| 83% wanted to filter by treatment type | Filter chips always visible at the top of the feed |
+| 60% triggered by pregnancy/baby content | Onboarding guardrails + filter always accessible |
+| 40% prefer anonymity | Anonymous by default; identity revealed only at their own pace |
+
+**Image placeholder:** Research synthesis · Key insights mapped to design decisions
 
 ---
 
 ## Concept Exploration
 
-With research done, I moved into ideation around three distinct problems that kept surfacing: users feel lonely and misunderstood, existing platforms lack tailored community and emotional safety, and there's a consistent gap in emotionally framed information throughout the journey.
+I explored three directions: a personalised community forum, 1:1 peer matchmaking, and an emotionally-framed IVF guide. Each addressed a real need. None of them worked alone.
 
-I explored three separate concept directions:
-
-**Concept 1: Personalized Community Groups & Forums**
-Nearly 80% of users already rely on Facebook groups and forums. The problem isn't that people don't use communities. It's that those communities don't meet them where they are. This concept addressed that gap directly: a forum experience built around IVF, with personalisation options to filter by stage, topic, and treatment type.
-
-**Concept 2: 1:1 Matchmaking & Peer Support**
-Many users emphasized that friends and family, however well-meaning, couldn't provide the kind of support that comes from shared experience. Every IVF journey is different. Users wanted to find someone going through something *specifically similar*, not just someone vaguely supportive. This concept was a matchmaking-style peer connect feature.
-
-**Concept 3: Emotional & Informational Support**
-Research highlighted a consistent gap: medical information is available, but the emotional preparation isn't. This concept took inspiration from pregnancy tracking apps and reframed them for IVF, personalised by journey stage and focused on emotional readiness alongside clinical detail.
-
-**Decision: combine Concepts 1 and 2, with emotional support as a layer**
-After sketching all three as low-fidelity screens, it became clear that separating community, peer connection, and information into three separate apps was feature sprawl masquerading as product strategy. Each concept addressed a real need, but none of them worked alone. The decision was to merge community and peer matching as the primary surface, with emotional and informational support woven through as contextual depth rather than separate tabs.
+The decision was to merge community and peer connect as the core product, with emotional support and information as depth layers — not separate sections. Three separate apps isn't a product strategy.
 
 **Image placeholder:** Lo-fi sketches · Three concept directions side by side
 
@@ -152,74 +132,52 @@ After sketching all three as low-fidelity screens, it became clear that separati
 
 ## Iteration
 
-The first version of the merged concept had a nav bar with four tabs: Forum/Groups, Messages, Connect, Profile. I ran a user navigation test on this prototype covering 5 tasks: community browsing, peer finding, and messaging. The results were clear: the "Connect" feature was almost impossible to find. Users ended up in Forums looking for it, or tapped through success stories instead.
+First version had four nav tabs: Forum/Groups, Messages, Connect, Profile. I ran a usability test across 5 tasks. The Connect feature was nearly impossible to find — users ended up in the Forum looking for it.
 
-Key findings from the navigation test:
-- The main page felt more like a settings menu than an engaging home screen
-- "Connect" and "Add Friend" were not intuitive from the nav. Users expected to find them inside the community, not in a separate tab
-- Forum filtering was well-received and easy to use
-- Anonymous posting was appreciated
+Two things were clear: the home screen felt like a settings menu, and peer connect didn't make sense as a separate tab. People expected to find it inside the community, not in a dedicated section.
 
-This pushed me back to the drawing board on information architecture. The navigation test result confirmed what the research had already suggested: peer connect shouldn't be a destination. It should be a natural extension of reading a post, a depth layer rather than a separate tab.
+I went back to low-fidelity and rebuilt the information architecture around how the features related to each other — not how they'd look.
 
-I stepped back to low-fidelity and resketeched the flow without a home screen, focusing on how the main features related to each other structurally rather than how they'd look.
-
-**Image placeholder:** Navigation architecture sketch · Before and after merging depth layers
+**Image placeholder:** Navigation architecture · Before and after
 
 ---
 
-## Concept 4: Final Direction
+## Concept 4 — Final Direction
 
-After the iteration round, I refocused the concept on what the product actually needed to *do*, not just what features it contained. The earlier version had followed the research findings too literally, producing a product that was technically correct but unclear in its value proposition.
+After the iteration round, I refocused on what the product needed to actually *do*. The earlier version had followed the research findings too literally — technically correct, but no clear value proposition.
 
-The refined concept placed the individual IVF journey at the center, not the community or the features. The community exists to serve the journey. The peer connections, check-ins, and guide content all map back to where the user is *right now* in their process.
-
-**Final concept statement:** *A personal guide for people going through the IVF journey, offering insights into the physical and emotional changes at each stage. The app includes tracking tools, emotional support resources, and an online community to keep users informed, connected, and supported.*
+**Final concept:** *A personal guide for people going through IVF, with tracking tools, emotional support, and a community — all mapped to where you are in the process right now.*
 
 Primary function: tailored online community
 Secondary function: personal tracking + self-support
 
 ---
 
-## Product Overview
-
-Nurtura is a safe community platform with emotional guardrails. Rather than combining three separate products (community / peer matchmaking / informational support) into feature sprawl, Nurtura treats peer connection and information as natural depth layers within a single, coherent community experience.
-
-**Core features:**
-- Safe community feed with content filtering
-- Peer connect: 1:1 connections, initiated from within the community
-- Emotional check-in (daily, private)
-- IVF information guide (personalised by journey stage)
-
----
-
 ## Design Decisions
 
-### Decision 1: Content preferences in onboarding, not settings
+### Decision 1 — Content preferences in onboarding, not settings
 
-*This is the most important screen in the portfolio. Use it to show the research → design decision chain.*
+52% of users avoid forums because of triggering content. The obvious fix is a settings screen. I put it in onboarding, before they've ever seen the feed.
 
-52% of users avoid forums because of triggering content. The standard solution would be to add a settings screen. I put it in onboarding, before users ever see the feed.
+*"What would you like to avoid seeing?"* — checkboxes for pregnancy announcements, success stories, medical content, baby images. And below: *"You can change this anytime."*
 
-The screen asks: *"What would you like to avoid seeing?"* with checkboxes for pregnancy announcements, success stories, medical procedures, baby/child images. Below: *"You can change this anytime."*
+That last line matters. It reframes the screen from "we're protecting you" to "you're in control."
 
-That last line matters: it reduces commitment anxiety. The framing is "you're in control" rather than "we're protecting you."
+### Decision 2 — Peer connect lives inside a post, not a separate tab
 
-### Decision 2: Peer connect lives inside a post, not a separate tab
+Early concepts treated community, peer matching, and information as three separate sections. That produced feature sprawl and a blurry value proposition. I merged them as depth layers — peer connect is reached from within a post, not from the nav.
 
-Early concepts had community, peer matching, and information as three separate sections. That created feature sprawl and an unclear value prop. I merged them as depth layers. Peer connect is reached from within a post, not from the nav. A more coherent product was worth the discoverability tradeoff at MVP.
+A more coherent product was worth the discoverability tradeoff at MVP.
 
-*Image: Navigation architecture · Before vs. after merging depth layers*
+### Decision 3 — Anonymity by default, identity by choice
 
-### Decision 3: Anonymity by default, identity by choice
+40% of users prefer anonymity — but personalisation requires context. Rather than forcing a choice upfront, I made anonymity the default at every layer: community archetypes instead of names, illustrated avatars, anonymous first messages. Identity surfaces progressively, at the user's pace.
 
-40% of users prefer anonymity, but personalisation requires context. Rather than forcing a choice, I made anonymity the default at every layer: community archetypes instead of names, illustrated avatars, anonymous first messages. Identity is revealed progressively, at the user's pace.
+### Decision 4 — Match by journey stage, not interests
 
-### Decision 4: Match by journey stage, not interests
+Standard peer matching uses location or shared interests. For IVF, the most meaningful signal is treatment stage. Match cards show journey stage, round of treatment, and support type — the matching logic is visible, not hidden.
 
-Standard peer matching uses location or shared interests. For IVF users, the most meaningful signal is treatment stage. Match cards make the matching logic visible: journey stage, round of treatment, support type. Smaller match pool for rare stages is an acceptable tradeoff. Match quality matters more than quantity at MVP.
-
-*Image: S10 · Match card anatomy, showing visible matching logic*
+A smaller match pool for rare stages is an acceptable tradeoff. Match quality matters more than quantity at MVP.
 
 ---
 
@@ -227,77 +185,81 @@ Standard peer matching uses location or shared interests. For IVF users, the mos
 
 17 screens across 5 flows.
 
-| Flow | Screens | Why it's in the portfolio |
+| Flow | Screens | Why it matters |
 |---|---|---|
-| Onboarding | S01–S04 | Shows the research → UI decision chain |
+| Onboarding | S01–S04 | Where the research → design chain is most visible |
 | Home | S05 | Hub connecting all 4 features |
-| Community + Filter | S06–S08 | Main value proposition |
-| Peer Connect | S09–S11 | Differentiator from generic forums |
-| Emotional Check-in | S12–S14 | Shows emotional safety thinking |
-| IVF Guide | S15–S17 | Information + community bridge |
+| Community + Filter | S06–S08 | The core value proposition |
+| Peer Connect | S09–S11 | What makes this different from a generic forum |
+| Emotional Check-in | S12–S14 | Emotional safety in practice |
+| IVF Guide | S15–S17 | Information and community bridged together |
 
-### Flow descriptions (for section headers in the case study)
+---
 
-**Onboarding: set once, applied everywhere (S01–S04)**
-Users set content preferences, journey stage, and anonymity level before they ever see the feed. By the time they reach the community, it's already filtered for them.
+**Onboarding — set once, applied everywhere (S01–S04)**
+Content preferences, journey stage, and anonymity level — all set before they see a single post. By the time they reach the community, it's already filtered for them.
+
 *Image: S01–S04 · Onboarding flow*
 
 **A home that knows where you are (S05)**
-The daily check-in card sits at the top of the dashboard. Not because it's the most-used feature, but because it sets the emotional tone for every session. The app asks how you're doing before it asks anything else.
+The daily check-in sits at the top of the dashboard — not because it's the most-used feature, but because it sets the emotional tone for every session. The app asks how you're doing before anything else.
+
 *Image: S05 · Home Dashboard*
 
 **Community built around your context (S06–S08)**
-Filter chips carry over directly from onboarding preferences. Sort by 'most supportive' surfaces empathetic content first, a sorting option unique to Nurtura. Users can go deeper from any post without leaving the feed.
+Filter chips carry over from onboarding. Sort by "most supportive" surfaces empathetic content first — unique to Nurtura. Users can go deeper from any post without leaving the feed.
+
 *Image: S06–S08 · Community Feed + Filter + Post Detail*
 
 **Connect without exposure (S09–S11)**
-Peer match cards surface journey stage, treatment round, and support type as the primary signals. First messages are anonymous, with suggested prompts to remove blank-page anxiety. Users move toward identity at their own pace.
+Match cards show journey stage, treatment round, and support type. First messages are anonymous, with suggested prompts — to remove the blank-page anxiety of reaching out to a stranger.
+
 *Image: S09–S11 · Peer Connect flow*
 
 **Check in without commitment (S12–S14)**
-A low-friction daily touchpoint. The reflection result bridges emotional state to community, peer connect, or guide, making check-in feel purposeful rather than just logging.
+A low-friction daily touchpoint. The reflection result bridges emotional state to community, peer connect, or guide — so the check-in feels purposeful, not just logging.
+
 *Image: S12–S14 · Emotional Check-in flow*
 
 **Information that knows its audience (S15–S17)**
-'For partners' directly addresses the Liam persona, a perspective existing IVF platforms ignore entirely. 'Reviewed by fertility counsellor' distinguishes Nurtura from generic search. 'Discuss in community' closes the information–community loop.
+"For partners" addresses the Liam persona directly — a perspective existing IVF platforms ignore entirely. "Discuss in community" closes the information–community loop.
+
 *Image: S15–S17 · IVF Guide flow*
 
 ---
 
-## Selected Screen Notes (for annotations)
+## Selected Screen Notes
 
-### S03 · Content Preferences: Why this screen exists
-52% avoid forums due to negative content. This screen puts the user in control of what appears in their feed, before they've ever seen it. "You can change this anytime" reduces commitment anxiety.
+### S03 · Content Preferences
+52% avoid forums due to negative content. This screen gives users control over their feed before they've ever seen it. "You can change this anytime" reduces commitment anxiety.
 
-### S07 · Post Detail: The conversion moment
-The "Connect with [name]" CTA appears naturally in the post context, not as a separate feature tab. This is the main conversion point from community browsing to 1:1 peer connection.
+### S07 · Post Detail — The conversion moment
+The "Connect with [name]" CTA appears naturally in the post context, not as a feature tab. This is where community browsing turns into 1:1 peer connection.
 
-### S11 · First Message: Removing blank-page anxiety
-Three suggested prompts ("I just wanted to say hi", "Today was tough for me", "How are you holding up?") remove the friction of first contact. Emotional framing normalises vulnerability from the first interaction.
+### S11 · First Message
+Three suggested prompts ("I just wanted to say hi", "Today was tough for me", "How are you holding up?") remove the friction of reaching out. Emotional framing normalises vulnerability from the first message.
 
-### S14 · Reflection Result: Where it all comes together
-The mood check-in doesn't just log data. It surfaces relevant guide content, shows community solidarity ("Others felt this way too this week"), and offers peer connection based on emotional state. All four research insights converge in this screen.
+### S14 · Reflection Result
+The mood check-in doesn't just log — it surfaces relevant guide content, shows community solidarity ("Others felt this way too this week"), and offers a peer connection based on emotional state. All four research insights converge here.
 
 ---
 
-## User Testing: Hi-fi Prototype
+## User Testing
 
-I tested the high-fidelity prototype with 5 users (concept and evaluation testing). The feedback validated the core design direction:
+I tested the hi-fi prototype with 5 users. A few quotes that stuck:
 
-- *"The beginning onboarding pages made me feel really validated. As if I am truly stepping into a safe space that understands my needs."*
-- *"The navigation and layout is intuitive and makes sense."*
-- *"An app that feels as though it is truly made for the needs of the targeted audience."*
-- *"I really like the balance between the medical and scientific parts and the emotional comforting side."*
+- *"The beginning onboarding pages made me feel really validated. As if I'm truly stepping into a safe space that understands my needs."*
 - *"An app that makes a scary topic feel more approachable."*
-- *"It feels like it's an app that would hold my hand through this journey!"*
+- *"It feels like it would hold my hand through this journey."*
+- *"I really like the balance between the medical side and the emotional comforting side."*
 
-The onboarding framing, starting with content preferences before showing any community content, was specifically called out as making users feel safe before they'd seen anything. That was the moment I knew the core design decision had worked.
+The onboarding framing — content preferences before any community content — was specifically called out. That was the moment I knew the core decision had landed.
 
 ---
 
 ## Prototype
 
-A tappable prototype of the onboarding flow (S01–S04) was built in React Native (Expo) as part of the portfolio. [Link or embed]
+A tappable prototype of the onboarding flow (S01–S04) was built in React Native (Expo). [Link or embed]
 
 ---
 
@@ -306,7 +268,7 @@ A tappable prototype of the onboarding flow (S01–S04) was built in React Nativ
 **Section label:** MORE
 
 **Body:**
-This project is still in progress. The prototype is complete. Usability testing and v2 scoping are next.
+Prototype complete. Usability testing and v2 scoping are next.
 
 **CTA text:** Want to dig into the process? Get in touch →
 
@@ -316,15 +278,14 @@ This project is still in progress. The prototype is complete. Usability testing 
 
 ## What I'd Do Differently
 
-[Add honest reflection here, e.g. moderation model, what the MVP excludes and why, open questions from the PRD]
+A few things I'd change:
 
-**Open questions from the PRD (honest about what's unresolved):**
-- How should the app handle a user who reports feeling unsafe or suicidal? A moderation + crisis resource flow is needed.
-- Should peer matches be algorithmically generated or user-browsable? Trade-off: control vs discovery.
-- How should the app handle users who change journey stage mid-process?
+- I'd push for even one usability session with internal users before finalising the column hierarchy. Designing without direct user access meant leaning hard on principles over observed behaviour — which worked, but left open questions.
+- The moderation model is unresolved. What happens when a user reports feeling unsafe? That flow needs to exist before this ships.
+- Should peer matches be algorithmically suggested or user-browsable? I landed on browsable for control — but discovery suffers. Worth testing both.
 
 ---
 
 ## Out of Scope (intentional)
 
-Real-time chat, AI chatbot, clinic integration, and Android were each excluded to preserve focus on the core value proposition: safe community + peer connection. These are trade-offs, not oversights.
+Real-time chat, AI chatbot, clinic integration, Android — excluded to keep the core value proposition clear. These are trade-offs, not oversights.

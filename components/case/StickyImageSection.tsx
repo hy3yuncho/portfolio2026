@@ -10,27 +10,23 @@ export default function StickyImageSection({
   imageHeight = "80vh",
 }: StickyImageSectionProps) {
   return (
-    <div style={{ display: "flex", alignItems: "flex-start", gap: 40 }}>
+    <div className="flex items-start gap-10">
       {/* Left: stacked content blocks */}
-      <div style={{
-        flex: 1,
-        display: "flex",
-        flexDirection: "column",
-        gap: 40,
-      }}>
+      <div className="flex-1 flex flex-col gap-10">
         {children}
       </div>
 
       {/* Right: sticky image */}
-      <div style={{
-        width: "45%",
-        flexShrink: 0,
-        position: "sticky",
-        top: 41,
-        alignSelf: "flex-start",
-        height: imageHeight,
-      }}>
-        <div style={{ width: "100%", height: "100%" }}>
+      <div
+        className="flex-shrink-0 self-start"
+        style={{
+          width: "45%",
+          position: "sticky",
+          top: 41,
+          height: imageHeight,
+        }}
+      >
+        <div className="w-full h-full">
           {image}
         </div>
       </div>

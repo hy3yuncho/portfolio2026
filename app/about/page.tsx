@@ -9,14 +9,14 @@ const experiences: ExperienceItem[] = [
     role: 'Product Designer',
     date: 'Spring 2026',
     expandedTitle: 'Sole designer. Full lifecycle.',
-    expandedBody: 'I came in to solve what looked like an engagement problem. Research said otherwise. The real constraint was structural friction upstream, not the feature the team had been focused on, and that finding reframed the whole project. I rebuilt the interaction model and onboarding flow from scratch around it, and designed an ambient social signal system that surfaces social proof without interrupting the core flow. No design team to hand off to. Discovery through delivery.',
+    expandedBody: 'I came in to solve what looked like an engagement problem. Research said otherwise. The real constraint was structural friction upstream, not the feature the team had been focused on, and that finding reframed the whole project. I rebuilt the interaction model and onboarding flow from scratch around it, and designed an ambient social signal system that surfaces social proof without interrupting the core flow. I also prototyped interaction concepts in working HTML/CSS using Claude Code and Cursor, so ideas could be validated at design speed without pulling engineering in early. Discovery through delivery.',
   },
   {
     company: 'Detectify',
     role: 'Product Design Intern',
     date: 'Spring 2026',
     expandedTitle: 'From inconsistency to system.',
-    expandedBody: 'I joined mid-sprint and stayed in sprint. My focus was building out the core design system to WCAG AA compliance, which meant going deep on interaction patterns that had accumulated inconsistencies over time. Alongside that, I restructured the main navigation, remapping it from a feature-release logic to how security professionals actually move through their work. Shipped in weekly cycles, directly with PM and engineering. I also prototyped interaction concepts in working HTML/CSS using Claude Code and Cursor, so ideas could be validated at design speed without pulling engineering in early.',
+    expandedBody: 'I joined mid-sprint and stayed in sprint. My focus was building out the core design system to WCAG AA compliance, which meant going deep on interaction patterns that had accumulated inconsistencies over time. Alongside that, I restructured the main navigation and onboarding flow remapping it from a feature-release logic to how security professionals actually move through their work. Shipped in weekly cycles, directly with PM and engineering.',
   },
   {
     company: 'Amiqa',
@@ -51,16 +51,17 @@ export default function AboutPage() {
         <div>
           <p className={styles["bio-heading"]}>Hej, I&apos;m Hailey!</p>
           <div className={styles["bio-body"]}>
-            <p>I&apos;m a product designer working at the intersection of business logic and human behaviour.</p>
-            <p>In Korean, there&apos;s a concept called &ldquo;연 (yeon 緣)&rdquo;: the invisible connections that shape meaning between people and contexts.</p>
-            <p>That idea guides my work. I design by identifying the underlying threads that connect user decisions, business goals, and brand clarity.</p>
-            <p>Born in South Korea, shaped in Australia, and now based in Sweden, I bring a cross-cultural perspective grounded in psychology to build products that feel coherent, intentional, and trustworthy.</p>
-            <p>Outside of design, I&apos;m:</p>
+            <p>I&apos;m a product designer who works at the intersection of business and human behaviour.</p>
+            <p>In Korean, there&apos;s a word for the invisible thread connecting people and context: &ldquo;연 (yeon 緣)&rdquo;. I think about that a lot in design. The stuff that makes a product feel right isn&apos;t always the stuff you can point to. It&apos;s the relationship between everything.</p>
+            <p>Born in South Korea, shaped in Australia, now based in Stockholm. That mix of contexts shows up in how I work. I&apos;m drawn to the emotional side of products, and I care a lot about how things <em>feel</em> to use, not just how they look.</p>
+            <p>Outside of design I&apos;m:</p>
             <ul>
               <li>hunting down the best pour-over in every city I visit (there is a mental ranking)</li>
               <li>somewhere between planning the next trip and still processing the last one</li>
-              <li>treating every sunny day in Stockholm like a genuine emergency</li>
+              <li>treating every sunny day in Stockholm</li>
               <li>photographing whatever catches my eye and never look back</li>
+              <li>vibe coding small projects</li>
+              <li>brain dumping in my journal</li>
             </ul>
           </div>
         </div>
@@ -94,16 +95,16 @@ export default function AboutPage() {
       <FadeIn delay={100}>
       <div className={styles["photo-grid"]}>
         <div className={styles["photo-placeholder"]}>
-          <Image src="/about/about1.jpg" alt="Hailey — photo 1" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
+          <Image src="/about/about1.jpg" alt="Hailey, photo1" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
         </div>
         <div className={styles["photo-placeholder"]}>
-          <Image src="/about/about2.JPG" alt="Hailey — photo 2" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
+          <Image src="/about/about2.JPG" alt="Hailey, photo2" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
         </div>
         <div className={styles["photo-placeholder"]}>
-          <Image src="/about/about3.JPG" alt="Hailey — photo 3" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
+          <Image src="/about/about3.JPG" alt="Hailey, photo3" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
         </div>
         <div className={styles["photo-placeholder"]}>
-          <Image src="/about/about4.jpg" alt="Hailey — photo 4" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
+          <Image src="/about/about4.jpg" alt="Hailey, photo4" fill style={{ objectFit: "cover" }} sizes="25vw" quality={100} />
         </div>
       </div>
       </FadeIn>

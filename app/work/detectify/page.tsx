@@ -1,45 +1,54 @@
 "use client";
 
+import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import SideNav from "@/components/SideNav";
 import SectionHeader from "@/components/case/SectionHeader";
 import InsightCard from "@/components/case/InsightCard";
-import TwoColumnSection from "@/components/case/TwoColumnSection";
-import DecisionBlock from "@/components/case/DecisionBlock";
 import CaseCTA from "@/components/CaseCTA";
 import { ScanSearch, LayoutList, ShieldCheck } from "lucide-react";
 
-// ─── Shared styles ────────────────────────────────────────────────────────────
+// ─── Constants ────────────────────────────────────────────────────────────────
 
-const FONT_SANS = "var(--font-dm-sans)";
 const FONT_DISPLAY = "var(--font-montserrat)";
-const FONT_SERIF = "var(--font-ibm-plex-serif)";
-const CHECKERBOARD = "repeating-conic-gradient(#e0e0e0 0% 25%, #f5f5f5 0% 50%) 0 0 / 20px 20px";
+const LABEL_COLOR = "#E05A3A";
+const IMAGE_SIZES = "(max-width: 768px) 100vw, 530px";
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
-        {label}
-      </span>
-      <span style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#57423F" }}>
-        {value}
-      </span>
+    <div className="flex flex-col gap-1">
+      <span className="text-label text-ink-faint">{label}</span>
+      <span className="text-body-2-light text-ink-secondary">{value}</span>
     </div>
   );
 }
 
 function NumberBadge({ n }: { n: number }) {
   return (
-    <div style={{
-      width: 28, height: 28, borderRadius: "50%",
-      background: "#E5E5E5", display: "flex", alignItems: "center", justifyContent: "center",
-      fontFamily: FONT_DISPLAY, fontSize: 13, fontWeight: 600, color: "#141412", flexShrink: 0,
-    }}>
+    <div
+      className="flex items-center justify-center flex-shrink-0 rounded-full bg-border text-ink"
+      style={{ width: 28, height: 28, fontFamily: FONT_DISPLAY, fontSize: 13, fontWeight: 600 }}
+    >
       {n}
     </div>
+  );
+}
+
+function CaseVideo({ src, label }: { src: string; label: string }) {
+  return (
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      aria-label={label}
+      style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
+    >
+      <source src={src} type="video/mp4" />
+      <source src={src} type="video/quicktime" />
+    </video>
   );
 }
 
@@ -75,290 +84,306 @@ const NAV_SECTIONS = [
   },
 ];
 
+const PROCESS_STEPS: {
+  step: string;
+  text: string;
+  mediaSrc: string;
+  mediaType: "video" | "image";
+  mediaWidth?: number;
+  mediaHeight?: number;
+}[] = [
+  {
+    step: "AUDIT",
+    text: "Mapped every table instance across the product. Ran a WCAG audit to log contrast failures, missing focus states, and keyboard navigation gaps. This gave the redesign a concrete list of failures to address, not just a general brief to make it better.",
+    mediaSrc: "/detectify/table audit excel.mov",
+    mediaType: "video",
+  },
+  {
+    step: "DEFINE",
+    text: "Set design principles before touching Figma: scannability first, progressive disclosure for dense data, accessibility as a non-negotiable baseline. Aligned early with engineering on what could and couldn't ship, so the redesign was constrained by reality, not just ambition.",
+    mediaSrc: "/detectify/table define.png",
+    mediaType: "image",
+    mediaWidth: 1024,
+    mediaHeight: 590,
+  },
+  {
+    step: "DESIGN",
+    text: "Built a component system covering every state: default, hover, selected, loading, empty, error. Included interaction design for drag-and-drop column reordering. Used Figma Make to build an interactive prototype showing live state changes, not just static screens.",
+    mediaSrc: "/detectify/table design.png",
+    mediaType: "image",
+    mediaWidth: 864,
+    mediaHeight: 578,
+  },
+  {
+    step: "ITERATION",
+    text: "Ran a design critique with engineers, product, and sales. Presented the interview insights, redesign scope, and first prototype together. The decisions were legible, not just the visuals.",
+    mediaSrc: "/detectify/table iteration.png",
+    mediaType: "image",
+    mediaWidth: 1112,
+    mediaHeight: 508,
+  },
+];
+
 // ─── Page ────────────────────────────────────────────────────────────────────
 
 export default function DetectifyPage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <div style={{ display: "flex", alignItems: "flex-start" }}>
+      <div className="flex flex-col md:flex-row items-start pt-[41px]">
 
         {/* Left: sticky project meta */}
-        <div style={{
-          position: "sticky", top: 41, width: 340, flexShrink: 0,
-          alignSelf: "flex-start", padding: "40px 32px", display: "flex",
-          flexDirection: "column", gap: 24,
-        }}>
+        <div
+          className="w-full md:w-[340px] md:flex-shrink-0"
+          style={{ position: "sticky", top: 41, alignSelf: "flex-start", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 24 }}
+        >
           <div>
-            <h1 style={{ fontFamily: FONT_SERIF, fontSize: 24, fontWeight: 500, fontStyle: "italic", margin: "0 0 6px" }}>
+            <h1 className="text-h1 text-ink" style={{ margin: "0 0 8px" }}>
               Detectify
             </h1>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 16, fontWeight: 400, color: "#57423F", margin: "0 0 4px" }}>
-              A design system for a B2B security product where accessibility is the standard.
+            <p className="text-body-1 text-ink-secondary" style={{ margin: "0 0 8px" }}>
+              Sole designer on Detectify&apos;s table redesign. The component security teams use to triage hundreds of vulnerabilities a day.
             </p>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#666666", lineHeight: 1.7, margin: 0 }}>
-              When tables are the product, bad table UX is a product problem.
+            <p className="text-body-2-light text-ink-muted leading-[1.7] m-0">
+              When tables are the product, bad table UX is a product problem. I fixed it at the token level, not just the component.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px 20px" }}>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-4">
             <MetaItem label="Timeline" value="Spring 2026 (6 months)" />
             <MetaItem label="Role" value="Product Design Intern" />
             <MetaItem label="Platform" value="B2B web app" />
             <MetaItem label="Tools" value="Figma, Figma Make" />
           </div>
-          <div>
-            <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
-              Team
-            </span>
-            <div style={{ marginTop: 4, display: "flex", flexDirection: "column", gap: 2 }}>
+
+          <div className="flex flex-col gap-1">
+            <span className="text-label text-ink-faint">Team</span>
+            <div className="flex flex-col gap-1">
               {["1 Product Design Lead", "2 Front-end Developers"].map((m) => (
-                <span key={m} style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#57423F" }}>{m}</span>
+                <span key={m} className="text-body-2-light text-ink-secondary">{m}</span>
               ))}
             </div>
           </div>
-
         </div>
 
-        {/* Right: cover images */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 4 }}>
-          <div style={{ height: "100vh", background: CHECKERBOARD }} />
-          <div style={{ height: "60vh", background: CHECKERBOARD }} />
+        {/* Right: hero video */}
+        <div className="flex-1">
+          <CaseVideo src="/detectify/how table should interact.mov" label="Detectify table interaction demo" />
         </div>
       </div>
 
-      <hr style={{ border: "none", borderTop: "1px solid #E8E8E8", margin: 0 }} />
+      <hr className="border-0 border-t border-border m-0" />
 
-      {/* ── SIDE NAV + CASE CONTENT ───────────────────────────────────────── */}
-      <div className="flex items-start pt-0 md:pt-20">
-        <SideNav sections={NAV_SECTIONS} />
+      {/* ── SIDE NAV + CASE CONTENT ──────────────────────────────────────── */}
+      <div className="flex items-start">
+          <SideNav sections={NAV_SECTIONS} />
 
-        <div className="flex-1 px-5 py-12 md:px-[72px] md:py-16" style={{ display: "flex", flexDirection: "column", gap: 96 }}>
+          <div className="flex-1 px-5 py-14 md:px-28 md:py-24 flex flex-col gap-20">
 
-          {/* ── OVERVIEW ── */}
-          <FadeIn><div id="overview" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            <SectionHeader
-              label="OVERVIEW"
-              labelColor="#1176C5"
-              title="One design system. Six months. Start from the ground up."
-            />
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
-              As a product design intern at Detectify, I worked on a comprehensive design system: establishing visual foundations, consolidating components, and closing the gap between design and engineering handoff. The table redesign was one focused workstream within that larger project, but it wasn't a component task. It was a product problem hiding inside a component.
-            </p>
-          </div></FadeIn>
-
-          {/* ── THE PROBLEM ── */}
-          <FadeIn><div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            <SectionHeader
-              label="THE PROBLEM"
-              labelColor="#E05A3A"
-              title="Security professionals were losing time inside a tool built to save it."
-              body="Detectify's users — security engineers and analysts — need to scan through hundreds of vulnerabilities, decide what's critical, and act fast. The table was supposed to make that possible. It wasn't."
-            />
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
-              To understand where things were breaking down, I ran 5 interviews with people across product, sales, and customer success: the teams closest to how real users worked with the data. Three friction points kept coming up.
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <InsightCard
-                icon={<ScanSearch size={18} color="#969696" />}
-                title="No visual hierarchy"
-                description="Every row looked the same. Users couldn't tell at a glance what needed their attention and had to read every single row to find out. Scanning was slow. Mistakes happened."
+            {/* ── OVERVIEW ── */}
+            <FadeIn><div id="overview" className="flex flex-col gap-4">
+              <SectionHeader
+                label="OVERVIEW"
+                labelColor={LABEL_COLOR}
+                title="One design system. Six months. Start from the ground up."
               />
-              <InsightCard
-                icon={<LayoutList size={18} color="#969696" />}
-                title="Inconsistent interactions across the product"
-                description="Filters and sorting worked differently depending on which table you were in. Users had to relearn the same UI in different parts of the product. No pattern ever stuck."
+              <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
+                As a product design intern at Detectify, I worked on a comprehensive design system: establishing visual foundations, consolidating components, and closing the gap between design and engineering handoff. The table redesign was one focused workstream within that larger project, but it wasn&apos;t a component task. It was a product problem hiding inside a component.
+              </p>
+            </div></FadeIn>
+
+            {/* ── THE PROBLEM ── */}
+            <FadeIn><div id="the-problem" className="flex flex-col gap-4">
+              <SectionHeader
+                label="THE PROBLEM"
+                labelColor={LABEL_COLOR}
+                title="Security professionals were losing time inside a tool built to save it."
+                body="Detectify's users (security engineers and analysts) need to scan through hundreds of vulnerabilities, decide what's critical, and act fast. The table was supposed to make that possible. It wasn't."
               />
-              <InsightCard
-                icon={<ShieldCheck size={18} color="#969696" />}
-                title="Accessibility failures in a product that sells to compliance teams"
-                description="Column headers disappeared on scroll, so users lost track of what each column meant. The horizontal scrollbar sat at the very bottom of the table — not the screen — so to scroll sideways, users first had to scroll through hundreds of rows to reach it. Both were WCAG failures. In a product Detectify sells to security and compliance teams, that's not just a UX problem. It's a credibility problem."
-              />
+              <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
+                To understand where things were breaking down, I ran 5 interviews with people across product, sales, and customer success: the teams closest to how real users worked with the data. Three friction points kept coming up.
+              </p>
+              <div className="grid grid-cols-1 md:gap-10 items-start" style={{ gridTemplateColumns: "2fr 3fr", gap: 40 }}>
+                <div className="flex flex-col gap-4">
+                  <InsightCard
+                    icon={<ScanSearch size={18} color="#969696" />}
+                    title="No visual hierarchy"
+                    description="Every row looked the same. Users couldn't tell at a glance what needed their attention and had to read every single row to find out. Scanning was slow. Mistakes happened."
+                  />
+                  <InsightCard
+                    icon={<LayoutList size={18} color="#969696" />}
+                    title="Inconsistent interactions across the product"
+                    description="Filters and sorting worked differently depending on which table you were in. Users had to relearn the same UI in different parts of the product. No pattern ever stuck."
+                  />
+                  <InsightCard
+                    icon={<ShieldCheck size={18} color="#969696" />}
+                    title="Accessibility failures in a product that sells to compliance teams"
+                    description="Column headers disappeared on scroll, so users lost track of what each column meant. The horizontal scrollbar sat at the very bottom of the table (not the screen), so to scroll sideways, users first had to scroll through hundreds of rows to reach it. Both were WCAG failures. In a product Detectify sells to security and compliance teams, that's not just a UX problem. It's a credibility problem."
+                  />
+                </div>
+                <Image
+                  src="/detectify/table before img.png"
+                  alt="Detectify table before redesign"
+                  width={1194}
+                  height={792}
+                  quality={100}
+                  sizes={IMAGE_SIZES}
+                  style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
+                />
+              </div>
+            </div></FadeIn>
+
+            <div className="flex flex-col gap-14">
+
+              {/* ── KEY INSIGHTS ── */}
+              <FadeIn><div id="key-insights" className="flex flex-col gap-4">
+                <SectionHeader
+                  label="KEY INSIGHTS"
+                  labelColor={LABEL_COLOR}
+                  title="Three things that had to change."
+                  body="After mapping every table instance across the product and running a full WCAG audit, three principles defined the scope of the redesign."
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
+                  <div className="flex flex-col gap-4">
+                    <InsightCard
+                      icon={<NumberBadge n={1} />}
+                      title="Scannability first"
+                      description="The most important thing a security professional can do is find what matters quickly. Every density decision had to serve that, not the other way around."
+                    />
+                    <InsightCard
+                      icon={<NumberBadge n={2} />}
+                      title="Customisation as a feature, not a setting"
+                      description="Users wanted to see their data their way. Not a layout option buried in preferences: drag-and-drop column reordering, right there in the table."
+                    />
+                    <InsightCard
+                      icon={<NumberBadge n={3} />}
+                      title="Accessibility as a baseline, not a pass/fail audit"
+                      description="WCAG AA compliance wasn't a checkbox. It meant touching colour tokens used across the entire product, not just the table component. That had to be scoped and agreed with engineering from the start."
+                    />
+                  </div>
+                  <Image
+                    src="/detectify/table key insight.png"
+                    alt="Key insights from the Detectify table audit"
+                    width={782}
+                    height={640}
+                    quality={100}
+                    sizes={IMAGE_SIZES}
+                    style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
+                  />
+                </div>
+              </div></FadeIn>
+
+              {/* ── PROCESS ── */}
+              <FadeIn><div id="process" className="flex flex-col gap-4">
+                <SectionHeader
+                  label="PROCESS"
+                  labelColor={LABEL_COLOR}
+                  title="Audit · Define · Design · Iterate"
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                  {PROCESS_STEPS.map(({ step, text, mediaSrc, mediaType, mediaWidth, mediaHeight }) => (
+                    <div key={step} className="flex flex-col gap-4">
+                      <div className="flex flex-col gap-2">
+                        <span className="text-label" style={{ color: LABEL_COLOR }}>{step}</span>
+                        <p className="text-body-2 text-ink-muted leading-[1.8] m-0">{text}</p>
+                      </div>
+                      {mediaType === "video" ? (
+                        <CaseVideo src={mediaSrc} label={`${step} process documentation`} />
+                      ) : (
+                        <Image
+                          src={mediaSrc}
+                          alt={`${step} process documentation`}
+                          width={mediaWidth ?? 800}
+                          height={mediaHeight ?? 600}
+                          quality={100}
+                          sizes={IMAGE_SIZES}
+                          style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div></FadeIn>
+
+              {/* ── SOLUTION ── */}
+              <FadeIn><div id="solution" className="flex flex-col gap-4">
+                <SectionHeader
+                  label="SOLUTION"
+                  labelColor={LABEL_COLOR}
+                  title="Three problems, Three decisions."
+                />
+                <div className="grid grid-cols-1 items-start" style={{ gridTemplateColumns: "2fr 3fr", gap: 40 }}>
+                  <div className="flex flex-col gap-4">
+                    <InsightCard
+                      title="Scannability first"
+                      description="Sticky header so column labels never disappear. Viewport-fixed horizontal scrollbar so users don't have to scroll through hundreds of rows to reach it. Drag-and-drop columns so users put what they care about first."
+                    />
+                    <InsightCard
+                      title="WCAG compliance without breaking the design system"
+                      description="Updated colour tokens at the source rather than patching only the table. New colours were designed to be accessible and coherent with the existing visual language."
+                    />
+                    <InsightCard
+                      title="Reducing handoff friction"
+                      description="Built an interactive prototype in Figma Make covering every state and the drag-and-drop interaction. Engineers could see exactly how the component behaved before a single line was written."
+                    />
+                  </div>
+                  <CaseVideo src="/detectify/how table should interact.mov" label="Redesigned Detectify table interaction" />
+                </div>
+              </div></FadeIn>
+
+              {/* ── IMPACT ── */}
+              <FadeIn><div id="impact" className="flex flex-col gap-4">
+                <SectionHeader
+                  label="IMPACT"
+                  labelColor={LABEL_COLOR}
+                  title="A new standard. Across the whole product."
+                />
+                <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
+                  The redesigned table became the design system standard for all data views in the product. WCAG AA compliance was achieved at the component level. Engineering handoff time reduced as interactive prototypes replaced static annotated screens as the handoff artefact.
+                </p>
+                <p className="text-body-3 text-ink-faint leading-[1.6] m-0">
+                  Specific metrics available on request.
+                </p>
+              </div></FadeIn>
+
+              {/* ── REFLECTION ── */}
+              <FadeIn><div id="reflection" className="flex flex-col gap-4">
+                <SectionHeader
+                  label="REFLECTION"
+                  labelColor={LABEL_COLOR}
+                  title="Three things I'd do differently."
+                />
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8 md:gap-10 items-start">
+                  <div className="flex flex-col gap-4">
+                    <InsightCard
+                      icon={<NumberBadge n={1} />}
+                      title="Talk to end users, not just internal proxies"
+                      description="The 5 interviews I ran were with internal teams: product, sales, CSM. They knew the product well, but they weren't the people sitting in front of the table at 9am trying to triage 200 vulnerabilities. Direct user sessions would have added a layer of friction I was probably missing."
+                    />
+                    <InsightCard
+                      icon={<NumberBadge n={2} />}
+                      title="Scope the token work earlier"
+                      description="The WCAG audit surfaced colour token changes late in the process. Flagging that dependency in week one would have saved significant back-and-forth with engineering."
+                    />
+                    <InsightCard
+                      icon={<NumberBadge n={3} />}
+                      title="Interactive prototypes changed how I think about handoff"
+                      description="Building the prototype in Figma Make wasn't just a handoff artefact. It forced me to design every state properly before handoff, not as an afterthought. I'd bring that into every project from the start now."
+                    />
+                  </div>
+                  <CaseCTA
+                    title="Want to see the full component spec or walk through the process?"
+                    body="The full component spec, WCAG audit, and process documentation are available on request."
+                    ctaLabel="Get in touch"
+                    ctaHref="mailto:hy3yun.cho@gmail.com"
+                  />
+                </div>
+              </div></FadeIn>
+
             </div>
-          </div></FadeIn>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 96 }}>
-
-            {/* ── KEY INSIGHTS ── */}
-            <FadeIn><div id="key-insights" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              <SectionHeader
-                label="KEY INSIGHTS"
-                labelColor="#1176C5"
-                title="Three things that had to change."
-                body="After mapping every table instance across the product and running a full WCAG audit, three principles defined the scope of the redesign."
-              />
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                <InsightCard
-                  icon={<NumberBadge n={1} />}
-                  title="Scannability first"
-                  description="The most important thing a security professional can do is find what matters quickly. Every density decision had to serve that, not the other way around."
-                />
-                <InsightCard
-                  icon={<NumberBadge n={2} />}
-                  title="Customisation as a feature, not a setting"
-                  description="Users wanted to see their data their way. Not a layout option buried in preferences — but drag-and-drop column reordering, right there in the table."
-                />
-                <InsightCard
-                  icon={<NumberBadge n={3} />}
-                  title="Accessibility as a baseline, not a pass/fail audit"
-                  description="WCAG AA compliance wasn't a checkbox. It meant touching colour tokens used across the entire product, not just the table component. That had to be scoped and agreed with engineering from the start."
-                />
-              </div>
-            </div></FadeIn>
-
-            {/* ── PROCESS ── */}
-            <FadeIn><div id="process" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              <SectionHeader
-                label="PROCESS"
-                labelColor="#1176C5"
-                title="Audit · Define · Design · Iterate"
-              />
-              <TwoColumnSection
-                leftWidth="1fr"
-                rightWidth="1fr"
-                left={
-                  <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#1176C5" }}>Audit</span>
-                      <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0 }}>
-                        Mapped every table instance across the product. Ran a WCAG audit to log contrast failures, missing focus states, and keyboard navigation gaps. This gave the redesign a concrete list of failures to address — not just a general brief to make it better.
-                      </p>
-                    </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#1176C5" }}>Define</span>
-                      <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0 }}>
-                        Set design principles before touching Figma: scannability first, progressive disclosure for dense data, accessibility as a non-negotiable baseline. Aligned early with engineering on what could and couldn't ship, so the redesign was constrained by reality, not just ambition.
-                      </p>
-                    </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#1176C5" }}>Design</span>
-                      <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0 }}>
-                        Built a component system covering every state: default, hover, selected, loading, empty, error. Included interaction design for drag-and-drop column reordering. Used Figma Make to build an interactive prototype showing live state changes, not just static screens.
-                      </p>
-                    </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#1176C5" }}>Iteration</span>
-                      <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0 }}>
-                        Ran a design critique with engineers, product, and sales. Presented the interview insights, redesign scope, and first prototype together — so the decisions were legible, not just the visuals.
-                      </p>
-                    </div>
-                  </div>
-                }
-                right={
-                  <div style={{
-                    background: "#F1F2F3", borderRadius: 10,
-                    border: "1px solid #E5E5E5", display: "flex",
-                    alignItems: "center", justifyContent: "center",
-                    minHeight: 340, color: "#969696", fontSize: 12,
-                    fontFamily: FONT_SANS, letterSpacing: "0.04em",
-                    textAlign: "center", padding: "0 32px",
-                  }}>
-                    IMAGE: Process documentation
-                  </div>
-                }
-              />
-            </div></FadeIn>
-
-            {/* ── SOLUTION ── */}
-            <FadeIn><div id="solution" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              <SectionHeader
-                label="SOLUTION"
-                labelColor="#1176C5"
-                title="Three problems. Three decisions."
-              />
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <DecisionBlock
-                  number={1}
-                  title="Information density vs. scannability"
-                  situation="Security data is dense by nature. The answer wasn't to simplify the data but to contain it properly."
-                  options={[
-                    "Show all columns by default",
-                    "Progressive disclosure with full column customisation",
-                    "Opinionated default with user-controlled layout",
-                  ]}
-                  chosen="Sticky header so column labels never disappear. Internal scroll with a viewport-fixed horizontal scrollbar, so users don't have to scroll through 500 rows to reach it. Drag-and-drop columns so users put what they care about first."
-                  tradeoff="Column reordering adds interaction complexity. Scoped it to power users via an explicit toggle rather than making it the default state."
-                />
-                <DecisionBlock
-                  number={2}
-                  title="WCAG compliance without breaking the design system"
-                  situation="Full WCAG AA compliance required updating colour tokens used across the entire product, not just the table component."
-                  options={[
-                    "Fix only the table component",
-                    "Update tokens at the source to fix the whole design system",
-                  ]}
-                  chosen="Worked with the frontend team to update tokens at the source. New colours were designed to be accessible and coherent with the existing visual language."
-                  tradeoff="Slower to implement. But patching only the table would have created two conflicting colour standards in the codebase."
-                />
-                <DecisionBlock
-                  number={3}
-                  title="Reducing handoff friction"
-                  situation="Static annotated screens were causing back-and-forth between design and engineering on component behaviour and states."
-                  options={[
-                    "Annotate screens more thoroughly",
-                    "Build an interactive prototype in Figma Make showing live state changes",
-                  ]}
-                  chosen="Built the prototype in Figma Make covering every state and the drag-and-drop interaction in real time. Engineers could see exactly how the component behaved before a single line was written."
-                  tradeoff="More upfront design time. But annotation back-and-forth dropped significantly — the prototype became the handoff artefact."
-                />
-              </div>
-            </div></FadeIn>
-
-            {/* ── IMPACT ── */}
-            <FadeIn><div id="impact" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-              <SectionHeader
-                label="IMPACT"
-                labelColor="#1176C5"
-                title="A new standard. Across the whole product."
-              />
-              <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
-                The redesigned table became the design system standard for all data views in the product. WCAG AA compliance was achieved at the component level. Engineering handoff time reduced as interactive prototypes replaced static annotated screens as the handoff artefact.
-              </p>
-              <p style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 300, color: "#969696", lineHeight: 1.6, margin: 0 }}>
-                Specific metrics available on request.
-              </p>
-            </div></FadeIn>
-
-            {/* ── REFLECTION ── */}
-            <FadeIn><div id="reflection" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              <SectionHeader
-                label="REFLECTION"
-                labelColor="#1176C5"
-                title="What I'd do differently."
-              />
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                <InsightCard
-                  icon={<NumberBadge n={1} />}
-                  title="Talk to end users, not just internal proxies"
-                  description="The 5 interviews I ran were with internal teams: product, sales, CSM. They knew the product well, but they weren't the people sitting in front of the table at 9am trying to triage 200 vulnerabilities. Direct user sessions would have added a layer of friction I was probably missing."
-                />
-                <InsightCard
-                  icon={<NumberBadge n={2} />}
-                  title="Scope the token work earlier"
-                  description="The WCAG audit surfaced colour token changes late in the process. Flagging that dependency in week one would have saved significant back-and-forth with engineering."
-                />
-                <InsightCard
-                  icon={<NumberBadge n={3} />}
-                  title="Interactive prototypes changed how I think about handoff"
-                  description="Building the prototype in Figma Make wasn't just a handoff artefact. It forced me to design every state properly before handoff, not as an afterthought. I'd bring that into every project from the start now."
-                />
-              </div>
-
-              {/* CTA */}
-              <div style={{ marginTop: 16 }}>
-                <CaseCTA
-                  title="Want to see the full component spec or walk through the process?"
-                  body="The full component spec, WCAG audit, and process documentation are available on request."
-                  ctaLabel="Get in touch"
-                  ctaHref="mailto:hy3yun.cho@gmail.com"
-                />
-              </div>
-            </div></FadeIn>
 
           </div>
-
         </div>
-      </div>
     </>
   );
 }

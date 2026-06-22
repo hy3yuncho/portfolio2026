@@ -18,7 +18,15 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__7c945cf4-c7cc-4eea-b90b-9a84bcd1040b__get_metadata",
+      "mcp__7c945cf4-c7cc-4eea-b90b-9a84bcd1040b__use_figma",
+      "mcp__7c945cf4-c7cc-4eea-b90b-9a84bcd1040b__get_screenshot",
+      "Bash(curl -s -o /tmp/nurtura_figma.png \"https://www.figma.com/api/mcp/asset/b66b498a-4b14-4446-86d1-d4f3bceb8a40\")",
+      "Bash(curl -s -o /tmp/components_figma.png \"https://www.figma.com/api/mcp/asset/ce8216d2-e289-4eab-a908-b36d7d7cd695\")",
+      "Bash(curl -s -o /tmp/det_onboarding.png \"https://www.figma.com/api/mcp/asset/470cb46c-5229-4f87-be03-2399476973b6\")",
+      "Bash(curl -s -o /tmp/nurtura_fixed.png \"https://www.figma.com/api/mcp/asset/de0653fa-2855-4921-a6ae-0dcfc0855a22\")"
     ]
   }
 }

@@ -18,25 +18,19 @@ export default function CaseImage({
   bare = false,
 }: CaseImageProps) {
   return (
-    <div style={{
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      maxWidth,
-      margin: maxWidth ? "0 auto" : undefined,
-    }}>
-      <div style={{
-        width: "100%",
-        flex: 1,
-        position: "relative",
-        minHeight,
-        borderRadius: bare ? 0 : 10,
-        border: bare ? "none" : "1px solid #E5E5E5",
-        overflow: "hidden",
-        background: bare ? "transparent" : "#F1F2F3",
-      }}>
+    <div
+      className="w-full h-full flex flex-col items-center"
+      style={maxWidth ? { maxWidth, margin: "0 auto" } : undefined}
+    >
+      <div
+        className="w-full flex-1 relative overflow-hidden"
+        style={{
+          minHeight,
+          borderRadius: bare ? 0 : 10,
+          border: bare ? "none" : "1px solid #E5E5E5",
+          background: bare ? "transparent" : "#F1F2F3",
+        }}
+      >
         <Image
           src={src}
           alt={alt}
@@ -47,15 +41,7 @@ export default function CaseImage({
         />
       </div>
       {label && (
-        <span style={{
-          marginTop: 8,
-          fontSize: 11,
-          fontFamily: "var(--font-montserrat)",
-          fontWeight: 500,
-          letterSpacing: "0.06em",
-          textTransform: "uppercase",
-          color: "#969696",
-        }}>
+        <span className="text-label text-ink-faint mt-2">
           {label}
         </span>
       )}

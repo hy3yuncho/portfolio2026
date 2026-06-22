@@ -11,50 +11,20 @@ import CaseImage from "@/components/case/CaseImage";
 import CaseCTA from "@/components/CaseCTA";
 import { Users, HeartHandshake, Sparkles, FlaskConical, Stethoscope, PenLine, LayoutList, UserX, Blocks } from "lucide-react";
 
-// ─── Shared styles ────────────────────────────────────────────────────────────
+// ─── Constants ────────────────────────────────────────────────────────────────
 
-const FONT_SANS = "var(--font-dm-sans)";
-const FONT_DISPLAY = "var(--font-montserrat)";
-const FONT_SERIF = "var(--font-ibm-plex-serif)";
-const CHECKERBOARD = "repeating-conic-gradient(#e0e0e0 0% 25%, #f5f5f5 0% 50%) 0 0 / 20px 20px";
+const LABEL_COLOR = "#549D5B";
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function ImagePlaceholder({ description, height = 300 }: { description: string; height?: number }) {
-  return (
-    <div style={{
-      background: "#F1F2F3",
-      borderRadius: 10,
-      border: "1px solid #E5E5E5",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      height,
-      color: "#969696",
-      fontSize: 12,
-      fontFamily: FONT_SANS,
-      letterSpacing: "0.04em",
-      textAlign: "center",
-      padding: "0 32px",
-    }}>
-      IMAGE: {description}
-    </div>
-  );
-}
-
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
-        {label}
-      </span>
-      <span style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#57423F" }}>
-        {value}
-      </span>
+    <div className="flex flex-col gap-1">
+      <span className="text-label text-ink-faint">{label}</span>
+      <span className="text-body-2-light text-ink-secondary">{value}</span>
     </div>
   );
 }
-
 
 function SolutionPair({
   problemText,
@@ -74,33 +44,32 @@ function SolutionPair({
   imageHeight?: number;
 }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#E05A3A" }}>
-            Problem
-          </span>
-          <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.7, margin: 0 }}>
-            {problemText}
-          </p>
+    <div className="flex flex-col gap-10">
+      <div className="bg-surface-subtle rounded-[5px] p-5 flex flex-col gap-5">
+        <div className="flex flex-col gap-1.5">
+          <span className="text-label" style={{ color: "#E05A3A" }}>Problem</span>
+          <p className="text-body-2 text-ink-muted leading-[1.7] m-0">{problemText}</p>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#549D5B" }}>
-            Solution
-          </span>
-          <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.7, margin: 0 }}>
-            {solutionText}
-          </p>
+        <div className="flex flex-col gap-1.5">
+          <span className="text-label" style={{ color: LABEL_COLOR }}>Solution</span>
+          <p className="text-body-2 text-ink leading-[1.7] m-0 font-medium">{solutionText}</p>
         </div>
         {stat && (
-          <p style={{ fontFamily: FONT_SANS, fontSize: 12, fontWeight: 300, color: "#969696", lineHeight: 1.6, margin: 0, borderLeft: "2px solid #E5E5E5", paddingLeft: 12 }}>
+          <p className="text-body-3 text-ink-faint leading-[1.6] m-0 border-l-2 border-border pl-3">
             {stat}
           </p>
         )}
       </div>
       {imageSrc
         ? <CaseImage src={imageSrc} alt={imageAlt ?? ""} minHeight={imageHeight} bare />
-        : <ImagePlaceholder description={imagePlaceholder} height={imageHeight} />
+        : (
+          <div
+            className="bg-surface-subtle rounded-[10px] border border-border flex items-center justify-center text-ink-faint text-body-3 tracking-[0.04em] text-center px-8"
+            style={{ height: imageHeight }}
+          >
+            IMAGE: {imagePlaceholder}
+          </div>
+        )
       }
     </div>
   );
@@ -153,19 +122,18 @@ export default function NurturaPage() {
           style={{ position: "sticky", top: 41, alignSelf: "flex-start", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 24 }}
         >
           <div>
-            <h1 style={{ fontFamily: FONT_SERIF, fontSize: 24, fontWeight: 500, fontStyle: "italic", margin: "0 0 6px" }}>
+            <h1 className="text-h1 text-ink" style={{ margin: "0 0 8px" }}>
               Nurtura
             </h1>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 16, fontWeight: 400, color: "#57423F", margin: "0 0 4px" }}>
+            <p className="text-body-1 text-ink-secondary" style={{ margin: "0 0 8px" }}>
               Designing emotional safety into an IVF community.
             </p>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#666666", lineHeight: 1.7, margin: 0 }}>
-              52% of IVF patients avoid online forums because the content is too triggering. Instead of adding more features to an already overwhelming landscape, I designed a community platform with emotional guardrails built in from onboarding.
+            <p className="text-body-2-light text-ink-muted leading-[1.7] m-0">
+              52% of IVF patients avoid online forums because the content is too triggering. I didn&apos;t add more features to an already overwhelming landscape. I built emotional guardrails in from the start.
             </p>
           </div>
 
-          {/* Meta */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px 20px" }}>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-4">
             <MetaItem label="Timeline" value="Spring 2025 (8 weeks)" />
             <MetaItem label="Role" value="Solo UX/Product Designer" />
             <MetaItem label="Platform" value="iOS mobile app" />
@@ -174,13 +142,11 @@ export default function NurturaPage() {
         </div>
 
         {/* Right: cover image stack */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 4 }}>
+        <div className="flex-1 flex flex-col gap-1">
           {[
             { src: "/nurtura/nurtura case 1.png", alt: "Nurtura app cover" },
             { src: "/nurtura/case2.png", alt: "Nurtura onboarding flow" },
             { src: "/nurtura/case3.png", alt: "Nurtura community feed" },
-            { src: "/nurtura/case4.png", alt: "Nurtura peer connect flow" },
-            { src: "/nurtura/case5.png", alt: "Nurtura emotional check-in and IVF guide flows" },
           ].map(({ src, alt }) => (
             <Image
               key={src}
@@ -200,37 +166,32 @@ export default function NurturaPage() {
       <div className="flex items-start">
         <SideNav sections={NAV_SECTIONS} />
 
-        <div className="flex-1 px-5 py-12 md:px-[72px] md:py-16" style={{ display: "flex", flexDirection: "column", gap: 96 }}>
+        <div className="flex-1 px-5 py-14 md:px-28 md:py-24 flex flex-col gap-20">
 
           {/* ── THE BRIEF ── */}
-          <FadeIn><div id="the-brief" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="the-brief" className="flex flex-col gap-4">
             <SectionHeader
               label="THE BRIEF"
-              labelColor="#549D5B"
+              labelColor={LABEL_COLOR}
               title="I started with a brief. I ended up with a real problem."
             />
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
-              The brief was from Hyper Island: 8 weeks, solo, end-to-end: <em>"Create a user-centred vertical social network."</em> The scope covered the full design process: research, define, ideate, prototype. Deliverable was a hi-fi prototype with a documented design rationale. No engineering handoff. The goal was design thinking depth, not production readiness.
-            </p>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
-              I ran the full process solo: 12 interviews, a 35-person survey, affinity mapping, three concept directions, navigation testing, lo-fi and hi-fi iterations, and usability testing.
+            <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
+              The brief was from Hyper Island: <em>&ldquo;Create a user-centred vertical social network.&rdquo;</em> 8 weeks, solo, research through to hi-fi prototype.
             </p>
           </div></FadeIn>
 
           {/* ── THE PROBLEM ── */}
-          <FadeIn><div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="the-problem" className="flex flex-col gap-4">
             <SectionHeader
               label="THE PROBLEM"
-              labelColor="#549D5B"
+              labelColor={LABEL_COLOR}
               title="The people who need community most are avoiding it."
-              body="To understand what people going through IVF actually needed, not just what they said they needed, I conducted 11 semi-structured interviews with 12 participants alongside a 35-person survey. I wanted to hear the real friction: what made them close the app, why they stayed away from forums, what they wished existed."
+              body="I talked to 12 people going through IVF (10 patients, 2 partners) and ran a survey with 35 more. I wanted to hear the real friction: what made them close the app, why they stayed away from forums, what they wished existed."
             />
 
             <TwoColumnSection
-              leftWidth="1fr"
-              rightWidth="1fr"
               left={
-                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <div className="flex flex-col gap-4">
                   <InsightCard
                     icon={<LayoutList size={18} color="#969696" />}
                     title="Overwhelm by design"
@@ -252,19 +213,18 @@ export default function NurturaPage() {
                 <CaseImage src="/nurtura/affinity.png" alt="Affinity map · Themes clustered from interview transcripts" minHeight={340} />
               }
             />
-
           </div></FadeIn>
 
           {/* ── KEY INSIGHTS ── */}
-          <FadeIn><div id="key-insights" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="key-insights" className="flex flex-col gap-4">
             <SectionHeader
               label="KEY INSIGHTS"
-              labelColor="#549D5B"
+              labelColor={LABEL_COLOR}
               title="Three findings. Three decisions."
               body="I mapped the full user journey to understand where avoidance starts and where trust breaks down. Three things became structurally clear, and each one became a design decision."
             />
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               <ArrowInsightCard
                 topText="Users who see triggering content before setting any preferences don't come back to fix it. They leave. The damage happens before they've had a chance to customise anything."
                 bottomText="Content preferences move to onboarding: users define what they don't want before entering the feed. Set once, applied everywhere."
@@ -283,18 +243,19 @@ export default function NurturaPage() {
           </div></FadeIn>
 
           {/* ── CONCEPT EXPLORATION ── */}
-          <FadeIn><div id="concept-exploration" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="concept-exploration" className="flex flex-col gap-4">
             <SectionHeader
               label="CONCEPT EXPLORATION"
-              labelColor="#549D5B"
+              labelColor={LABEL_COLOR}
               title="Three directions, one decision."
               body="With research done, I explored three directions around the three core problems: loneliness and isolation, lack of tailored community, and the emotional information gap throughout the journey."
             />
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
+            <div className="flex flex-col gap-10">
               {[
                 {
                   n: 1,
+                  icon: <Users size={18} color="#969696" />,
                   title: "Personalised community groups",
                   description: "80% of users already rely on Facebook groups and forums. The problem isn't that people don't use communities. It's that those communities don't meet them where they are. This concept addressed that directly: a forum experience built around IVF, with personalisation by stage, topic, and treatment type.",
                   imageSrc: "/nurtura/concept 1.png",
@@ -302,6 +263,7 @@ export default function NurturaPage() {
                 },
                 {
                   n: 2,
+                  icon: <HeartHandshake size={18} color="#969696" />,
                   title: "1:1 peer matching",
                   description: "Friends and family, however well-meaning, can't provide the support that comes from shared experience. Users wanted to find someone going through something specifically similar, not just someone vaguely supportive. This concept was a matchmaking-style peer connect feature.",
                   imageSrc: "/nurtura/concept 2.png",
@@ -309,19 +271,18 @@ export default function NurturaPage() {
                 },
                 {
                   n: 3,
+                  icon: <Sparkles size={18} color="#969696" />,
                   title: "Emotional and informational support",
                   description: "Medical information exists. Emotional preparation doesn't. This concept took inspiration from pregnancy tracking apps and reframed them for IVF, personalised by journey stage and focused on emotional readiness alongside clinical detail.",
                   imageSrc: "/nurtura/concept 3.png",
                   imageAlt: "Concept 3 · Lo-fi sketch: emotional support",
                 },
-              ].map(({ n, title, description, imageSrc, imageAlt }) => (
+              ].map(({ n, icon, title, description, imageSrc, imageAlt }) => (
                 <TwoColumnSection
                   key={n}
-                  leftWidth="1fr"
-                  rightWidth="1fr"
                   left={
                     <InsightCard
-                      icon={n === 1 ? <Users size={18} color="#969696" /> : n === 2 ? <HeartHandshake size={18} color="#969696" /> : <Sparkles size={18} color="#969696" />}
+                      icon={icon}
                       title={title}
                       description={description}
                     />
@@ -332,23 +293,12 @@ export default function NurturaPage() {
             </div>
 
             {/* Decision callout */}
-            <div style={{
-              background: "#F7FAFC",
-              border: "1px solid #E5E5E5",
-              borderLeft: "3px solid #FADB68",
-              borderRadius: 5,
-              padding: "20px 24px",
-              display: "flex",
-              flexDirection: "column",
-              gap: 8,
-            }}>
-              <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#549D5B" }}>
-                Decision
-              </span>
-              <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 500, color: "#57423F", lineHeight: 1.7, margin: 0 }}>
+            <div className="bg-surface-subtle border border-border border-l-[3px] border-l-accent rounded-[5px] px-5 py-4 flex flex-col gap-2">
+              <span className="text-label" style={{ color: LABEL_COLOR }}>Decision</span>
+              <p className="text-body-2 text-ink-secondary font-medium leading-[1.7] m-0">
                 Merge all three, with community as the primary surface.
               </p>
-              <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.7, margin: 0 }}>
+              <p className="text-body-2 text-ink-muted leading-[1.7] m-0">
                 After sketching all three as low-fidelity screens, separating community, peer connection, and information into three apps was feature sprawl masquerading as product strategy. Each concept addressed a real need, but none of them worked alone. The decision was to merge community and peer matching as the primary surface, with emotional and informational support woven through as contextual depth rather than separate tabs.
               </p>
             </div>
@@ -356,15 +306,15 @@ export default function NurturaPage() {
           </div></FadeIn>
 
           {/* ── SOLUTION ── */}
-          <FadeIn><div id="solution" style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+          <FadeIn><div id="solution" className="flex flex-col gap-4">
             <SectionHeader
               label="SOLUTION"
-              labelColor="#549D5B"
+              labelColor={LABEL_COLOR}
               title="Three problems. Three responses."
               body="Each core decision maps directly to a failure of existing platforms. The navigation test between concepts also reshaped the information architecture: peer connect moved from a top-level tab into a depth layer inside the community."
             />
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
+            <div className="flex flex-col gap-10">
               <SolutionPair
                 problemText="Users hit an unfiltered feed before setting any preferences and leave. Settings-first design assumes users will return to configure. They don't."
                 solutionText="Onboarding captures content preferences, journey stage, and anonymity level before users ever see the feed. By the time they reach the community, it's already filtered for them. 'You can change this anytime' reduces commitment anxiety: the framing is control, not protection."
@@ -390,8 +340,8 @@ export default function NurturaPage() {
             </div>
 
             {/* Supporting flows */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0 }}>
+            <div className="flex flex-col gap-4">
+              <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
                 Two supporting flows close the loop. The emotional check-in (S12–S14) is a low-friction daily touchpoint; the reflection result bridges emotional state to community, peer connect, or guide content, making it feel purposeful rather than just logging. The IVF guide (S15–S17) includes a dedicated &ldquo;For Partners&rdquo; section, a perspective existing platforms ignore entirely, and closes with &ldquo;Discuss in community&rdquo; to bridge information back to connection.
               </p>
               <CaseImage src="/nurtura/case5.png" alt="S12–S17 · Emotional Check-in + IVF Guide flows" minHeight={580} bare />
@@ -399,15 +349,15 @@ export default function NurturaPage() {
           </div></FadeIn>
 
           {/* ── USER TESTING ── */}
-          <FadeIn><div id="user-testing" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="user-testing" className="flex flex-col gap-4">
             <SectionHeader
               label="USER TESTING"
-              labelColor="#549D5B"
+              labelColor={LABEL_COLOR}
               title="Users felt safe before seeing a single post."
               body="I tested the hi-fi prototype with 5 users, concept and evaluation testing. The onboarding framing was specifically called out as making users feel validated before they'd seen any community content. That was the moment I knew the core decision had worked."
             />
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div className="flex flex-col gap-4">
               <InsightCard
                 title='"As if I am truly stepping into a safe space that understands my needs."'
                 description="On the onboarding content preferences screen, before a single feed post was visible."
@@ -424,16 +374,16 @@ export default function NurturaPage() {
           </div></FadeIn>
 
           {/* ── REFLECTIONS + CTA ── */}
-          <FadeIn><div id="reflections" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="reflections" className="flex flex-col gap-4">
             <SectionHeader
               label="REFLECTIONS"
-              labelColor="#549D5B"
-              title="What I'd do differently."
+              labelColor={LABEL_COLOR}
+              title="What the project taught me."
             />
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "start" }}>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8 md:gap-10 items-start">
               {/* Left: reflection tiles */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div className="flex flex-col gap-4">
                 <InsightCard
                   icon={<FlaskConical size={18} color="#969696" />}
                   title="Run usability testing earlier on onboarding"

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import SideNav from "@/components/SideNav";
 import SectionHeader from "@/components/case/SectionHeader";
@@ -12,47 +11,17 @@ import CaseImage from "@/components/case/CaseImage";
 import CaseCTA from "@/components/CaseCTA";
 import { MessageSquareDashed, LayoutTemplate, ShieldAlert, UserRoundX, Reply, HelpCircle, Bell } from "lucide-react";
 
-// ─── Shared styles ───────────────────────────────────────────────────────────
+// ─── Constants ────────────────────────────────────────────────────────────────
 
-const FONT_SANS = "var(--font-dm-sans)";
-const FONT_DISPLAY = "var(--font-montserrat)";
-const FONT_SERIF = "var(--font-ibm-plex-serif)";
-const CHECKERBOARD = "repeating-conic-gradient(#e0e0e0 0% 25%, #f5f5f5 0% 50%) 0 0 / 20px 20px";
+const LABEL_COLOR = "#1176C5";
 
-// ─── Sub-components ──────────────────────────────────────────────────────────
-
-function ImagePlaceholder({ description, height = 300 }: { description: string; height?: number }) {
-  return (
-    <div style={{
-      background: "#F1F2F3",
-      borderRadius: 10,
-      border: "1px solid #E5E5E5",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      height,
-      color: "#969696",
-      fontSize: 12,
-      fontFamily: FONT_SANS,
-      letterSpacing: "0.04em",
-      textAlign: "center",
-      padding: "0 32px",
-    }}>
-      IMAGE: {description}
-    </div>
-  );
-}
-
+// ─── Sub-components ───────────────────────────────────────────────────────────
 
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
-        {label}
-      </span>
-      <span style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#57423F" }}>
-        {value}
-      </span>
+    <div className="flex flex-col gap-1">
+      <span className="text-label text-ink-faint">{label}</span>
+      <span className="text-body-2-light text-ink-secondary">{value}</span>
     </div>
   );
 }
@@ -69,23 +38,15 @@ function SolutionPair({
   imageAlt: string;
 }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#E05A3A" }}>
-            Problem
-          </span>
-          <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.7, margin: 0 }}>
-            {problemText}
-          </p>
+    <div className="flex flex-col gap-10">
+      <div className="bg-surface-subtle rounded-[5px] p-5 flex flex-col gap-5">
+        <div className="flex flex-col gap-1.5">
+          <span className="text-label" style={{ color: "#E05A3A" }}>Problem</span>
+          <p className="text-body-2 text-ink-muted leading-[1.7] m-0">{problemText}</p>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#1176C5" }}>
-            Solution
-          </span>
-          <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.7, margin: 0 }}>
-            {solutionText}
-          </p>
+        <div className="flex flex-col gap-1.5">
+          <span className="text-label" style={{ color: LABEL_COLOR }}>Solution</span>
+          <p className="text-body-2 text-ink leading-[1.7] m-0 font-medium">{solutionText}</p>
         </div>
       </div>
       <CaseImage src={imageSrc} alt={imageAlt} minHeight={580} bare />
@@ -131,48 +92,45 @@ export default function MeViewPage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <div style={{ display: "flex", alignItems: "flex-start" }}>
+      <div className="flex flex-col md:flex-row items-start">
 
         {/* Left: sticky project meta */}
-        <div style={{
-          position: "sticky", top: 41, width: 340, flexShrink: 0,
-          alignSelf: "flex-start", padding: "40px 32px", display: "flex",
-          flexDirection: "column", gap: 24,
-        }}>
+        <div
+          className="w-full md:w-[340px] md:flex-shrink-0"
+          style={{ position: "sticky", top: 41, alignSelf: "flex-start", padding: "40px 32px", display: "flex", flexDirection: "column", gap: 24 }}
+        >
           <div>
-            <h1 style={{ fontFamily: FONT_SERIF, fontSize: 24, fontWeight: 500, fontStyle: "italic", margin: "0 0 6px" }}>
+            <h1 className="text-h1 text-ink" style={{ margin: "0 0 8px" }}>
               MeView
             </h1>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 16, fontWeight: 400, color: "#57423F", margin: "0 0 4px" }}>
-              Your self-portrait, powered by peers.
+            <p className="text-body-1 text-ink-secondary" style={{ margin: "0 0 8px" }}>
+              A peer feedback app for Gen Z, built around the person giving feedback, not just the person asking for it.
             </p>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#666666", lineHeight: 1.7, margin: 0 }}>
+            <p className="text-body-2-light text-ink-muted leading-[1.7] m-0">
               A mobile peer feedback app for Gen Z, structured by project and skill, anonymous by default, and designed around the person who has to respond.
             </p>
           </div>
 
-          {/* Meta row */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px 20px" }}>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-4">
             <MetaItem label="Timeline" value="3 months" />
             <MetaItem label="Role" value="Product Designer, UI Designer" />
             <MetaItem label="Platform" value="Mobile: iOS / Android" />
             <MetaItem label="Tools" value="Figma" />
           </div>
-          <div>
-            <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
-              Team
-            </span>
-            <div style={{ marginTop: 4, display: "flex", flexDirection: "column", gap: 2 }}>
+
+          <div className="flex flex-col gap-1">
+            <span className="text-label text-ink-faint">Team</span>
+            <div className="flex flex-col gap-1">
               {["Project Manager", "Graphic Designer", "Front-end Developer", "Back-end Developer"].map((m) => (
-                <span key={m} style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#57423F" }}>{m}</span>
+                <span key={m} className="text-body-2-light text-ink-secondary">{m}</span>
               ))}
             </div>
           </div>
         </div>
 
         {/* Right: cover image stack */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 4 }}>
-          {[1, 2, 3, 4, 5].map((n) => (
+        <div className="flex-1 flex flex-col gap-1">
+          {[1, 2, 3].map((n) => (
             <Image
               key={n}
               src={`/meview/case${n}.png`}
@@ -191,49 +149,50 @@ export default function MeViewPage() {
       <div className="flex items-start">
         <SideNav sections={NAV_SECTIONS} />
 
-        <div className="flex-1 px-5 py-12 md:px-[72px] md:py-16" style={{ display: "flex", flexDirection: "column", gap: 96 }}>
+        <div className="flex-1 px-5 py-14 md:px-28 md:py-24 flex flex-col gap-20">
 
           {/* ── OVERVIEW ── */}
-          <FadeIn><div id="overview" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <FadeIn><div id="overview" className="flex flex-col gap-4">
             <SectionHeader
               label="OVERVIEW"
+              labelColor={LABEL_COLOR}
               title="Turning how others see you into something you can actually use"
             />
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
+            <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
               MeView is a mobile peer feedback service that lets Gen Z collect, organise, and visualise anonymous reviews from co-workers and friends, structured by project and competency. The product ran for 3 months as a side project.
             </p>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
+            <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
               Product and UI design was my full scope: research, IA, UI, and design system, working alongside a PM, a graphic designer, and two developers. We chose interviews over surveys to understand the emotional context: not just what people do around feedback, but how it feels to ask for it and give it.
             </p>
           </div></FadeIn>
 
           {/* ── CONTEXT ── */}
-          <FadeIn><div id="context" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <FadeIn><div id="context" className="flex flex-col gap-4">
             <SectionHeader
               label="CONTEXT"
-              title="Where this came from."
+              labelColor={LABEL_COLOR}
+              title="A problem I knew firsthand."
             />
-            <p style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, maxWidth: 1060 }}>
+            <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
               Reflecting on my own growth, I realised I had no structured way to understand how others perceived me. I&apos;d only ever heard my own answer. Peer feedback existed, but in scattered DMs, verbal comments, vague encouragement. Nothing you could actually act on. I found a few others who felt the same way, and we built MeView.
             </p>
           </div></FadeIn>
 
           {/* ── THE PROBLEM ── */}
-          <FadeIn><div id="the-problem" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="the-problem" className="flex flex-col gap-4">
             <SectionHeader
               label="THE PROBLEM"
+              labelColor={LABEL_COLOR}
               title="People want peer feedback. They have no good way to get it."
               body="Existing tools sit at two extremes: LinkedIn recommendations are too formal, DMs and verbal comments are too informal. Nothing in between is designed for self-exploration."
             />
             <TwoColumnSection
-              leftWidth="1fr"
-              rightWidth="1fr"
               left={
-                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <div className="flex flex-col gap-4">
                   <InsightCard
                     icon={<MessageSquareDashed size={18} color="#969696" />}
-                    title="People want peer feedback. They have no good way to get it."
-                    description="Existing tools sit at two extremes. LinkedIn referrals (too formal) or DMs and verbal comments (too informal). Nothing in between was designed for honest self-exploration."
+                    title="LinkedIn is too formal. DMs are too casual. Nothing in between."
+                    description="Existing tools sit at two extremes: referrals designed for public profiles, or informal comments that disappear. Nothing was built for honest, structured self-exploration."
                   />
                   <InsightCard
                     icon={<LayoutTemplate size={18} color="#969696" />}
@@ -262,13 +221,14 @@ export default function MeViewPage() {
           </div></FadeIn>
 
           {/* ── KEY INSIGHTS ── */}
-          <FadeIn><div id="key-insights" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <FadeIn><div id="key-insights" className="flex flex-col gap-4">
             <SectionHeader
               label="KEY INSIGHTS"
+              labelColor={LABEL_COLOR}
               title="Two findings. Two decisions."
-              body="I ran desk research and 10 semi-structured interviews: 4 students and 6 job seekers. I chose interviews over surveys to understand the emotional context: not just what people do, but how it feels to ask for and give feedback."
+              body="10 interviews: 4 students, 6 job seekers. I wanted to understand the emotional context. Not just what people do around feedback, but how it feels to ask for it."
             />
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <ArrowInsightCard
                 topText="Users who have to create an account just to leave feedback will drop off. The responder has no stake in the product. Zero friction isn't optional."
                 bottomText="No-login responder flow via shared link. Open, respond, done."
@@ -287,13 +247,14 @@ export default function MeViewPage() {
           </div></FadeIn>
 
           {/* ── SOLUTION ── */}
-          <FadeIn><div id="solution" style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+          <FadeIn><div id="solution" className="flex flex-col gap-4">
             <SectionHeader
               label="SOLUTION"
+              labelColor={LABEL_COLOR}
               title="The hardest part wasn't the requester flow. It was the responder's."
               body="Every decision came back to one question: will the responder actually follow through?"
             />
-            <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
+            <div className="flex flex-col gap-10">
               <SolutionPair
                 problemText="Responders drop off at sign-up, often before they've given a single piece of feedback."
                 solutionText="A shared link opens directly to the form. No account, no barrier. The responder selects perceived strengths, picks relevant icons, and optionally adds a written note, then they're done."
@@ -316,11 +277,14 @@ export default function MeViewPage() {
           </div></FadeIn>
 
           {/* ── REFLECTION + CTA ── */}
-          <FadeIn><div id="reflection" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            <SectionHeader label="REFLECTION" title="What I learnt" />
-            <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "start" }}>
-              {/* Left: insight cards */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <FadeIn><div id="reflection" className="flex flex-col gap-4">
+            <SectionHeader
+              label="REFLECTION"
+              labelColor={LABEL_COLOR}
+              title="What this taught me."
+            />
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8 md:gap-10 items-start">
+              <div className="flex flex-col gap-4">
                 <InsightCard
                   icon={<Reply size={18} color="#969696" />}
                   title="Start with the responder"
@@ -338,10 +302,9 @@ export default function MeViewPage() {
                 />
               </div>
 
-              {/* Right: CTA — top-aligned with first tile */}
               <CaseCTA
                 title="Want to see the prototype or talk through the process?"
-                body="Curious about the decisions behind it?"
+                body="The full prototype, research synthesis, and design system are available on request."
               />
             </div>
           </div></FadeIn>
