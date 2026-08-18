@@ -6,13 +6,13 @@ import SideNav from "@/components/SideNav";
 import SectionHeader from "@/components/case/SectionHeader";
 import InsightCard from "@/components/case/InsightCard";
 import CaseCTA from "@/components/CaseCTA";
+import PasswordGate from "@/components/PasswordGate";
 import { ScanSearch, LayoutList, ShieldCheck } from "lucide-react";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const FONT_DISPLAY = "var(--font-montserrat)";
 const LABEL_COLOR = "#E05A3A";
-const IMAGE_SIZES = "(max-width: 768px) 100vw, 530px";
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -47,7 +47,6 @@ function CaseVideo({ src, label }: { src: string; label: string }) {
       style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
     >
       <source src={src} type="video/mp4" />
-      <source src={src} type="video/quicktime" />
     </video>
   );
 }
@@ -89,8 +88,6 @@ const PROCESS_STEPS: {
   text: string;
   mediaSrc: string;
   mediaType: "video" | "image";
-  mediaWidth?: number;
-  mediaHeight?: number;
 }[] = [
   {
     step: "AUDIT",
@@ -103,24 +100,18 @@ const PROCESS_STEPS: {
     text: "Set design principles before touching Figma: scannability first, progressive disclosure for dense data, accessibility as a non-negotiable baseline. Aligned early with engineering on what could and couldn't ship, so the redesign was constrained by reality, not just ambition.",
     mediaSrc: "/detectify/table define.png",
     mediaType: "image",
-    mediaWidth: 1024,
-    mediaHeight: 590,
   },
   {
     step: "DESIGN",
     text: "Built a component system covering every state: default, hover, selected, loading, empty, error. Included interaction design for drag-and-drop column reordering. Used Figma Make to build an interactive prototype showing live state changes, not just static screens.",
     mediaSrc: "/detectify/table design.png",
     mediaType: "image",
-    mediaWidth: 864,
-    mediaHeight: 578,
   },
   {
     step: "ITERATION",
     text: "Ran a design critique with engineers, product, and sales. Presented the interview insights, redesign scope, and first prototype together. The decisions were legible, not just the visuals.",
     mediaSrc: "/detectify/table iteration.png",
     mediaType: "image",
-    mediaWidth: 1112,
-    mediaHeight: 508,
   },
 ];
 
@@ -130,7 +121,7 @@ export default function DetectifyPage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <div className="flex flex-col md:flex-row items-start pt-[41px]">
+      <div className="flex flex-col md:flex-row items-start">
 
         {/* Left: sticky project meta */}
         <div
@@ -174,8 +165,9 @@ export default function DetectifyPage() {
 
       <hr className="border-0 border-t border-border m-0" />
 
-      {/* ── SIDE NAV + CASE CONTENT ──────────────────────────────────────── */}
-      <div className="flex items-start">
+      {/* ── SIDE NAV + CASE CONTENT (password-gated for NDA) ─────────────── */}
+      <PasswordGate project="detectify">
+        <div className="flex items-start">
           <SideNav sections={NAV_SECTIONS} />
 
           <div className="flex-1 px-5 py-14 md:px-28 md:py-24 flex flex-col gap-20">
@@ -203,20 +195,20 @@ export default function DetectifyPage() {
               <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
                 To understand where things were breaking down, I ran 5 interviews with people across product, sales, and customer success: the teams closest to how real users worked with the data. Three friction points kept coming up.
               </p>
-              <div className="grid grid-cols-1 md:gap-10 items-start" style={{ gridTemplateColumns: "2fr 3fr", gap: 40 }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
                 <div className="flex flex-col gap-4">
                   <InsightCard
-                    icon={<ScanSearch size={18} color="#767676" />}
+                    icon={<ScanSearch size={18} color="#969696" />}
                     title="No visual hierarchy"
                     description="Every row looked the same. Users couldn't tell at a glance what needed their attention and had to read every single row to find out. Scanning was slow. Mistakes happened."
                   />
                   <InsightCard
-                    icon={<LayoutList size={18} color="#767676" />}
+                    icon={<LayoutList size={18} color="#969696" />}
                     title="Inconsistent interactions across the product"
                     description="Filters and sorting worked differently depending on which table you were in. Users had to relearn the same UI in different parts of the product. No pattern ever stuck."
                   />
                   <InsightCard
-                    icon={<ShieldCheck size={18} color="#767676" />}
+                    icon={<ShieldCheck size={18} color="#969696" />}
                     title="Accessibility failures in a product that sells to compliance teams"
                     description="Column headers disappeared on scroll, so users lost track of what each column meant. The horizontal scrollbar sat at the very bottom of the table (not the screen), so to scroll sideways, users first had to scroll through hundreds of rows to reach it. Both were WCAG failures. In a product Detectify sells to security and compliance teams, that's not just a UX problem. It's a credibility problem."
                   />
@@ -224,10 +216,8 @@ export default function DetectifyPage() {
                 <Image
                   src="/detectify/table before img.png"
                   alt="Detectify table before redesign"
-                  width={1194}
-                  height={792}
-                  quality={100}
-                  sizes={IMAGE_SIZES}
+                  width={800}
+                  height={600}
                   style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
                 />
               </div>
@@ -264,10 +254,8 @@ export default function DetectifyPage() {
                   <Image
                     src="/detectify/table key insight.png"
                     alt="Key insights from the Detectify table audit"
-                    width={782}
-                    height={640}
-                    quality={100}
-                    sizes={IMAGE_SIZES}
+                    width={800}
+                    height={600}
                     style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
                   />
                 </div>
@@ -281,7 +269,7 @@ export default function DetectifyPage() {
                   title="Audit · Define · Design · Iterate"
                 />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-                  {PROCESS_STEPS.map(({ step, text, mediaSrc, mediaType, mediaWidth, mediaHeight }) => (
+                  {PROCESS_STEPS.map(({ step, text, mediaSrc, mediaType }) => (
                     <div key={step} className="flex flex-col gap-4">
                       <div className="flex flex-col gap-2">
                         <span className="text-label" style={{ color: LABEL_COLOR }}>{step}</span>
@@ -293,10 +281,8 @@ export default function DetectifyPage() {
                         <Image
                           src={mediaSrc}
                           alt={`${step} process documentation`}
-                          width={mediaWidth ?? 800}
-                          height={mediaHeight ?? 600}
-                          quality={100}
-                          sizes={IMAGE_SIZES}
+                          width={800}
+                          height={600}
                           style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
                         />
                       )}
@@ -310,9 +296,9 @@ export default function DetectifyPage() {
                 <SectionHeader
                   label="SOLUTION"
                   labelColor={LABEL_COLOR}
-                  title="Three problems, three decisions."
+                  title="Three problems, Three decisions."
                 />
-                <div className="grid grid-cols-1 items-start" style={{ gridTemplateColumns: "2fr 3fr", gap: 40 }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
                   <div className="flex flex-col gap-4">
                     <InsightCard
                       title="Scannability first"
@@ -339,7 +325,7 @@ export default function DetectifyPage() {
                   title="A new standard. Across the whole product."
                 />
                 <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
-                  The redesigned table became the design system standard for all data views in the product. WCAG AA compliance was achieved at the component level. Engineering handoff got faster once interactive prototypes replaced static annotated screens.
+                  The redesigned table became the design system standard for all data views in the product. WCAG AA compliance was achieved at the component level. Engineering handoff time reduced as interactive prototypes replaced static annotated screens as the handoff artefact.
                 </p>
                 <p className="text-body-3 text-ink-faint leading-[1.6] m-0">
                   Specific metrics available on request.
@@ -384,6 +370,7 @@ export default function DetectifyPage() {
 
           </div>
         </div>
+      </PasswordGate>
     </>
   );
 }

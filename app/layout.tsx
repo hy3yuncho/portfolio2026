@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import PageTransition from "@/components/PageTransition";
+import ScrollProgress from "@/components/ScrollProgress";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -28,8 +29,17 @@ const ibmPlexSerif = IBM_Plex_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Hailey Yun Cho: Product Designer",
+  title: {
+    default: "Hailey Yun Cho: Product Designer",
+    template: "%s · Hailey Yun Cho",
+  },
   description: "Portfolio of Hailey Yun Cho, product designer based in Stockholm.",
+  openGraph: {
+    title: "Hailey Yun Cho: Product Designer",
+    description: "Portfolio of Hailey Yun Cho, product designer based in Stockholm.",
+    type: "website",
+    locale: "en_GB",
+  },
 };
 
 export default function RootLayout({
@@ -58,6 +68,7 @@ export default function RootLayout({
       >
         <CustomCursor />
         <Nav />
+        <ScrollProgress />
         <PageTransition>{children}</PageTransition>
         <Footer />
       </body>

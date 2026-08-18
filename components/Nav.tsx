@@ -41,7 +41,7 @@ export default function Nav() {
         <Link
           href="/"
           data-cursor="link"
-          className="shrink-0 text-outlined hover:opacity-80 transition-opacity font-black text-[14px]"
+          className="shrink-0 text-outlined link-underline font-black text-[14px]"
         >
           Hailey Yun Cho
         </Link>
@@ -51,14 +51,14 @@ export default function Nav() {
           <Link
             href="/about"
             data-cursor="link"
-            className="text-outlined font-black text-[13px] md:text-[14px] hover:opacity-70 transition-opacity uppercase"
+            className="text-outlined link-underline font-black text-[13px] md:text-[14px] uppercase"
           >
             About
           </Link>
           <Link
             href="/#work"
             data-cursor="link"
-            className="text-outlined font-black text-[13px] md:text-[14px] hover:opacity-70 transition-opacity uppercase"
+            className="text-outlined link-underline font-black text-[13px] md:text-[14px] uppercase"
           >
             Work
           </Link>
@@ -67,17 +67,14 @@ export default function Nav() {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="link"
-            className="text-outlined font-black text-[13px] md:text-[14px] hover:opacity-70 transition-opacity uppercase"
+            className="text-outlined link-underline font-black text-[13px] md:text-[14px] uppercase"
           >
             Resume
           </a>
         </div>
 
         {/* Timezone — desktop only, right */}
-        <span
-          className="hidden md:block whitespace-nowrap text-outlined font-black text-[14px]"
-          aria-live="polite"
-        >
+        <span className="hidden md:block whitespace-nowrap text-outlined font-black text-[14px]">
           Europe/Stockholm&nbsp;&nbsp;{stockholmTime}
         </span>
       </nav>

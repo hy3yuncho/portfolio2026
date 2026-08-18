@@ -41,7 +41,7 @@ const defaultSections: NavSection[] = [
 ];
 
 const FONT = "font-['Montserrat',sans-serif] font-light text-[12px]";
-const BASE = `inline-flex items-center gap-[6px] ${FONT} text-[#141412] px-3 h-[24px] rounded-[2px] transition-colors whitespace-nowrap`;
+const BASE = `inline-flex items-center gap-[6px] ${FONT} text-[#141412] px-3 h-[24px] rounded-[2px] transition duration-150 active:scale-[0.97] whitespace-nowrap`;
 const FILLED = `${BASE} bg-[#e5e5e5] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] hover:bg-[rgba(0,136,255,0.25)]`;
 const GHOST = `${BASE} bg-transparent hover:bg-[rgba(0,136,255,0.25)]`;
 const ACTIVE = `${BASE} bg-[rgba(0,136,255,0.15)] text-[#0050cc]`;

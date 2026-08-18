@@ -97,6 +97,22 @@
   height: 380px;
   position: relative;
   overflow: hidden;
+  transition: transform 0.35s ease;
+}
+
+/* Alternating tilt on hover — echoes the scattered-desk hero */
+.photo-placeholder:hover {
+  transform: rotate(-1.5deg) scale(1.02);
+}
+
+.photo-placeholder:nth-child(even):hover {
+  transform: rotate(1.5deg) scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-placeholder:hover {
+    transform: none;
+  }
 }
 
 /* ── Footer ── */

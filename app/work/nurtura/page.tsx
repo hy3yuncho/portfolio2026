@@ -193,17 +193,17 @@ export default function NurturaPage() {
               left={
                 <div className="flex flex-col gap-4">
                   <InsightCard
-                    icon={<LayoutList size={18} color="#969696" />}
+                    icon={<LayoutList size={18} color="#767676" />}
                     title="Overwhelm by design"
                     description="Unfiltered feeds surface triggering content, including pregnancy announcements and success stories, before users have set any preferences. The result isn't just discomfort. It's abandonment."
                   />
                   <InsightCard
-                    icon={<UserX size={18} color="#969696" />}
+                    icon={<UserX size={18} color="#767676" />}
                     title="Isolation without exit"
                     description="75% felt lonely during the process. 60% felt misunderstood by people close to them. The communities built to help them were actively making things worse."
                   />
                   <InsightCard
-                    icon={<Blocks size={18} color="#969696" />}
+                    icon={<Blocks size={18} color="#767676" />}
                     title="No platform built for this"
                     description="No journey-stage context, no emotional framing, no partner perspective. Existing platforms treated IVF users as a general audience and then wondered why they left."
                   />
@@ -255,7 +255,7 @@ export default function NurturaPage() {
               {[
                 {
                   n: 1,
-                  icon: <Users size={18} color="#969696" />,
+                  icon: <Users size={18} color="#767676" />,
                   title: "Personalised community groups",
                   description: "80% of users already rely on Facebook groups and forums. The problem isn't that people don't use communities. It's that those communities don't meet them where they are. This concept addressed that directly: a forum experience built around IVF, with personalisation by stage, topic, and treatment type.",
                   imageSrc: "/nurtura/concept 1.png",
@@ -263,7 +263,7 @@ export default function NurturaPage() {
                 },
                 {
                   n: 2,
-                  icon: <HeartHandshake size={18} color="#969696" />,
+                  icon: <HeartHandshake size={18} color="#767676" />,
                   title: "1:1 peer matching",
                   description: "Friends and family, however well-meaning, can't provide the support that comes from shared experience. Users wanted to find someone going through something specifically similar, not just someone vaguely supportive. This concept was a matchmaking-style peer connect feature.",
                   imageSrc: "/nurtura/concept 2.png",
@@ -271,7 +271,7 @@ export default function NurturaPage() {
                 },
                 {
                   n: 3,
-                  icon: <Sparkles size={18} color="#969696" />,
+                  icon: <Sparkles size={18} color="#767676" />,
                   title: "Emotional and informational support",
                   description: "Medical information exists. Emotional preparation doesn't. This concept took inspiration from pregnancy tracking apps and reframed them for IVF, personalised by journey stage and focused on emotional readiness alongside clinical detail.",
                   imageSrc: "/nurtura/concept 3.png",
@@ -385,18 +385,18 @@ export default function NurturaPage() {
               {/* Left: reflection tiles */}
               <div className="flex flex-col gap-4">
                 <InsightCard
-                  icon={<FlaskConical size={18} color="#969696" />}
+                  icon={<FlaskConical size={18} color="#767676" />}
                   title="Run usability testing earlier on onboarding"
                   description="I validated the concept direction first and iterated on hi-fi screens before doing task-based testing on onboarding. Earlier usability testing would have surfaced friction in the content preference flow faster, and reduced how much I had to revise copy at hi-fi stage."
                 />
                 <InsightCard
-                  icon={<Stethoscope size={18} color="#969696" />}
+                  icon={<Stethoscope size={18} color="#767676" />}
                   title="Involve a fertility counsellor from the start"
                   description="The emotional safety framing was research-led, but the clinical accuracy of the IVF guide content wasn't validated by a professional. For a health-adjacent product, that's a gap. In a real product, expert review would happen before, not after, design."
                 />
                 <InsightCard
-                  icon={<PenLine size={18} color="#969696" />}
-                  title="The most impactful decisions were copy choices"
+                  icon={<PenLine size={18} color="#767676" />}
+                  title="The decisions that did the most work were copy choices"
                   description="'You can change this anytime.' 'Others felt this way too this week.' These lines carry more emotional weight than any visual decision I made. Writing the copy as a design decision, not a detail, was the shift that made the onboarding work."
                 />
               </div>

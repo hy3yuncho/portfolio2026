@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import styles from "./about.module.css";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Background, experience, and contact for Hailey Yun Cho, product designer based in Stockholm.",
+};
 import FadeIn from "@/components/FadeIn";
 import ExperienceAccordion, { type ExperienceItem } from "@/components/ExperienceAccordion";
 
@@ -16,7 +23,7 @@ const experiences: ExperienceItem[] = [
     role: 'Product Design Intern',
     date: 'Spring 2026',
     expandedTitle: 'From inconsistency to system.',
-    expandedBody: 'I joined mid-sprint and stayed in sprint. My focus was building out the core design system to WCAG AA compliance, which meant going deep on interaction patterns that had accumulated inconsistencies over time. Alongside that, I restructured the main navigation and onboarding flow remapping it from a feature-release logic to how security professionals actually move through their work. Shipped in weekly cycles, directly with PM and engineering.',
+    expandedBody: 'I joined mid-sprint and stayed in sprint. My focus was building out the core design system to WCAG AA compliance, which meant going deep on interaction patterns that had accumulated inconsistencies over time. Alongside that, I restructured the main navigation and onboarding flow, remapping it from a feature-release logic to how security professionals actually move through their work. Shipped in weekly cycles, directly with PM and engineering.',
   },
   {
     company: 'Amiqa',
@@ -58,8 +65,9 @@ export default function AboutPage() {
             <ul>
               <li>hunting down the best pour-over in every city I visit (there is a mental ranking)</li>
               <li>somewhere between planning the next trip and still processing the last one</li>
-              <li>treating every sunny day in Stockholm</li>
-              <li>photographing whatever catches my eye and never look back</li>
+              {/* completed a truncated sentence — was "treating every sunny day in Stockholm" */}
+              <li>treating every sunny day in Stockholm like it might be the last one</li>
+              <li>photographing whatever catches my eye, then never looking at the photos again</li>
               <li>vibe coding small projects</li>
               <li>brain dumping in my journal</li>
             </ul>
@@ -81,7 +89,7 @@ export default function AboutPage() {
                 <span className={styles["cv-date"]}>2024-2026</span>
               </div>
               <div className={styles["cv-entry"]}>
-                <p><span className={styles["cv-company"]}>Australian National University /</span><span className={styles["cv-role"]}> B.S Psychology, B.C Finance</span></p>
+                <p><span className={styles["cv-company"]}>Australian National University /</span><span className={styles["cv-role"]}> BSc Psychology, BCom Finance</span></p>
                 <span className={styles["cv-date"]}>2019-2023</span>
               </div>
             </div>

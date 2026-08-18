@@ -17,7 +17,7 @@ interface FooterProps {
 
 export default function Footer({
   name = "Hailey Yun Cho",
-  tagline = "And maybe, just maybe, our threads are meant to cross too!\nIf you feel a spark reading this, let's start weaving our own '연 [yeon緣]'",
+  tagline = "And maybe, just maybe, our threads are meant to cross too!\nIf you feel a spark reading this, let's start weaving our own '연 [yeon緣]'.",
   ctaLinks = [
     { label: "LINKEDIN", href: "https://www.linkedin.com/in/hyeyun-cho-/", target: "_blank", rel: "noopener noreferrer" },
     { label: "EMAIL", href: "mailto:hy3yun.cho@gmail.com" },

@@ -31,6 +31,60 @@
   50%       { opacity: 0; }
 }
 
+/* Hero desk objects settle into place on load (staggered via animation-delay).
+   Animates transform — safe: parallax uses the separate `translate` property. */
+@keyframes hero-settle {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Opacity-only variant for elements positioned with Tailwind translate utilities */
+@keyframes hero-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lightbox-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-item {
+  animation: hero-settle 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Underline that slides in from the left on hover/focus */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 2px;
+  background: #474747;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
 @theme {
   /* ── Font families ──────────────────────────────────────────────────── */
   --font-sans:    'DM Sans', sans-serif;
@@ -69,7 +123,7 @@
   --color-ink:           #141412;   /* primary text */
   --color-ink-secondary: #57423F;   /* secondary text (warm brown) */
   --color-ink-muted:     #666666;   /* muted text */
-  --color-ink-faint:     #969696;   /* placeholder / disabled */
+  --color-ink-faint:     #767676;   /* faint but readable — 4.5:1 on surface (WCAG AA) */
 
   /* Surfaces */
   --color-surface:        #FEFEFC;  /* page background */
@@ -204,6 +258,8 @@
   html {
     overflow-x: hidden;
     max-width: 100vw;
+    scroll-behavior: smooth;
+    scroll-padding-top: 61px; /* fixed nav (41px) + breathing room for anchor jumps */
   }
 
   body {
@@ -234,6 +290,6 @@
   --border: #e5e5e5;
   --text: #141412;
   --text-mid: #666;
-  --text-muted: #989898;
+  --text-muted: #767676; /* 4.5:1 on surface (WCAG AA) */
   --yellow: #fadb68;
 }

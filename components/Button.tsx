@@ -56,7 +56,7 @@ export default function Button({
     // Base
     "inline-flex items-center justify-center gap-[4px]",
     "rounded-[2px] shadow-[0_1px_2px_rgba(0,0,0,0.05)]",
-    "whitespace-nowrap transition-colors cursor-pointer",
+    "whitespace-nowrap transition duration-150 cursor-pointer active:scale-[0.97]",
     "font-[family-name:var(--font-montserrat)]",
     // Variant + size
     VARIANT[variant],

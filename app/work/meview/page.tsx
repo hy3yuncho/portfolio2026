@@ -106,8 +106,9 @@ export default function MeViewPage() {
             <p className="text-body-1 text-ink-secondary" style={{ margin: "0 0 8px" }}>
               A peer feedback app for Gen Z, built around the person giving feedback, not just the person asking for it.
             </p>
+            {/* was a near-verbatim repeat of the tagline above — now carries the design bet instead */}
             <p className="text-body-2-light text-ink-muted leading-[1.7] m-0">
-              A mobile peer feedback app for Gen Z, structured by project and skill, anonymous by default, and designed around the person who has to respond.
+              Anonymous by default, structured by project and skill. The core bet: a responder has no stake in the product, so responding can&apos;t require an account, a login, or any friction at all.
             </p>
           </div>
 
@@ -156,7 +157,7 @@ export default function MeViewPage() {
             <SectionHeader
               label="OVERVIEW"
               labelColor={LABEL_COLOR}
-              title="Turning how others see you into something you can actually use"
+              title="Turning how others see you into something you can actually use."
             />
             <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
               MeView is a mobile peer feedback service that lets Gen Z collect, organise, and visualise anonymous reviews from co-workers and friends, structured by project and competency. The product ran for 3 months as a side project.
@@ -184,28 +185,28 @@ export default function MeViewPage() {
               label="THE PROBLEM"
               labelColor={LABEL_COLOR}
               title="People want peer feedback. They have no good way to get it."
-              body="Existing tools sit at two extremes: LinkedIn recommendations are too formal, DMs and verbal comments are too informal. Nothing in between is designed for self-exploration."
+              body="Research surfaced four barriers. The two heaviest had nothing to do with tools: asking feels vulnerable, and responding feels like a chore."
             />
             <TwoColumnSection
               left={
                 <div className="flex flex-col gap-4">
                   <InsightCard
-                    icon={<MessageSquareDashed size={18} color="#969696" />}
+                    icon={<MessageSquareDashed size={18} color="#767676" />}
                     title="LinkedIn is too formal. DMs are too casual. Nothing in between."
                     description="Existing tools sit at two extremes: referrals designed for public profiles, or informal comments that disappear. Nothing was built for honest, structured self-exploration."
                   />
                   <InsightCard
-                    icon={<LayoutTemplate size={18} color="#969696" />}
+                    icon={<LayoutTemplate size={18} color="#767676" />}
                     title="The gap isn't desire. It's structure."
                     description="80% of people are curious about how others see them, with Gen Z most engaged. Without a dedicated space, feedback either doesn't get asked for or doesn't get given."
                   />
                   <InsightCard
-                    icon={<ShieldAlert size={18} color="#969696" />}
+                    icon={<ShieldAlert size={18} color="#767676" />}
                     title="Asking is emotionally vulnerable"
                     description="The biggest barrier isn't giving feedback. It's requesting it. Putting yourself forward for evaluation, even anonymously, carries real emotional risk."
                   />
                   <InsightCard
-                    icon={<UserRoundX size={18} color="#969696" />}
+                    icon={<UserRoundX size={18} color="#767676" />}
                     title="Responders deprioritise follow-through"
                     description="A feedback request is easy to ignore. Any friction on the response side, such as sign-up, logging in, or a long form, becomes a reason not to bother."
                   />
@@ -226,7 +227,7 @@ export default function MeViewPage() {
               label="KEY INSIGHTS"
               labelColor={LABEL_COLOR}
               title="Two findings. Two decisions."
-              body="10 interviews: 4 students, 6 job seekers. I wanted to understand the emotional context. Not just what people do around feedback, but how it feels to ask for it."
+              body="10 interviews: 4 students, 6 job seekers, focused on how asking and responding actually feel. Two findings became product decisions."
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <ArrowInsightCard
@@ -286,17 +287,17 @@ export default function MeViewPage() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8 md:gap-10 items-start">
               <div className="flex flex-col gap-4">
                 <InsightCard
-                  icon={<Reply size={18} color="#969696" />}
+                  icon={<Reply size={18} color="#767676" />}
                   title="Start with the responder"
                   description="I tested the requester flow first, but the core tension lived on the responder side. Earlier responder research would have sharpened the no-login decision faster and reduced time spent on requester edge cases."
                 />
                 <InsightCard
-                  icon={<HelpCircle size={18} color="#969696" />}
+                  icon={<HelpCircle size={18} color="#767676" />}
                   title="'Instagrammable' is an assumption"
                   description="The visual output being shareable is an assumption about Gen Z behaviour, not a tested one. Worth validating in v2 before investing more in that direction."
                 />
                 <InsightCard
-                  icon={<Bell size={18} color="#969696" />}
+                  icon={<Bell size={18} color="#767676" />}
                   title="Notifications are the growth loop"
                   description="Notification design for prompting users to share results is the organic growth mechanism: out of scope for v1, but high priority for v2."
                 />

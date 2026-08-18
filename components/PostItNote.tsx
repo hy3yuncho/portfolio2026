@@ -1,37 +1,26 @@
 'use client'
 
+import Image from 'next/image'
 import { useTypewriter } from '@/hooks/useTypewriter'
 
-// Post-it note. Body: 351×190px, #FFF6BB fill, 1px #E5E5E5 border, no radius.
-// Corner fold: right=0 bottom=0, 55×55px right-angle triangle, #FADB68 fill.
+// Post-it note — postit.png (1113×570) carries the body, folded corner and shadow.
+// The note itself only occupies the left 1054px of that canvas; the remaining 59px
+// is transparent padding. Rendering the image 371 wide therefore puts the visible
+// note at exactly 351×190, the same box the CSS version used.
 export default function PostItNote() {
   const { text, isPausing } = useTypewriter()
 
   return (
-    <div className="relative" style={{ width: 351, height: 190, overflow: 'visible' }}>
-      {/* Body */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundColor: '#FFF6BB',
-          border: '1px solid #E5E5E5',
-          boxSizing: 'border-box',
-        }}
-      />
-
-      {/* Corner fold — bottom-right triangle, no rotation needed */}
-      <div
-        className="absolute"
-        style={{
-          right: 0,
-          bottom: 0,
-          width: 55,
-          height: 55,
-          backgroundColor: '#FADB68',
-          clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%)',
-          filter:
-            'drop-shadow(1px 0 0 #E5E5E5) drop-shadow(-1px 0 0 #E5E5E5) drop-shadow(0 1px 0 #E5E5E5) drop-shadow(0 -1px 0 #E5E5E5)',
-        }}
+    <div className="relative" style={{ width: 371, height: 190 }}>
+      <Image
+        src="/landing_page/postit.png"
+        alt=""
+        width={1113}
+        height={570}
+        quality={100}
+        className="absolute inset-0 pointer-events-none select-none"
+        style={{ width: 371, height: 'auto' }}
+        priority
       />
 
       {/* Text */}
@@ -40,7 +29,7 @@ export default function PostItNote() {
         style={{
           top: 32,
           left: 32,
-          right: 32,
+          width: 287,
           fontSize: 14,
           fontFamily: "var(--font-dm-sans), 'DM Sans', system-ui, sans-serif",
         }}

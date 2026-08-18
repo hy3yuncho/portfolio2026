@@ -71,8 +71,9 @@ export default function AppstractPage() {
             <p className="text-body-1 text-ink-secondary" style={{ margin: "0 0 8px" }}>
               Social shopping widget embedded in partner e-commerce sites. The product was live. Engagement was near-zero.
             </p>
+            {/* trimmed repeat of "the widget was live" — the tagline above already says it */}
             <p className="text-body-2-light text-ink-muted leading-[1.7] m-0">
-              The widget was live. Shoppers weren&apos;t engaging. I redesigned the default state and first-interaction flow around one insight: the social activity itself is the best advertisement for the product.
+              I redesigned the default state and first-interaction flow around one insight: the social activity itself is the best advertisement for the product.
             </p>
           </div>
 
@@ -114,7 +115,7 @@ export default function AppstractPage() {
               title="Making a live product visible to the people it was built for."
             />
             <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
-              Appstract is a social shopping layer embedded into partner e-commerce sites. By the time I joined, the widget was live. Engagement was near-zero. I was the only designer on it, working end-to-end with the founders from research through final UI.
+              Appstract is a social shopping layer embedded into partner e-commerce sites. By the time I joined, the widget was live. Engagement was near-zero. I was the only designer on it, working directly with the founders from research through final UI.
             </p>
           </div></FadeIn>
 
@@ -124,23 +125,23 @@ export default function AppstractPage() {
               label="THE PROBLEM"
               labelColor="#E05A3A"
               title="Two awareness failures, one product."
-              body="The problem operated on two levels simultaneously. Fixing one without the other wouldn't move the needle."
+              body="The problem operated on two levels at once. Fixing one without the other wouldn't have changed the outcome."
             />
             <TwoColumnSection
               left={
                 <div className="flex flex-col gap-4">
                   <InsightCard
-                    icon={<Eye size={18} color="#969696" />}
+                    icon={<Eye size={18} color="#767676" />}
                     title="B2C: shoppers don't notice the widget"
                     description="Tooltip-based prompts assumed users would stop, read, and decide. On a product page, attention doesn't work that way."
                   />
                   <InsightCard
-                    icon={<Wifi size={18} color="#969696" />}
+                    icon={<Wifi size={18} color="#767676" />}
                     title="B2B: partner sites aren't surfacing it"
                     description="Even when present, the widget competed with everything else on the page. Partners had no guidance on placement or activation."
                   />
                   <InsightCard
-                    icon={<MousePointerClick size={18} color="#969696" />}
+                    icon={<MousePointerClick size={18} color="#767676" />}
                     title="The hardest constraint: no ownership of the environment"
                     description="The widget lives inside someone else's product. It had to earn attention and communicate value in seconds, with no guaranteed context around it."
                   />
@@ -219,27 +220,27 @@ export default function AppstractPage() {
             />
             <div className="flex flex-col gap-4">
               <InsightCard
-                icon={<Layers size={18} color="#969696" />}
+                icon={<Layers size={18} color="#767676" />}
                 title="Widget default state: ambient social signals"
                 description="Peer activity, reactions, and shared browsing indicators visible before any interaction. The widget earns its place on the page before asking for a click."
               />
               <InsightCard
-                icon={<MousePointerClick size={18} color="#969696" />}
+                icon={<MousePointerClick size={18} color="#767676" />}
                 title="First-interaction: frictionless entry"
                 description="The transition from widget to active shared shopping session is designed to feel effortless. No modal, no redirect. Stays in the product page context."
               />
               <InsightCard
-                icon={<MessageCircle size={18} color="#969696" />}
+                icon={<MessageCircle size={18} color="#767676" />}
                 title="Micro Poll: async fast reactions"
                 description="User sends one or more products to friends. Friends respond with a curated emoji set, async, no account required. Once reactions come in, a conversation thread opens automatically. The quick signal becomes an entry point, not a dead end."
               />
               <InsightCard
-                icon={<Users size={18} color="#969696" />}
+                icon={<Users size={18} color="#767676" />}
                 title="Zero-state and sparse-data handling"
                 description="Widget behaviour when social data is sparse or the partner site is newly integrated. Early-stage low density shouldn't make the product feel abandoned."
               />
               <InsightCard
-                icon={<Wifi size={18} color="#969696" />}
+                icon={<Wifi size={18} color="#767676" />}
                 title="B2B placement guide"
                 description="Recommended integration patterns for partner sites to maximise discoverability without disrupting the host page."
               />
@@ -256,17 +257,17 @@ export default function AppstractPage() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8 md:gap-10 items-start">
               <div className="flex flex-col gap-4">
                 <InsightCard
-                  icon={<Eye size={18} color="#969696" />}
+                  icon={<Eye size={18} color="#767676" />}
                   title="Audit the partner integration earlier"
                   description="Understanding how different partner sites were actually placing the widget (and where it was getting lost) would have shaped the constraints more precisely. I worked from assumptions that could have been replaced with observations."
                 />
                 <InsightCard
-                  icon={<Layers size={18} color="#969696" />}
+                  icon={<Layers size={18} color="#767676" />}
                   title="Awareness is a design problem, not a copy problem"
                   description="The existing prompts failed not because the words were wrong, but because the interaction model assumed users would stop, read, and decide. Social signals create curiosity without requiring a conscious decision to engage."
                 />
                 <InsightCard
-                  icon={<Wifi size={18} color="#969696" />}
+                  icon={<Wifi size={18} color="#767676" />}
                   title="Invest more in the B2B side"
                   description="The widget's success depends as much on how partners place it as on the widget design itself. Partner configuration and onboarding guidance were underspecified."
                 />

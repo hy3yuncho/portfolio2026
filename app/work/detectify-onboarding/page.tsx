@@ -33,7 +33,7 @@ const LABEL_COLOR = "#1176C5";
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
+      <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#767676" }}>
         {label}
       </span>
       <span style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 300, color: "#57423F" }}>
@@ -52,7 +52,7 @@ function NdaNote() {
       borderRadius: 5,
       padding: "14px 18px",
     }}>
-      <p style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 400, color: "#969696", lineHeight: 1.6, margin: 0 }}>
+      <p style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 400, color: "#767676", lineHeight: 1.6, margin: 0 }}>
         NDA applies. UI screenshots available on request. Get in touch to see the full prototype walkthrough.
       </p>
     </div>
@@ -126,7 +126,7 @@ export default function DetectifyOnboardingPage() {
             <MetaItem label="Tools" value="Figma, Figma Make" />
           </div>
           <div>
-            <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
+            <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#767676" }}>
               Team
             </span>
             <div style={{ marginTop: 4, display: "flex", flexDirection: "column", gap: 2 }}>
@@ -173,17 +173,17 @@ export default function DetectifyOnboardingPage() {
             />
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <InsightCard
-                icon={<TrendingDown size={18} color="#969696" />}
+                icon={<TrendingDown size={18} color="#767676" />}
                 title="Effort before value"
                 description="New users were immediately asked to manually enter a technical asset. A high-friction task with no context for why it mattered. 69% dropped off at this step alone. Formatting errors (typing https:// instead of example.com) caused a 14–51% failure rate on that single input field."
               />
               <InsightCard
-                icon={<Lock size={18} color="#969696" />}
+                icon={<Lock size={18} color="#767676" />}
                 title="Broken technical flows"
                 description="DNS verification required multi-step preparation users weren't ready for. The API scanning setup had a 100% failure rate from authentication to first scan, and generated 73% of all platform support tickets."
               />
               <InsightCard
-                icon={<EyeOff size={18} color="#969696" />}
+                icon={<EyeOff size={18} color="#767676" />}
                 title="The wrong users hitting setup"
                 description="The 'Get Started' page was showing up for existing users, enterprise admins switching team contexts, and new team members joining already-configured accounts. Users landed on it an average of 3.1 times. It wasn't an onboarding gate. It was a loop."
               />
@@ -199,12 +199,12 @@ export default function DetectifyOnboardingPage() {
             />
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <InsightCard
-                icon={<ListChecks size={18} color="#969696" />}
+                icon={<ListChecks size={18} color="#767676" />}
                 title="User goal"
                 description="Enable a new user to add a domain and initiate their first scan in under 5 minutes, without feeling lost or uncertain about what to do next."
               />
               <InsightCard
-                icon={<TrendingDown size={18} color="#969696" />}
+                icon={<TrendingDown size={18} color="#767676" />}
                 title="Business goals"
                 description="Increase Tour Completion Rate and reduce time-to-first-scan. Every improvement to activation translates directly to lower cost-per-activated-user."
               />
@@ -223,7 +223,7 @@ export default function DetectifyOnboardingPage() {
                 </ul>
               </div>
               <div style={{ background: "#F1F2F3", borderRadius: 5, padding: "16px 20px", display: "flex", flexDirection: "column", gap: 8 }}>
-                <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#969696" }}>
+                <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#767676" }}>
                   Shelved for V1
                 </span>
                 <ul style={{ fontFamily: FONT_SANS, fontSize: 14, fontWeight: 400, color: "#666666", lineHeight: 1.8, margin: 0, paddingLeft: 16 }}>
@@ -232,7 +232,7 @@ export default function DetectifyOnboardingPage() {
               </div>
             </div>
 
-            <p style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 400, color: "#969696", lineHeight: 1.6, margin: 0 }}>
+            <p style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 400, color: "#767676", lineHeight: 1.6, margin: 0 }}>
               Definition of done: a hi-fi V2 prototype validated through internal testing, with 100% of testers rating the new progress system as clearer than the previous version.
             </p>
           </div></FadeIn>
@@ -247,17 +247,17 @@ export default function DetectifyOnboardingPage() {
             />
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <InsightCard
-                icon={<Mic size={18} color="#969696" />}
+                icon={<Mic size={18} color="#767676" />}
                 title="Progress invisibility drove abandonment more than technical friction"
                 description="The existing dot-based navigation gave users no sense of how far they were in the process. Users didn't abandon because the DNS step was hard. They abandoned because they couldn't tell if the end was near. This reframed the entire redesign priority."
               />
               <InsightCard
-                icon={<AlignLeft size={18} color="#969696" />}
+                icon={<AlignLeft size={18} color="#767676" />}
                 title="63% of users chose to skip the guided tour"
                 description="Not because they didn't need help. Because they wanted to explore first. The existing design treated skipping as failure. The redesign had to treat it as a valid path."
               />
               <InsightCard
-                icon={<ListChecks size={18} color="#969696" />}
+                icon={<ListChecks size={18} color="#767676" />}
                 title="Setup was being served to users who didn't need it"
                 description="The platform had no logic for distinguishing first-time users from returning ones. Routing the wrong users into setup wasn't just annoying. It was eroding trust in the product for people who were already activated."
               />
@@ -335,27 +335,27 @@ export default function DetectifyOnboardingPage() {
             />
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <InsightCard
-                icon={<GitMerge size={18} color="#969696" />}
+                icon={<GitMerge size={18} color="#767676" />}
                 title="The Floating Control Card"
                 description="A persistent widget that travels with the user through the UI. When not in focus, it collapses into a progress ring, giving users a way to exit the tour and re-enter it without losing their place. Setup follows you. You don't chase setup."
               />
               <InsightCard
-                icon={<Lightbulb size={18} color="#969696" />}
+                icon={<Lightbulb size={18} color="#767676" />}
                 title="Numeric progress over dot navigation"
                 description="Dots look clean. They tell you nothing. 4/4 testers couldn't identify where they were in the sequence using dots. Numbers replaced them. Not as a visual upgrade, but a functional one. 6/6 testers rated numeric progress as clearer in prototype testing."
               />
               <InsightCard
-                icon={<LayoutDashboard size={18} color="#969696" />}
+                icon={<LayoutDashboard size={18} color="#767676" />}
                 title="Smart routing"
                 description="If a team already has assets or active scans, or if a user is an existing team member, the 'Get Started' page is bypassed entirely. New users get onboarding. Everyone else gets their dashboard."
               />
               <InsightCard
-                icon={<FlaskConical size={18} color="#969696" />}
+                icon={<FlaskConical size={18} color="#767676" />}
                 title="Defensive input design"
                 description="Real-time format validation on the domain entry field, auto-stripping https:// and trailing slashes, with clear placeholder examples. The 14–51% formatting failure rate was a copy and validation problem, not a user problem."
               />
               <InsightCard
-                icon={<EyeOff size={18} color="#969696" />}
+                icon={<EyeOff size={18} color="#767676" />}
                 title="Empty state as expectation management"
                 description="The final screen after scan creation now explicitly communicates the 8 to 24-hour scan delay. What previously looked like a broken confirmation became a clear, calm handoff."
               />
@@ -381,7 +381,7 @@ export default function DetectifyOnboardingPage() {
                 <span style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 300, fontStyle: "italic", color: "#666666", lineHeight: 1.6 }}>
                   &ldquo;Moving from a labyrinth to a guided path. The Cheese Strategy finally made the product&apos;s purpose legible.&rdquo;
                 </span>
-                <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "#969696" }}>
+                <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "#767676" }}>
                   Joel, Security Expert
                 </span>
               </div>
@@ -389,12 +389,12 @@ export default function DetectifyOnboardingPage() {
                 <span style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 300, fontStyle: "italic", color: "#666666", lineHeight: 1.6 }}>
                   &ldquo;The yellow focus highlights directed attention to core features without feeling heavy-handed.&rdquo;
                 </span>
-                <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "#969696" }}>
+                <span style={{ fontFamily: FONT_DISPLAY, fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "#767676" }}>
                   Sanjidah, Tester
                 </span>
               </div>
             </div>
-            <p style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 300, color: "#969696", lineHeight: 1.6, margin: 0 }}>
+            <p style={{ fontFamily: FONT_SANS, fontSize: 13, fontWeight: 300, color: "#767676", lineHeight: 1.6, margin: 0 }}>
               Live metrics from Milestone 1 available on request.
             </p>
           </div></FadeIn>
@@ -409,17 +409,17 @@ export default function DetectifyOnboardingPage() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "start" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <InsightCard
-                  icon={<Lightbulb size={18} color="#969696" />}
+                  icon={<Lightbulb size={18} color="#767676" />}
                   title="Start usability testing on progress navigation earlier"
                   description="The dot vs. number finding only emerged in prototype testing. Earlier low-fi testing on navigation patterns would have surfaced this faster and saved iteration cycles at hi-fi stage."
                 />
                 <InsightCard
-                  icon={<Mic size={18} color="#969696" />}
+                  icon={<Mic size={18} color="#767676" />}
                   title="Involve non-technical stakeholders in the problem framing"
                   description="Think-aloud sessions with internal stakeholders were valuable, but they skewed toward technical users. The non-technical user sessions were the most revealing. I'd weight that perspective more heavily from the start."
                 />
                 <InsightCard
-                  icon={<GitMerge size={18} color="#969696" />}
+                  icon={<GitMerge size={18} color="#767676" />}
                   title="The routing logic was the highest-impact decision, but the last to get attention"
                   description="Smart targeting would directly address the 3.1 average 'Get Started' views per user. It deserved to be scoped earlier, not discovered mid-process."
                 />
