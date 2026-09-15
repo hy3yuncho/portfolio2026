@@ -23,7 +23,7 @@ export default function DecisionBlock({
     <div className="bg-surface-subtle rounded-[5px] p-6 flex flex-col gap-5">
       <h3 className="text-h3 text-ink m-0 flex items-center gap-3">
         <span
-          className="inline-flex items-center justify-center rounded-full bg-surface text-ink-muted text-body-2 font-medium flex-shrink-0"
+          className="inline-flex items-center justify-center rounded-full bg-surface text-ink-muted text-body-2 flex-shrink-0"
           style={{ width: 26, height: 26, border: "1.5px solid var(--color-border-strong)" }}
         >
           {number}
@@ -56,7 +56,7 @@ export default function DecisionBlock({
           <span className="text-label pt-[3px] flex-shrink-0" style={{ color: labelColor }}>
             Chosen
           </span>
-          <p className="text-body-2 text-ink leading-[1.7] m-0 font-medium">{chosen}</p>
+          <p className="text-body-2 text-ink leading-[1.7] m-0">{chosen}</p>
         </div>
 
         <div className={rowCls}>

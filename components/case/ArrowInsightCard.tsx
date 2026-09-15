@@ -40,7 +40,7 @@ export default function ArrowInsightCard({ topText, bottomText }: ArrowInsightCa
       <DashedArrow />
 
       <div className="bg-surface-subtle rounded-[5px] p-5 border-l-2 border-accent">
-        <p className="text-body-2 text-ink font-medium leading-[1.7] m-0">{bottomText}</p>
+        <p className="text-body-2 text-ink leading-[1.7] m-0">{bottomText}</p>
       </div>
     </div>
   );

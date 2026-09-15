@@ -194,7 +194,7 @@ export default function NurturaContent({
           <span className="text-label" style={{ color: LABEL_COLOR }}>
             Decision
           </span>
-          <p className="text-body-2 text-ink-secondary font-medium leading-[1.7] m-0">
+          <p className="text-body-2 text-ink-secondary leading-[1.7] m-0">
             Merge all three, with community as the primary surface.
           </p>
           <p className="text-body-2 text-ink-muted leading-[1.7] m-0">

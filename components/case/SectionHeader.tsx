@@ -20,7 +20,7 @@ export default function SectionHeader({ label, title, body, labelColor = "#1176C
       </h2>
 
       {body && (
-        <p className="text-body-2 text-ink-muted leading-[1.7] m-0 mt-2 max-w-[680px]">
+        <p className="text-body-2 text-ink-muted leading-[1.7] m-0 mt-2">
           {body}
         </p>
       )}

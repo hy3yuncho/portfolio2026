@@ -46,7 +46,7 @@ function SolutionPair({
         </div>
         <div className="flex flex-col gap-1.5">
           <span className="text-label" style={{ color: LABEL_COLOR }}>Solution</span>
-          <p className="text-body-2 text-ink leading-[1.7] m-0 font-medium">{solutionText}</p>
+          <p className="text-body-2 text-ink leading-[1.7] m-0">{solutionText}</p>
         </div>
       </div>
       <CaseImage src={imageSrc} alt={imageAlt} minHeight={580} bare />

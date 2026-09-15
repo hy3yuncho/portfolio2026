@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import SideNav from "@/components/SideNav";
 import SectionHeader from "@/components/case/SectionHeader";
 import InsightCard from "@/components/case/InsightCard";
 import CaseCTA from "@/components/CaseCTA";
-import { ScanSearch, LayoutList, ShieldCheck } from "lucide-react";
+import { ScanSearch, LayoutList, ShieldCheck, Play, Pause } from "lucide-react";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -43,17 +43,20 @@ function NumberBadge({ n }: { n: number }) {
 
 function CaseVideo({ src, label }: { src: string; label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const userPausedRef = useRef(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     // Browsers pause off-screen autoplaying video and never resume it on their own —
-    // resume/pause manually as it scrolls in and out of view.
+    // resume/pause manually as it scrolls in and out of view. Respect an explicit
+    // user pause (via the button below) instead of overriding it on scroll.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => {});
+          if (!userPausedRef.current) video.play().catch(() => {});
         } else {
           video.pause();
         }
@@ -65,19 +68,46 @@ function CaseVideo({ src, label }: { src: string; label: string }) {
     return () => observer.disconnect();
   }, []);
 
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      userPausedRef.current = false;
+      video.play().catch(() => {});
+    } else {
+      userPausedRef.current = true;
+      video.pause();
+    }
+  };
+
   return (
-    <video
-      ref={videoRef}
-      autoPlay
-      muted
-      loop
-      playsInline
-      aria-label={label}
-      style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
-    >
-      <source src={src} type="video/mp4" />
-      <source src={src} type="video/quicktime" />
-    </video>
+    <div className="relative group">
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-label={label}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
+      >
+        <source src={src} type="video/mp4" />
+        <source src={src} type="video/quicktime" />
+      </video>
+      {/* WCAG 2.2.2 (Pause, Stop, Hide) — this autoplays and loops indefinitely,
+          so it needs a reachable control to stop it. Hidden until hover/focus to
+          match the expand-affordance pattern already used on CaseImage. */}
+      <button
+        type="button"
+        onClick={togglePlay}
+        aria-label={isPlaying ? `Pause ${label}` : `Play ${label}`}
+        className="absolute bottom-3 right-3 flex items-center justify-center w-8 h-8 rounded-full bg-ink/70 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 focus-visible:opacity-100"
+      >
+        {isPlaying ? <Pause size={14} /> : <Play size={14} />}
+      </button>
+    </div>
   );
 }
 
@@ -318,7 +348,7 @@ export default function DetectifyPage() {
                 <div className="flex flex-col gap-14">
                   {PROCESS_STEPS.map(({ step, text, media }) => (
                     <div key={step} className="flex flex-col gap-4">
-                      <div className="flex flex-col gap-2 md:max-w-[640px]">
+                      <div className="flex flex-col gap-2">
                         <span className="text-label" style={{ color: LABEL_COLOR }}>{step}</span>
                         <p className="text-body-2 text-ink-muted leading-[1.8] m-0">{text}</p>
                       </div>
@@ -352,7 +382,7 @@ export default function DetectifyPage() {
                   labelColor={LABEL_COLOR}
                   title="Three problems, three decisions."
                 />
-                <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 md:gap-10 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 md:gap-10 items-center">
                   <div className="flex flex-col gap-4">
                     <InsightCard
                       title="Scannability first"

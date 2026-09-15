@@ -52,7 +52,7 @@ function SolutionPair({
         </div>
         <div className="flex flex-col gap-1.5">
           <span className="text-label" style={{ color: LABEL_COLOR }}>Solution</span>
-          <p className="text-body-2 text-ink leading-[1.7] m-0 font-medium">{solutionText}</p>
+          <p className="text-body-2 text-ink leading-[1.7] m-0">{solutionText}</p>
         </div>
         {stat && (
           <p className="text-body-3 text-ink-faint leading-[1.6] m-0 border-l-2 border-border pl-3">
@@ -295,7 +295,7 @@ export default function NurturaPage() {
             {/* Decision callout */}
             <div className="bg-surface-subtle border border-border border-l-[3px] border-l-accent rounded-[5px] px-5 py-4 flex flex-col gap-2">
               <span className="text-label" style={{ color: LABEL_COLOR }}>Decision</span>
-              <p className="text-body-2 text-ink-secondary font-medium leading-[1.7] m-0">
+              <p className="text-body-2 text-ink-secondary leading-[1.7] m-0">
                 Merge all three, with community as the primary surface.
               </p>
               <p className="text-body-2 text-ink-muted leading-[1.7] m-0">

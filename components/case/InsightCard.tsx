@@ -29,7 +29,7 @@ export default function InsightCard({ icon, title, description }: InsightCardPro
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <p className="text-body-2 text-ink font-medium leading-[1.4] m-0">
+        <p className="text-body-1 text-ink font-medium! leading-[1.4] m-0">
           {title}
         </p>
         <p className="text-body-2 text-ink-muted leading-[1.7] m-0">
