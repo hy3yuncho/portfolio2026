@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import SideNav from "@/components/SideNav";
@@ -13,6 +14,10 @@ import { ScanSearch, LayoutList, ShieldCheck } from "lucide-react";
 const FONT_DISPLAY = "var(--font-montserrat)";
 const LABEL_COLOR = "#E05A3A";
 const IMAGE_SIZES = "(max-width: 768px) 100vw, 530px";
+// These single-image steps render at (almost) the full content column width,
+// which isn't capped — so the browser needs to know it can request a large image.
+const PROCESS_IMAGE_SIZES = "100vw";
+const DESIGN_IMAGE_SIZES = "(max-width: 768px) 100vw, 400px";
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -37,8 +42,32 @@ function NumberBadge({ n }: { n: number }) {
 }
 
 function CaseVideo({ src, label }: { src: string; label: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Browsers pause off-screen autoplaying video and never resume it on their own —
+    // resume/pause manually as it scrolls in and out of view.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <video
+      ref={videoRef}
       autoPlay
       muted
       loop
@@ -84,47 +113,60 @@ const NAV_SECTIONS = [
   },
 ];
 
+type CaseMedia = { src: string; type: "video" | "image"; width?: number; height?: number };
+
 const PROCESS_STEPS: {
   step: string;
   text: string;
-  mediaSrc: string;
-  mediaType: "video" | "image";
-  mediaWidth?: number;
-  mediaHeight?: number;
+  media: CaseMedia[];
 }[] = [
   {
     step: "AUDIT",
     text: "Mapped every table instance across the product. Ran a WCAG audit to log contrast failures, missing focus states, and keyboard navigation gaps. This gave the redesign a concrete list of failures to address, not just a general brief to make it better.",
-    mediaSrc: "/detectify/table audit excel.mov",
-    mediaType: "video",
+    media: [{ src: "/detectify/table audit excel.mov", type: "video" }],
   },
   {
     step: "DEFINE",
     text: "Set design principles before touching Figma: scannability first, progressive disclosure for dense data, accessibility as a non-negotiable baseline. Aligned early with engineering on what could and couldn't ship, so the redesign was constrained by reality, not just ambition.",
-    mediaSrc: "/detectify/table define.png",
-    mediaType: "image",
-    mediaWidth: 1024,
-    mediaHeight: 590,
+    media: [{ src: "/detectify/table define.png", type: "image", width: 13824, height: 7808 }],
   },
   {
     step: "DESIGN",
     text: "Built a component system covering every state: default, hover, selected, loading, empty, error. Included interaction design for drag-and-drop column reordering. Used Figma Make to build an interactive prototype showing live state changes, not just static screens.",
-    mediaSrc: "/detectify/table design.png",
-    mediaType: "image",
-    mediaWidth: 864,
-    mediaHeight: 578,
+    media: [{ src: "/detectify/table design.png", type: "image", width: 9789, height: 9024 }],
   },
   {
     step: "ITERATION",
     text: "Ran a design critique with engineers, product, and sales. Presented the interview insights, redesign scope, and first prototype together. The decisions were legible, not just the visuals.",
-    mediaSrc: "/detectify/table iteration.png",
-    mediaType: "image",
-    mediaWidth: 1112,
-    mediaHeight: 508,
+    media: [{ src: "/detectify/table iteration.png", type: "image", width: 14842, height: 6750 }],
   },
 ];
 
+const PROBLEM_BEFORE_IMAGES: CaseMedia[] = [
+  { src: "/detectify/table before.png", type: "image", width: 3627, height: 1668 },
+  { src: "/detectify/table before 2.png", type: "image", width: 3624, height: 1722 },
+  { src: "/detectify/table before 3.png", type: "image", width: 3624, height: 1902 },
+];
+
 // ─── Page ────────────────────────────────────────────────────────────────────
+
+const PROBLEM_INSIGHTS = [
+  {
+    icon: <ScanSearch size={18} color="#767676" />,
+    title: "No visual hierarchy",
+    description: "Every row looked the same. Users couldn't tell at a glance what needed their attention and had to read every single row to find out. Scanning was slow. Mistakes happened.",
+  },
+  {
+    icon: <LayoutList size={18} color="#767676" />,
+    title: "Inconsistent interactions across the product",
+    description: "Filters and sorting worked differently depending on which table you were in. Users had to relearn the same UI in different parts of the product. No pattern ever stuck.",
+  },
+  {
+    icon: <ShieldCheck size={18} color="#767676" />,
+    title: "Accessibility failures in a product that sells to compliance teams",
+    description: "Column headers disappeared on scroll, so users lost track of what each column meant. The horizontal scrollbar sat at the very bottom of the table (not the screen), so to scroll sideways, users first had to scroll through hundreds of rows to reach it. Both were WCAG failures. In a product Detectify sells to security and compliance teams, that's not just a UX problem. It's a credibility problem.",
+  },
+];
 
 export default function DetectifyPage() {
   return (
@@ -203,33 +245,26 @@ export default function DetectifyPage() {
               <p className="text-body-2 text-ink-muted leading-[1.8] m-0">
                 To understand where things were breaking down, I ran 5 interviews with people across product, sales, and customer success: the teams closest to how real users worked with the data. Three friction points kept coming up.
               </p>
-              <div className="grid grid-cols-1 md:gap-10 items-start" style={{ gridTemplateColumns: "2fr 3fr", gap: 40 }}>
-                <div className="flex flex-col gap-4">
-                  <InsightCard
-                    icon={<ScanSearch size={18} color="#767676" />}
-                    title="No visual hierarchy"
-                    description="Every row looked the same. Users couldn't tell at a glance what needed their attention and had to read every single row to find out. Scanning was slow. Mistakes happened."
-                  />
-                  <InsightCard
-                    icon={<LayoutList size={18} color="#767676" />}
-                    title="Inconsistent interactions across the product"
-                    description="Filters and sorting worked differently depending on which table you were in. Users had to relearn the same UI in different parts of the product. No pattern ever stuck."
-                  />
-                  <InsightCard
-                    icon={<ShieldCheck size={18} color="#767676" />}
-                    title="Accessibility failures in a product that sells to compliance teams"
-                    description="Column headers disappeared on scroll, so users lost track of what each column meant. The horizontal scrollbar sat at the very bottom of the table (not the screen), so to scroll sideways, users first had to scroll through hundreds of rows to reach it. Both were WCAG failures. In a product Detectify sells to security and compliance teams, that's not just a UX problem. It's a credibility problem."
-                  />
-                </div>
-                <Image
-                  src="/detectify/table before img.png"
-                  alt="Detectify table before redesign"
-                  width={1194}
-                  height={792}
-                  quality={100}
-                  sizes={IMAGE_SIZES}
-                  style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
-                />
+              <div className="flex flex-col gap-6 md:gap-8">
+                {PROBLEM_INSIGHTS.map((insight, i) => {
+                  const image = PROBLEM_BEFORE_IMAGES[i];
+                  return (
+                    <div key={insight.title} className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-6 md:gap-10 items-start">
+                      <InsightCard {...insight} />
+                      {image && (
+                        <Image
+                          src={image.src}
+                          alt={`Detectify table before redesign, view ${i + 1} of ${PROBLEM_BEFORE_IMAGES.length}`}
+                          width={image.width ?? 1194}
+                          height={image.height ?? 792}
+                          quality={100}
+                          sizes={IMAGE_SIZES}
+                          style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div></FadeIn>
 
@@ -280,26 +315,31 @@ export default function DetectifyPage() {
                   labelColor={LABEL_COLOR}
                   title="Audit · Define · Design · Iterate"
                 />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-                  {PROCESS_STEPS.map(({ step, text, mediaSrc, mediaType, mediaWidth, mediaHeight }) => (
+                <div className="flex flex-col gap-14">
+                  {PROCESS_STEPS.map(({ step, text, media }) => (
                     <div key={step} className="flex flex-col gap-4">
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 md:max-w-[640px]">
                         <span className="text-label" style={{ color: LABEL_COLOR }}>{step}</span>
                         <p className="text-body-2 text-ink-muted leading-[1.8] m-0">{text}</p>
                       </div>
-                      {mediaType === "video" ? (
-                        <CaseVideo src={mediaSrc} label={`${step} process documentation`} />
-                      ) : (
-                        <Image
-                          src={mediaSrc}
-                          alt={`${step} process documentation`}
-                          width={mediaWidth ?? 800}
-                          height={mediaHeight ?? 600}
-                          quality={100}
-                          sizes={IMAGE_SIZES}
-                          style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
-                        />
-                      )}
+                      <div className={media.length > 1 ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : undefined}>
+                        {media.map(({ src, type, width, height }, i) =>
+                          type === "video" ? (
+                            <CaseVideo key={src} src={src} label={`${step} process documentation`} />
+                          ) : (
+                            <Image
+                              key={src}
+                              src={src}
+                              alt={media.length > 1 ? `${step} process documentation, image ${i + 1} of ${media.length}` : `${step} process documentation`}
+                              width={width ?? 800}
+                              height={height ?? 600}
+                              quality={100}
+                              sizes={media.length > 1 ? DESIGN_IMAGE_SIZES : PROCESS_IMAGE_SIZES}
+                              style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
+                            />
+                          )
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -312,7 +352,7 @@ export default function DetectifyPage() {
                   labelColor={LABEL_COLOR}
                   title="Three problems, three decisions."
                 />
-                <div className="grid grid-cols-1 items-start" style={{ gridTemplateColumns: "2fr 3fr", gap: 40 }}>
+                <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 md:gap-10 items-start">
                   <div className="flex flex-col gap-4">
                     <InsightCard
                       title="Scannability first"

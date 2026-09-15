@@ -9,6 +9,7 @@ import { useTypewriter } from '@/hooks/useTypewriter'
 // note at exactly 351×190, the same box the CSS version used.
 export default function PostItNote() {
   const { text, isPausing } = useTypewriter()
+  const article = /^[aeiou]/i.test(text) ? 'an' : 'a'
 
   return (
     <div className="relative" style={{ width: 371, height: 190 }}>
@@ -35,7 +36,7 @@ export default function PostItNote() {
         }}
       >
         <p className="m-0">
-          Hailey is a{' '}
+          Hailey is {article}{' '}
           <span>{text}</span>
           {!isPausing && (
             <span style={{ animation: 'cursor-blink 0.8s step-end infinite' }}>|</span>
