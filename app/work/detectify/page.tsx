@@ -44,11 +44,20 @@ function NumberBadge({ n }: { n: number }) {
 function CaseVideo({ src, label }: { src: string; label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const userPausedRef = useRef(false);
+  const seekingRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // The loadedmetadata event can fire before React attaches its listener
+    // (autoplay video loads fast), so check for already-available duration too.
+    if (video.duration && !Number.isNaN(video.duration)) {
+      setDuration(video.duration);
+    }
 
     // Browsers pause off-screen autoplaying video and never resume it on their own —
     // resume/pause manually as it scrolls in and out of view. Respect an explicit
@@ -80,6 +89,16 @@ function CaseVideo({ src, label }: { src: string; label: string }) {
     }
   };
 
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const video = videoRef.current;
+    if (!video) return;
+    const value = Number(e.target.value);
+    video.currentTime = value;
+    setCurrentTime(value);
+  };
+
+  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+
   return (
     <div className="relative group">
       <video
@@ -91,22 +110,44 @@ function CaseVideo({ src, label }: { src: string; label: string }) {
         aria-label={label}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
+        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+        onTimeUpdate={(e) => {
+          if (!seekingRef.current) setCurrentTime(e.currentTarget.currentTime);
+        }}
         style={{ width: "100%", height: "auto", display: "block", borderRadius: 10 }}
       >
         <source src={src} type="video/mp4" />
         <source src={src} type="video/quicktime" />
       </video>
       {/* WCAG 2.2.2 (Pause, Stop, Hide) — this autoplays and loops indefinitely,
-          so it needs a reachable control to stop it. Hidden until hover/focus to
-          match the expand-affordance pattern already used on CaseImage. */}
-      <button
-        type="button"
-        onClick={togglePlay}
-        aria-label={isPlaying ? `Pause ${label}` : `Play ${label}`}
-        className="absolute bottom-3 right-3 flex items-center justify-center w-8 h-8 rounded-full bg-ink/70 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 focus-visible:opacity-100"
+          so it needs reachable controls to stop and scrub it. Hidden until hover/focus
+          to match the expand-affordance pattern already used on CaseImage. */}
+      <div
+        className="absolute bottom-0 left-0 right-0 flex items-center gap-2 px-3 pb-3 pt-8 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100"
+        style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55), transparent)", borderRadius: "0 0 10px 10px" }}
       >
-        {isPlaying ? <Pause size={14} /> : <Play size={14} />}
-      </button>
+        <input
+          type="range"
+          className="case-video-seek flex-1"
+          style={{ "--seek-progress": `${progress}%` } as React.CSSProperties}
+          min={0}
+          max={duration || 0}
+          step={0.01}
+          value={currentTime}
+          onChange={handleSeek}
+          onPointerDown={() => { seekingRef.current = true; }}
+          onPointerUp={() => { seekingRef.current = false; }}
+          aria-label={`Seek ${label}`}
+        />
+        <button
+          type="button"
+          onClick={togglePlay}
+          aria-label={isPlaying ? `Pause ${label}` : `Play ${label}`}
+          className="flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-full bg-ink/70 text-white"
+        >
+          {isPlaying ? <Pause size={14} /> : <Play size={14} />}
+        </button>
+      </div>
     </div>
   );
 }

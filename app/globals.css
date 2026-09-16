@@ -246,6 +246,52 @@
   paint-order: stroke fill;
 }
 
+/* ── Case video seek bar — thin custom range styling ───────────────────── */
+.case-video-seek {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  background: transparent;
+  cursor: pointer;
+}
+.case-video-seek::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    #fadb68 var(--seek-progress, 0%),
+    rgba(255, 255, 255, 0.35) var(--seek-progress, 0%)
+  );
+}
+.case-video-seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: #fadb68;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.45);
+}
+.case-video-seek::-moz-range-track {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+}
+.case-video-seek::-moz-range-progress {
+  height: 3px;
+  border-radius: 2px;
+  background: #fadb68;
+}
+.case-video-seek::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border: none;
+  border-radius: 50%;
+  background: #fadb68;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.45);
+}
+
 /* ── Base layer ─────────────────────────────────────────────────────────── */
 @layer base {
   *, *::before, *::after {
